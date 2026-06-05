@@ -1,14 +1,16 @@
 ---
 layout: archive
-title: "Portfolio"
+title: "Projects"
 permalink: /portfolio/
 author_profile: true
 ---
 
 {% include base_path %}
 
+<p>A selection of personal engineering and science projects, ranging from embedded systems and renewable energy to optics and robotics.</p>
 
-{% for post in site.portfolio %}
+{% assign sorted_portfolio = site.portfolio | sort: 'date' | reverse %}
+{% for post in sorted_portfolio %}
   {% include archive-single.html %}
 {% endfor %}
 
