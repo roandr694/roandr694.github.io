@@ -10,5 +10,17 @@
       "Control"
     ],
     "status": "published"
+  },
+  {
+    "slug": "vla-from-ground-up",
+    "title": "What is a VLA? From pixels and words to robot actions",
+    "description": "Building up vision–language–action models from robot policies, image tokens, and language to action decoding, training, and execution.",
+    "date": "2026-10-24",
+    "tags": [
+      "Robotics",
+      "VLA",
+      "Robot learning"
+    ],
+    "status": "published"
   }
 ]
