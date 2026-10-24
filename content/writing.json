@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "slug": "reinforcement-learning-for-robots",
+    "title": "Notes on reinforcement learning in robotics",
+    "description": "Working through the control loop, rewards, value functions, PPO, and simulation-to-hardware transfer.",
+    "date": "2026-10-24",
+    "tags": [
+      "Robotics",
+      "Reinforcement learning",
+      "Control"
+    ],
+    "status": "published"
+  }
+]
