@@ -4,21 +4,21 @@
 
 Rodrigo can request a change in chat, including from a phone. Read the current GitHub source, make a focused change, validate it, and prepare a preview and pull request. Keep public publishing behind approval of the exact change.
 
-The repository's default branch is the source of truth after the migration PR is merged. While migration is under review, use its branch. Do not silently maintain diverging GitHub and Sites sources: a Sites preview should be built from the same source revision and record that GitHub revision in its commit message.
+The repository's default branch (`master`) is the source of truth. The migration is complete. Do not silently maintain diverging GitHub and Sites sources: a Sites preview should be built from the same source revision and record that GitHub revision in its commit message.
 
 ## Editorial reviews
 
-Rules and proposals belong in a separate private control repository. Its policy records pending, ignored, watched, or already-featured repositories and excluded paths. New sources default to pending. A weekly cloud task discovers repository metadata and examines only explicitly watched content. A scheduled task never publishes.
+Rules, drafts and history belong in the private `roandr694/site-editorial` repository. Its policy records pending, ignored, watched, or already-featured repositories and excluded paths. New sources default to pending. A weekly discovery task examines only explicitly watched content and never publishes. A separate response processor can apply version-specific approval from the private form after checking and testing the exact approved changes.
 
 Proposals include source links/revisions, what changed, why it matters, exact suggested copy, available images/video, missing facts, and any blog ideas. Suppress routine maintenance and repeated notifications. Record postponed/ignored decisions so they are not repeatedly suggested.
 
 Only Rodrigo's responses authorize state changes. Review decisions must identify the proposal and its content revision. Changing a proposal after approval requires another approval. Before implementing an approved proposal, recheck source state, exclusions, and the current site branch. Public changes are limited to the approved material.
 
-Mobile interaction starts with a short response in chat, such as “acompanhe X”, “ignore Y”, “adie a proposta 2” or “prepare a proposta 3”. Preparing an edit is separate from approval to merge it publicly. The private issue history stores decisions; it is not a public visitor feature.
+Mobile interaction uses https://rodrigo-andrade-editorial.randrade0609.chatgpt.site/. Rodrigo saves project eligibility and reviews proposals there. The form stores decisions in private R2 storage. Do not ask him to repeat a valid form approval in chat. Issues are no longer the questionnaire. Saving an approval does not prove publication: verify the public result before marking it applied.
 
 ## Writing
 
-1. Work on ideas and drafts in the private control space or chat.
+1. Read `AGENTS.md` and `drafts/README.md` in `roandr694/site-editorial`. Work on ideas in chat and save drafts at `drafts/<slug>/article.md`, with sources, unresolved questions and publication context in `drafts/<slug>/notes.md`. Do not invent Rodrigo's experiences or publish private research details without approval.
 2. Review the text, claims, references, math, and media with Rodrigo.
 3. After approval, put the article in `content/writing/<slug>.md` and add its metadata to `content/writing.json`.
 4. Run checks, show the actual preview, and submit the change for publication approval.
