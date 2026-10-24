@@ -1,96 +1,53 @@
-# Academic Pages
-**Academic Pages is a GitHub Pages template for personal and professional portfolio-oriented websites.**
+# Rodrigo Andrade — personal website
 
-![Academic Pages template example](images/themes/homepage-light.png "Academic Pages template example")
+Site pessoal estático, inspirado na estrutura acadêmica do site anterior: navegação no topo, perfil à esquerda e conteúdo à direita. HTML e CSS próprios; Node.js gera as páginas a partir de Markdown e JSON. O site funciona sem JavaScript no navegador.
 
-# Getting Started
+## Rodar
 
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Click the "Use this template" button in the top right.
-1. On the "New repository" page, enter your public repository name as "[your GitHub username].github.io", which will also be your website's URL.
-1. Set site-wide configuration and add your content.
-1. Upload any files (like PDFs, .zip files, etc.) to the `files/` directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.
-1. Check status by going to the repository settings, in the "GitHub pages" section
-1. (Optional) Use the Jupyter notebooks or python scripts in the `markdown_generator` folder to generate markdown files for publications and talks from a TSV file.
+Com Node.js 22 ou superior:
 
-See more info at https://academicpages.github.io/
-
-## Running locally
-
-When you are initially working on your website, it is very useful to be able to preview the changes locally before pushing them to GitHub. To work locally you will need to:
-
-1. Clone the repository and made updates as detailed above.
-
-### Using a different IDE
-1. Make sure you have ruby-dev, bundler, and nodejs installed
-    
-    On most Linux distribution and [Windows Subsystem Linux](https://learn.microsoft.com/en-us/windows/wsl/about) the command is:
-    ```bash
-    sudo apt install ruby-dev ruby-bundler nodejs
-    ```
-    If you see error `Unable to locate package ruby-bundler`, `Unable to locate package nodejs `, run the following:
-    ```bash
-    sudo apt update && sudo apt upgrade -y
-    ```
-    then try run `sudo apt install ruby-dev ruby-bundler nodejs` again.
-
-    On MacOS the commands are:
-    ```bash
-    brew install ruby
-    brew install node
-    gem install bundler
-    ```
-1. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
-
-    If you see file permission error like `Fetching bundler-2.6.3.gem ERROR:  While executing gem (Gem::FilePermissionError) You don't have write permissions for the /var/lib/gems/3.2.0 directory.` or `Bundler::PermissionError: There was an error while trying to write to /usr/local/bin.`
-    Install Gems Locally (Recommended):
-    ```bash
-    bundle config set --local path 'vendor/bundle'
-    ```
-    then try run `bundle install` again. If succeeded, you should see a folder called `vendor` and `.bundle`.
-
-1. Run `jekyll serve -l -H localhost` to generate the HTML and serve it from `localhost:4000` the local server will automatically rebuild and refresh the pages on change to Markdown (*.md) and HTML files, while changes to the core template and configuration (i.e., `_config.yml`) will require stoping and restarting Jekyll.
-    You may also try `bundle exec jekyll serve -l -H localhost` to ensure jekyll to use specific dependencies on your own local machine.
-
-If you are running on Linux it may be necessary to install some additional dependencies prior to being able to run locally: `sudo apt install build-essential gcc make`
-
-## Using Docker
-
-Working from a different OS, or just want to avoid installing dependencies? You can use the provided `Dockerfile` to build a container that will run the site for you if you have [Docker](https://www.docker.com/) installed.
-
-You can build and execute the container by running the following command in the repository:
-
-```bash
-chmod -R 777 .
-docker compose up
+```sh
+npm ci
+npm run dev
 ```
 
-You should now be able to access the website from `localhost:4000`.
+Abra http://localhost:3000. Depois de editar o conteúdo, execute `npm run build` e atualize a página. `npm run preview` serve a última versão gerada.
 
-### Using the DevContainer in VS Code
+## Editar o conteúdo
 
-If you are using [Visual Studio Code](https://code.visualstudio.com/) you can use the [Dev Container](https://code.visualstudio.com/docs/devcontainers/containers) that comes with this Repository. Normally VS Code detects that a development container configuration is available and asks you if you want to use the container. If this doesn't happen you can manually start the container by **F1->DevContainer: Reopen in Container**. This restarts your VS Code in the container and automatically hosts your academic page locally on http://localhost:4000. All changes will be updated live to that page after a few seconds.
+- `content/profile.json`: nome, contato, descrição, endereço do site e interesses.
+- `content/about.md`: apresentação na página inicial. O texto inicial é um rascunho baseado nas informações do repositório anterior.
+- `files/rodrigo-andrade-resume.pdf`: résumé em PDF, convertido do DOCX fornecido por Rodrigo. O link Resume aponta diretamente ao arquivo; substitua este PDF para atualizá-lo.
+- `content/projects.json`: ordem, ano, categoria, título e resumo dos projetos.
+- `content/publications.json`: publicações verificadas, separadas dos projetos pessoais. Vazio até haver trabalhos reais para incluir; a seção não aparece quando vazia.
+- `content/writing.json` e `content/writing/<slug>.md`: artigos aprovados, com data, resumo e tags. Equações usam `$...$` ou `$$` em linhas separadas. Rascunhos privados ficam fora deste repositório público.
+- `content/projects/<slug>.md`: descrição completa de cada projeto. Para adicionar um projeto, crie o Markdown e acrescente a entrada correspondente ao JSON.
+- `images/` e `files/`: imagens e relatórios dos projetos.
+- `assets/style.css`: visual responsivo.
+- `scripts/build.mjs`: layout e geração das páginas.
 
-# Maintenance
+Markdown aceita HTML e é tratado como conteúdo confiável do proprietário. Uma futura importação de fontes externas deve validar os dados e sanitizar HTML antes de gravá-lo aqui.
 
-Bug reports and feature requests to the template should be [submitted via GitHub](https://github.com/academicpages/academicpages.github.io/issues/new/choose). For questions concerning how to style the template, please feel free to start a [new discussion on GitHub](https://github.com/academicpages/academicpages.github.io/discussions).
+## Publicação
 
-This repository was forked (then detached) by [Stuart Geiger](https://github.com/staeiou) from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/), which is © 2016 Michael Rose and released under the MIT License (see LICENSE.md). It is currently being maintained by [Robert Zupko](https://github.com/rjzupkoii) and additional maintainers would be welcomed.
+`npm run build` gera `dist/`, incluindo páginas dos projetos, redirecionamentos de `/about/`, `/about.html`, `/cv/` e `/resume/`, sitemap e página 404. `/cv/` e `/resume/` abrem o PDF. As URLs existentes `/portfolio/<slug>/` e os relatórios foram mantidos.
 
-## Bugfixes and enhancements
+O workflow `.github/workflows/check.yml` testa propostas em pull requests. `.github/workflows/pages.yml` publica no GitHub Pages após um push aprovado em `main` ou `master`. Em Settings → Pages, a origem precisa estar definida como **GitHub Actions**. Nenhuma publicação é feita apenas ao editar este checkout. O processo de edição e aprovação está em [docs/editorial-workflow.md](docs/editorial-workflow.md).
 
-If you have bugfixes and enhancements that you would like to submit as a pull request, you will need to [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) this repository as opposed to using it as a template. This will also allow you to [synchronize your copy](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) of template to your fork as well.
+## Próximos passos de conteúdo
 
-Unfortunately, one logistical issue with a template theme like Academic Pages that makes it a little tricky to get bug fixes and updates to the core theme. If you use this template and customize it, you will probably get merge conflicts if you attempt to synchronize. If you want to save your various .yml configuration files and markdown files, you can delete the repository and fork it again. Or you can manually patch.
+Revisar a apresentação com Rodrigo; adicionar foto; desenvolver relatos dos trabalhos de pesquisa; revisar os relatos e resultados dos projetos. A apresentação, os contatos e o CV foram atualizados a partir de `Resume_Rodrigo_Andrade_Revised.docx`. Os projetos pessoais vieram do repositório anterior. Os arquivos de conteúdo já estão separados do layout para permitir uma futura importação de portfólio, com revisão antes de publicar. A automação de coleta ainda não foi implementada.
 
----
-<div align="center">
-    
-![pages-build-deployment](https://github.com/academicpages/academicpages.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)
-[![GitHub contributors](https://img.shields.io/github/contributors/academicpages/academicpages.github.io.svg)](https://github.com/academicpages/academicpages.github.io/graphs/contributors)
-[![GitHub release](https://img.shields.io/github/v/release/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io/releases/latest)
-[![GitHub license](https://img.shields.io/github/license/academicpages/academicpages.github.io?color=blue)](https://github.com/academicpages/academicpages.github.io/blob/master/LICENSE)
+O tema Academic Pages e seus exemplos foram removidos; os três projetos pessoais e seus arquivos foram migrados. A versão anterior permanece no histórico Git. `LICENSE` preserva a licença original.
 
-[![GitHub stars](https://img.shields.io/github/stars/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io)
-[![GitHub forks](https://img.shields.io/github/forks/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io/fork)
-</div>
+## Portfólio visual
+
+Cada projeto tem mídia à esquerda e, à direita, ano, área, título, resumo e links. `media.image`, `media.alt` e `media.caption` definem foto e descrição. `media.position` ajusta o enquadramento no thumbnail via CSS. `links` contém objetos com `label` e `url`, apenas para recursos existentes.
+
+Quando houver demonstração própria, `media.video` recebe o caminho do vídeo; o thumbnail passa a ser um player com controles, poster e sem autoplay. Não há botão de play nas imagens estáticas.
+
+Publicações usam os mesmos campos visuais e acrescentam `authors` (lista de nomes), `venue` e `url` (página do trabalho). Inclua somente artigos cuja autoria e status estejam confirmados. As publicações aparecem antes dos projetos pessoais e não são tratadas como projetos independentes.
+
+Referências de organização: [Tony Tao](https://tony-tao.com/), [Siyi Chen](https://chicychen.github.io/) e [Kevin Black](https://kevin.black/). O site adota a organização das informações; imagens e textos dos pesquisadores não foram reutilizados.
+
+As fotos `images/solar-panel-tracker.jpg` e `images/newtonian-telescope.jpg` foram extraídas da página 5 dos respectivos relatórios em `files/`. A foto LEGO já estava no repositório.

@@ -1,0 +1,42 @@
+[
+  {
+    "slug": "solar-panel-tracker",
+    "year": "2023",
+    "category": "Embedded systems \u00b7 Renewable energy",
+    "title": "Solar tracking system",
+    "summary": "An Arduino-controlled structure that follows the sun, from a small prototype to a 2.4 kW rooftop array.",
+    "media": {
+      "image": "/images/solar-panel-tracker.jpg",
+      "alt": "The completed rooftop solar tracking array",
+      "caption": "The full-scale solar tracking array. Photo from the project report."
+    },
+    "links": [{ "label": "Report PDF", "url": "/files/solar-panel-tracker-febrace.pdf" }]
+  },
+  {
+    "slug": "newtonian-telescope",
+    "year": "2021",
+    "category": "Optics \u00b7 Mechanical design",
+    "title": "A telescope, built from scratch",
+    "summary": "A 180 mm Newtonian reflector with a custom Dobsonian mount, built with my grandfather.",
+    "media": {
+      "image": "/images/newtonian-telescope.jpg",
+      "alt": "The finished Newtonian telescope on its wooden Dobsonian mount",
+      "position": "50% 52%",
+      "caption": "The completed telescope and its custom Dobsonian mount. Photo from the project report."
+    },
+    "links": [{ "label": "Report PDF", "url": "/files/newtonian-telescope.pdf" }]
+  },
+  {
+    "slug": "early-robotics",
+    "year": "2020",
+    "category": "Robotics \u00b7 Prototyping",
+    "title": "First experiments in robotics",
+    "summary": "A collection of LEGO MINDSTORMS builds exploring movement, sensing, and mechanical design.",
+    "media": {
+      "image": "/images/robotics-project-4.png",
+      "alt": "A LEGO MINDSTORMS mechanism with motors, gears, and linkages",
+      "caption": "One of my early LEGO MINDSTORMS builds."
+    },
+    "links": []
+  }
+]
