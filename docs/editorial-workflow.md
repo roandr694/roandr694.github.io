@@ -40,4 +40,4 @@ Inline math uses `$...$`; display math uses `$$` on separate lines. KaTeX render
 
 ## Publication
 
-The pull request workflow builds and validates the site; it does not deploy. Merging approved changes to `master`/`main` runs the Pages deployment workflow when the repository is configured to use GitHub Actions. The public site's Pages source setting must be checked before the first migration merge. Keep the current private Sites preview available until public deployment is verified.
+The pull request workflow builds and validates the site; it does not deploy. Before a publishing commit, run `npm run export:pages` and include the generated root pages, `.nojekyll`, and KaTeX bundle. This preserves the existing Pages branch configuration while the Actions deployment uses the same output. Keep the owner-private Sites preview available until public deployment is verified. Never change the public Pages source setting merely to make a preview work.

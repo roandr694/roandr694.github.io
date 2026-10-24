@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solar tracking system — Rodrigo Andrade</title>
+  <meta name="description" content="An Arduino-controlled structure that follows the sun, from a small prototype to a 2.4 kW rooftop array.">
+  <link rel="canonical" href="https://roandr694.github.io/portfolio/solar-panel-tracker/">
+  <meta property="og:title" content="Solar tracking system — Rodrigo Andrade">
+  <meta property="og:description" content="An Arduino-controlled structure that follows the sun, from a small prototype to a 2.4 kW rooftop array.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://roandr694.github.io/portfolio/solar-panel-tracker/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/style.css">
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="masthead"><div class="header-inner">
+    <a class="wordmark" href="/">Rodrigo Andrade<span class="wordmark-dot" aria-hidden="true">.</span></a>
+    <nav aria-label="Main navigation"><a href="/">About</a><a href="/portfolio/" aria-current="page">Projects</a><a href="/writing/">Writing</a><a href="/files/rodrigo-andrade-resume.pdf" type="application/pdf">Resume</a></nav>
+  </div></header>
+  <div class="page-grid">
+    <aside class="profile" aria-label="Profile">
+      <a class="monogram" href="/" aria-label="Rodrigo Andrade home">RA<span aria-hidden="true">.</span></a>
+      <h2>Rodrigo Andrade</h2>
+      <p class="role">Electrical &amp; Computer Engineering · USC</p>
+      <p class="profile-bio">Robot learning, manipulation, and humanoid robots.</p>
+      <p class="location"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/></svg>Los Angeles, US</p>
+      <div class="profile-links"><a href="mailto:rpandrad@usc.edu">Email <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M4 4h8v8"/></svg></a><a href="https://github.com/roandr694">GitHub <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M4 4h8v8"/></svg></a><a href="https://www.linkedin.com/in/rodrigo-andr/">LinkedIn <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M4 4h8v8"/></svg></a></div>
+      <div class="interests"><h3>Research interests</h3><ul><li>Robot learning</li><li>Robotic manipulation</li><li>Humanoid robots</li></ul></div>
+    </aside>
+    <main id="main" tabindex="-1"><a class="back-link" href="/portfolio/">Back to projects</a><p class="eyebrow project-detail-category">2023 / Embedded systems · Renewable energy</p><h1 class="project-title">Solar tracking system</h1><figure class="project-figure"><img src="/images/solar-panel-tracker.jpg" alt="The completed rooftop solar tracking array" width="960" height="640"><figcaption>The full-scale solar tracking array. Photo from the project report.</figcaption></figure><div class="prose project-body"><h2>Overview</h2>
+<p>Fixed solar panels leave significant energy on the table because they can only be optimally oriented for a fraction of the day. This project investigated whether an automated sun-tracking system could meaningfully increase daily energy output for a real rooftop installation, and whether the energy consumed by the tracking mechanism would remain negligible compared to the gains.</p>
+<h2>Hypothesis</h2>
+<p>A structure that continuously rotates solar panels to maintain perpendicular alignment with incident sunlight would increase daily energy production. The energy consumed by the actuation motors would be small enough that the net gain would still be significant.</p>
+<h2>Prototype</h2>
+<p>Before scaling to a full installation, a small-scale prototype was built using a single solar panel and a servo motor controlled by an Arduino Uno. Two photoresistors mounted in a custom 3D-printed housing measured differential light intensity on either side of the panel. The Arduino compared both readings every 0.6 seconds and rotated the panel in 2-degree increments until the readings equalized — indicating perpendicular alignment with the sun.</p>
+<p><strong>Prototype result: 23.2% increase in energy production</strong> compared to a fixed-angle panel under identical conditions.</p>
+<h2>Full-Scale Implementation</h2>
+<p>Based on the prototype&#39;s success, the system was scaled to a real rooftop installation:</p>
+<ul>
+<li><strong>Structure:</strong> Custom steel frame supporting 6 × 400 W solar panels (2,400 W total, ~136 kg)</li>
+<li><strong>Actuation:</strong> Two electric linear actuators (1,500 N each, 500 mm stroke)</li>
+<li><strong>Control:</strong> Arduino Uno with dual-photoresistor tracking, relay module</li>
+<li><strong>Power supply:</strong> 12 V dedicated circuit</li>
+</ul>
+<p>The 6 tracking panels operate alongside 38 fixed panels in the same array.</p>
+<h2>Results</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Daily energy gained (tracking panels)</td>
+<td>+3,035 Wh</td>
+</tr>
+<tr>
+<td>Daily energy consumed by motors</td>
+<td>~5 Wh</td>
+</tr>
+<tr>
+<td>Net daily gain</td>
+<td>~3,030 Wh</td>
+</tr>
+<tr>
+<td>System-wide efficiency improvement</td>
+<td>3.2%</td>
+</tr>
+</tbody></table>
+<p>The motors run for approximately 5 minutes per day, consuming only 5 Wh — less than 0.2% of the energy they help recover.</p>
+<h2>Skills &amp; Tools</h2>
+<ul>
+<li>Embedded systems: Arduino Uno, photoresistors, relay modules, servo motors</li>
+<li>Mechanical design: steel structure fabrication, linear actuator integration</li>
+<li>Experimental methodology: controlled prototype testing, data collection</li>
+<li>Scientific reporting (submitted to FEBRACE — Feira Brasileira de Ciências e Engenharia)</li>
+</ul>
+<h2>Report</h2>
+<p><a href="/files/solar-panel-tracker-febrace.pdf">Download Full Project Report (PDF)</a></p>
+</div></main>
+  </div>
+  <footer><span>© 2026 Rodrigo Andrade</span><span>Robotics &amp; control systems</span></footer>
+</body></html>
