@@ -2,9 +2,9 @@
 
 ## Small edits
 
-Rodrigo can request a change in chat, including from a phone. Read the current GitHub source, make a focused change, validate it, and prepare a preview and pull request. Keep public publishing behind approval of the exact change.
+Rodrigo can request a change in chat, including from a phone. Read the current GitHub source, make a focused change, validate it, and publish through a checked pull request when the request authorizes publication. Rodrigo now reviews requested edits directly on GitHub Pages; do not use a ChatGPT-hosted website preview.
 
-The repository's default branch (`master`) is the source of truth. The migration is complete. Do not silently maintain diverging GitHub and Sites sources: a Sites preview should be built from the same source revision and record that GitHub revision in its commit message.
+The repository's default branch (`master`) is the source of truth. The migration is complete. Do not maintain a second ChatGPT-hosted copy of the public site. The private editorial form remains separate and is not a website preview.
 
 ## Editorial reviews
 
@@ -21,7 +21,7 @@ Mobile interaction uses https://rodrigo-andrade-editorial.randrade0609.chatgpt.s
 1. Read `AGENTS.md` and `drafts/README.md` in `roandr694/site-editorial`. Work on ideas in chat and save drafts at `drafts/<slug>/article.md`, with sources, unresolved questions and publication context in `drafts/<slug>/notes.md`. Do not invent Rodrigo's experiences or publish private research details without approval.
 2. Review the text, claims, references, math, and media with Rodrigo.
 3. After approval, put the article in `content/writing/<slug>.md` and add its metadata to `content/writing.json`.
-4. Run checks, show the actual preview, and submit the change for publication approval.
+4. For a direct request to publish, run checks, export Pages, publish through a checked PR and verify the public URL. Otherwise keep the draft private; do not use the retired ChatGPT website preview.
 
 Example metadata for an approved article (illustrative only):
 
@@ -40,4 +40,4 @@ Inline math uses `$...$`; display math uses `$$` on separate lines. KaTeX render
 
 ## Publication
 
-The pull request workflow builds and validates the site; it does not deploy. Before a publishing commit, run `npm run export:pages` and include the generated root pages, `.nojekyll`, and KaTeX bundle. This preserves the existing Pages branch configuration while the Actions deployment uses the same output. Keep the owner-private Sites preview available until public deployment is verified. Never change the public Pages source setting merely to make a preview work.
+The pull request workflow builds and validates the site; it does not deploy. Before a publishing commit, run `npm run export:pages` and include the generated root pages, `.nojekyll`, and KaTeX bundle. This preserves the existing Pages branch configuration while the Actions deployment uses the same output. Verify the live GitHub Pages output; do not deploy a parallel website preview. Never change the public Pages source setting merely to make a preview work.
