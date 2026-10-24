@@ -32,3 +32,5 @@ Repository instructions are not global ChatGPT memory. A chat must have access t
 ## Writing voice and media
 
 Use natural technical English in Rodrigo’s voice, without invented personal experience. Prefer descriptive section titles and connected paragraphs. Avoid repeated rhetorical contrasts, bold emphasis on words like “not”, slogan-like endings and generic end-of-post checklists. Use media that directly illustrates the topic; unrelated childhood/project photos are not suitable for an RL article. Attribute externally embedded demonstrations to their actual authors and distinguish original toy simulations from trained-policy results.
+
+Explain prerequisite concepts before using them in equations: define new jargon, give concrete numerical examples, and distinguish toy illustrations from model measurements. For difficult concepts, use explanatory drawings or generated illustrations when useful rather than relying only on flowcharts.
