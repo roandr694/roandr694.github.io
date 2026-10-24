@@ -6,6 +6,7 @@
     "build": "node scripts/build.mjs",
     "test": "node --test scripts/build.test.mjs",
     "check": "node scripts/check.mjs",
+    "export:pages": "npm run build && node scripts/export-pages.mjs",
     "dev": "npm run build && node scripts/serve.mjs",
     "preview": "node scripts/serve.mjs"
   },

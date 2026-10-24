@@ -11,3 +11,4 @@
 - Use `content/about.md`, JSON manifests, and the corresponding Markdown files for approved content. Resume links directly to `files/rodrigo-andrade-resume.pdf`.
 - Put only approved writing in this public checkout. The builder omits draft posts, but GitHub source itself is public; a draft flag is not privacy protection.
 - Validate with `npm test` and `npm run build && npm run check`. Attach any created pull request to the current Codex chat.
+- Before a publishing commit, run `npm run export:pages` and include the generated root pages and `assets/katex`. The existing Pages branch builder and Actions must serve the same approved output; do not change the Pages configuration unnecessarily.

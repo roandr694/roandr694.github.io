@@ -32,7 +32,7 @@ Markdown aceita HTML e é tratado como conteúdo confiável do proprietário. Um
 
 `npm run build` gera `dist/`, incluindo páginas dos projetos, redirecionamentos de `/about/`, `/about.html`, `/cv/` e `/resume/`, sitemap e página 404. `/cv/` e `/resume/` abrem o PDF. As URLs existentes `/portfolio/<slug>/` e os relatórios foram mantidos.
 
-O workflow `.github/workflows/check.yml` testa propostas em pull requests. `.github/workflows/pages.yml` publica no GitHub Pages após um push aprovado em `main` ou `master`. Em Settings → Pages, a origem precisa estar definida como **GitHub Actions**. Nenhuma publicação é feita apenas ao editar este checkout. O processo de edição e aprovação está em [docs/editorial-workflow.md](docs/editorial-workflow.md).
+O workflow `.github/workflows/check.yml` testa propostas em pull requests. `.github/workflows/pages.yml` publica no GitHub Pages após um push aprovado em `main` ou `master`. Para manter a configuração existente de Pages por branch, `npm run export:pages` também grava as páginas geradas na raiz, junto com `.nojekyll`. Inclua essa saída no commit de publicação; assim, tanto o builder existente quanto Actions servem a mesma versão. Nenhuma publicação é feita apenas ao editar este checkout. O processo de edição e aprovação está em [docs/editorial-workflow.md](docs/editorial-workflow.md).
 
 ## Próximos passos de conteúdo
 
