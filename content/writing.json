@@ -1,5 +1,17 @@
 [
   {
+    "slug": "model-predictive-control-from-ground-up",
+    "title": "Model Predictive Control: predict, optimize, and replan",
+    "description": "Building MPC from dynamics, costs, and constraints, with worked examples and a disturbed point-mass simulation showing receding-horizon feedback.",
+    "date": "2026-10-24",
+    "tags": [
+      "Robotics",
+      "Model Predictive Control",
+      "Optimization"
+    ],
+    "status": "published"
+  },
+  {
     "slug": "imitation-learning-from-ground-up",
     "title": "Imitation Learning: from demonstrations to a robot policy",
     "description": "Behavior cloning, action losses, compounding errors, and DAgger, with a worked recovery simulation and connections to diffusion policies, RL, and VLAs.",
