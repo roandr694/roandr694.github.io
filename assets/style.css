@@ -103,6 +103,10 @@ footer{max-width:1040px;border-top:1px solid var(--line);padding:22px 0 30px;mar
 @media(max-width:380px){.project-row{grid-template-columns:minmax(0,1fr);gap:16px}.project-thumbnail{max-width:240px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project-thumbnail img{transition:none}}
 
-.profile-links a{display:inline-flex;align-items:center;gap:9px;min-height:32px}
-.profile-links svg{width:17px;height:17px;flex:none}
+.profile-links a{display:inline-flex;align-items:center;gap:7px;min-height:28px}
+.profile-links svg{display:block;width:13px;height:13px;flex:0 0 13px}
+.profile-link-email svg{color:#c45b4d}
+.profile-link-github svg{color:#6e5494}
+.profile-link-linkedin svg{color:#0a66c2}
+.profile-link-resume svg{color:#47765b}
 .about-heading{font:normal 26px/1.3 var(--serif);letter-spacing:-.4px;margin-bottom:20px}

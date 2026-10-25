@@ -32,7 +32,7 @@ const profileIcons = {
  resume: '<path d="M14 2H5v20h14V7zM14 2v5h5M8 12h8M8 16h8"/>'
 };
 function profileLink(url, label, icon) {
- return `<a href="${escape(url)}"${icon === 'resume' ? ' type="application/pdf"' : ''}><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${profileIcons[icon]}</svg>${escape(label)}</a>`;
+ return `<a class="profile-link profile-link-${icon}" href="${escape(url)}"${icon === 'resume' ? ' type="application/pdf"' : ''}><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${profileIcons[icon]}</svg>${escape(label)}</a>`;
 }
 
 function layout({ title, path, active = 'about', body, description = profile.description, math = false }) {
@@ -70,7 +70,7 @@ function layout({ title, path, active = 'about', body, description = profile.des
     </aside>
     <main id="main" tabindex="-1">${body}</main>
   </div>
-  <footer><span>© ${new Date().getUTCFullYear()} ${escape(profile.name)}</span><span>Robotics &amp; control systems</span></footer>
+  <footer><span>© ${new Date().getUTCFullYear()} ${escape(profile.name)}</span></footer>
 </body></html>`;
 }
 
