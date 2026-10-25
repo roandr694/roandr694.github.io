@@ -1,9 +1,11 @@
 import { readFile, writeFile, mkdir, rm, cp } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { marked } from 'marked';
 import markedKatex from 'marked-katex-extension';
 
 marked.use(markedKatex({ throwOnError: true, trust: false }));
 
+const styleVersion = createHash('sha256').update(await readFile('assets/style.css')).digest('hex').slice(0, 12);
 const json = async path => JSON.parse(await readFile(path, 'utf8'));
 const profile = await json('content/profile.json');
 const projects = await json('content/projects.json');
@@ -49,7 +51,7 @@ function layout({ title, path, active = 'about', body, description = profile.des
   <meta property="og:type" content="website">
   <meta property="og:url" content="${escape(profile.url + path)}">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/assets/style.css?v=${styleVersion}">
   ${math ? '<link rel="stylesheet" href="/assets/katex/katex.min.css">' : ''}
 </head>
 <body>
