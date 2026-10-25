@@ -1,5 +1,17 @@
 [
   {
+    "slug": "diffusion-policy-from-ground-up",
+    "title": "Diffusion Policy: learning robot actions by removing noise",
+    "description": "From demonstrations and multimodal actions to noise prediction, diffusion sampling, and receding-horizon robot control.",
+    "date": "2026-10-24",
+    "tags": [
+      "Robotics",
+      "Diffusion Policy",
+      "Imitation learning"
+    ],
+    "status": "published"
+  },
+  {
     "slug": "reinforcement-learning-for-robots",
     "title": "Notes on reinforcement learning in robotics",
     "description": "Working through the control loop, rewards, value functions, PPO, and simulation-to-hardware transfer.",
