@@ -1,5 +1,17 @@
 [
   {
+    "slug": "imitation-learning-from-ground-up",
+    "title": "Imitation Learning: from demonstrations to a robot policy",
+    "description": "Behavior cloning, action losses, compounding errors, and DAgger, with a worked recovery simulation and connections to diffusion policies, RL, and VLAs.",
+    "date": "2026-10-24",
+    "tags": [
+      "Robotics",
+      "Imitation learning",
+      "Behavior cloning"
+    ],
+    "status": "published"
+  },
+  {
     "slug": "diffusion-policy-from-ground-up",
     "title": "Diffusion Policy: learning robot actions by removing noise",
     "description": "From demonstrations and multimodal actions to noise prediction, diffusion sampling, and receding-horizon robot control.",
