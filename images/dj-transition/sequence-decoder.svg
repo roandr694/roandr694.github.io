@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="330" viewBox="0 0 540 330" role="img" aria-labelledby="title desc">
+  <title id="title">Bidirectional recurrent model and classification head</title>
+  <desc id="desc">Forward and backward states from a two-layer BiLSTM each have 128 values. Their concatenation passes through dropout and a linear classifier that outputs four scores for each time step.</desc>
+  <defs>
+    <marker id="end" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0l8 4-8 4z" fill="#a8375c"/></marker>
+    <g id="cell"><rect width="35" height="30" rx="5" fill="#f3dfe6" stroke="#bd6885" stroke-width="1.6"/><path d="M8 20c5 0 7-10 12-10h7" fill="none" stroke="#aa486c" stroke-width="1.8"/></g>
+    <style>text{font-family:Arial,sans-serif;fill:#432d38}.title{font-size:28px;font-weight:700}.small{font-size:18px}.label{font-size:20px;font-weight:700}.shape{font:20px monospace;fill:#913456}</style>
+  </defs>
+  <rect width="540" height="330" rx="12" fill="#fbf5f6"/>
+  <text class="title" x="25" y="44">Song context · BiLSTM</text>
+  <text class="small" x="25" y="75">Two stacked layers, 128 units per direction</text>
+  <g fill="none" stroke="#a8375c" stroke-width="2.3" marker-end="url(#end)">
+    <path d="M25 142H190"/><path d="M190 202H25"/><path d="M205 174h47"/><path d="M365 174h32"/>
+  </g>
+  <g>
+    <use href="#cell" x="39" y="126"/><use href="#cell" x="88" y="126"/><use href="#cell" x="137" y="126"/>
+    <use href="#cell" x="39" y="187"/><use href="#cell" x="88" y="187"/><use href="#cell" x="137" y="187"/>
+  </g>
+  <text class="small" x="25" y="113">Forward</text><text class="small" x="25" y="242">Backward</text>
+  <rect x="258" y="134" width="101" height="80" rx="7" fill="#fff" stroke="#c78b9f"/>
+  <text class="small" text-anchor="middle" x="308" y="165">Dropout</text><text class="label" text-anchor="middle" x="308" y="194">Linear</text>
+  <g class="small">
+    <rect x="403" y="117" width="12" height="12" rx="2" fill="#53b8ae"/><text x="425" y="129">Intro</text>
+    <rect x="403" y="148" width="12" height="12" rx="2" fill="#a09bb5"/><text x="425" y="160">Verse</text>
+    <rect x="403" y="179" width="12" height="12" rx="2" fill="#d74874"/><text x="425" y="191">Chorus</text>
+    <rect x="403" y="210" width="12" height="12" rx="2" fill="#d6a32e"/><text x="425" y="222">Outro</text>
+  </g>
+  <text class="shape" x="236" y="260">T × 256</text><text class="shape" x="407" y="260">T × 4</text>
+  <path d="M25 279H515" stroke="#e2cdd4"/>
+  <text class="small" x="25" y="308">The head scores all four classes for every second.</text>
+</svg>

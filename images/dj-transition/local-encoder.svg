@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="330" viewBox="0 0 540 330" role="img" aria-labelledby="title desc">
+  <title id="title">Temporal convolutional encoder</title>
+  <desc id="desc">Every second has 39 input features. Two time-preserving convolution blocks produce 32 and 64 channels using kernels of three and five rows.</desc>
+  <defs>
+    <pattern id="rows" width="60" height="11" patternUnits="userSpaceOnUse"><rect width="60" height="11" fill="#e1f3ef"/><path d="M0 10.5h60" stroke="#9fc9c0"/></pattern>
+    <g id="stack" stroke="#308276" stroke-width="1.6" stroke-linejoin="round">
+      <rect x="12" y="-12" width="57" height="77" fill="#baded6"/>
+      <rect x="6" y="-6" width="57" height="77" fill="#cce9e3"/>
+      <rect width="57" height="77" fill="url(#rows)"/>
+    </g>
+    <marker id="end" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0l8 4-8 4z" fill="#22766b"/></marker>
+    <style>text{font-family:Arial,sans-serif;fill:#213d38}.title{font-size:28px;font-weight:700}.op{font-size:21px;font-weight:700}.small{font-size:18px}.shape{font:20px monospace;fill:#17655b}</style>
+  </defs>
+  <rect width="540" height="330" rx="12" fill="#f3f8f5"/>
+  <text class="title" x="25" y="44">Local patterns · 1D CNN</text>
+  <text class="small" x="25" y="75">Both filters preserve the sequence length T</text>
+  <g text-anchor="middle">
+    <text class="op" x="66" y="117">Input</text><text class="op" x="266" y="117">32 channels</text><text class="op" x="463" y="117">64 channels</text>
+    <use href="#stack" x="33" y="150"/><use href="#stack" x="233" y="150"/><use href="#stack" x="431" y="150"/>
+    <g fill="none" stroke="#22766b" stroke-width="2.3" marker-end="url(#end)"><path d="M112 189h101"/><path d="M311 189h101"/></g>
+    <text class="small" x="162" y="176">Conv1d</text><text class="small" x="362" y="176">Conv1d</text>
+    <text class="small" x="162" y="216">k = 3</text><text class="small" x="362" y="216">k = 5</text>
+    <text class="shape" x="66" y="260">T × 39</text><text class="shape" x="266" y="260">T × 32</text><text class="shape" x="463" y="260">T × 64</text>
+  </g>
+  <path d="M25 279H515" stroke="#bedad0"/>
+  <text class="small" x="25" y="308">Each convolution uses batch norm, ReLU and dropout.</text>
+</svg>

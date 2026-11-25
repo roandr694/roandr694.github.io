@@ -1,0 +1,49 @@
+<svg aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg" width="660" height="334" viewBox="0 0 660 334" role="img">
+  <title id="title">Transition from Strobe to Levels</title>
+  <desc id="desc">The exit cue falls late in the second chorus of Strobe at 3:22. The entry cue falls inside the intro of Levels at 0:08.</desc>
+  <style>text {font:18px Arial,sans-serif;fill:#253a37} .track {font:bold 28px Georgia,serif} .cue {font:20px monospace} .label {font-weight:bold}</style>
+  <rect width="660" height="334" rx="10" fill="#f7f6f2" />
+  <text class="track" x="29" y="52">Strobe</text>
+  <text class="cue" x="631" y="52" text-anchor="end">Cue out · 03:22</text>
+  <rect x="29" y="80" width="59" height="42" fill="#83d3c8" />
+  <text class="label" x="58.5" y="108" text-anchor="middle">I</text>
+  <rect x="88" y="80" width="90" height="42" fill="#c4bfd4" />
+  <text class="label" x="133.0" y="108" text-anchor="middle">V</text>
+  <rect x="178" y="80" width="90" height="42" fill="#f39ab3" />
+  <text class="label" x="223.0" y="108" text-anchor="middle">C</text>
+  <rect x="268" y="80" width="82" height="42" fill="#c4bfd4" />
+  <text class="label" x="309.0" y="108" text-anchor="middle">V</text>
+  <rect x="350" y="80" width="193" height="42" fill="#f39ab3" />
+  <text class="label" x="446.5" y="108" text-anchor="middle">C</text>
+  <rect x="543" y="80" width="88" height="42" fill="#edce81" />
+  <text class="label" x="587.0" y="108" text-anchor="middle">O</text>
+  <path d="M529 80v42" stroke="white" stroke-width="6" />
+  <path d="M529 80v42" stroke="#473a19" stroke-width="2.75" />
+  <path d="M522 71h14l-7 9z" fill="#f7bc41" stroke="#473a19" />
+  <text class="track" x="29" y="196">Levels</text>
+  <text class="cue" x="631" y="196" text-anchor="end">Cue in · 00:08</text>
+  <rect x="29" y="224" width="44" height="42" fill="#83d3c8" />
+  <text class="label" x="51.0" y="252" text-anchor="middle">I</text>
+  <rect x="73" y="224" width="108" height="42" fill="#c4bfd4" />
+  <text class="label" x="127.0" y="252" text-anchor="middle">V</text>
+  <rect x="181" y="224" width="139" height="42" fill="#f39ab3" />
+  <text class="label" x="250.5" y="252" text-anchor="middle">C</text>
+  <rect x="320" y="224" width="108" height="42" fill="#c4bfd4" />
+  <text class="label" x="374.0" y="252" text-anchor="middle">V</text>
+  <rect x="428" y="224" width="135" height="42" fill="#f39ab3" />
+  <text class="label" x="495.5" y="252" text-anchor="middle">C</text>
+  <rect x="563" y="224" width="68" height="42" fill="#edce81" />
+  <text class="label" x="597.0" y="252" text-anchor="middle">O</text>
+  <path d="M61 224v42" stroke="white" stroke-width="6" />
+  <path d="M61 224v42" stroke="#473a19" stroke-width="2.75" />
+  <path d="M54 215h14l-7 9z" fill="#f7bc41" stroke="#473a19" />
+  <path d="M29 151H631" stroke="#d8dcd4" />
+  <circle cx="35" cy="305" r="6" fill="#83d3c8" />
+  <text x="50" y="311">I · Intro</text>
+  <circle cx="173" cy="305" r="6" fill="#c4bfd4" />
+  <text x="188" y="311">V · Verse</text>
+  <circle cx="322" cy="305" r="6" fill="#f39ab3" />
+  <text x="337" y="311">C · Chorus</text>
+  <circle cx="491" cy="305" r="6" fill="#edce81" />
+  <text x="506" y="311">O · Outro</text>
+</svg>
