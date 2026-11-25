@@ -83,7 +83,7 @@ function projectList(items) {
     const media = p.media?.video
       ? `<video class="project-thumbnail" controls playsinline preload="none" poster="${escape(p.media.image)}" aria-label="${escape(p.title)} demonstration"><source src="${escape(p.media.video)}">${link(p.media.video, 'Watch demonstration')}</video>`
       : p.media?.image
-        ? `<a class="project-thumbnail" href="${escape(url)}" aria-label="Explore ${escape(p.title)}"><img src="${escape(p.media.image)}" alt="${escape(p.media.alt)}" loading="lazy" decoding="async" width="352" height="264"${p.media.position ? ` style="object-position:${escape(p.media.position)}"` : ''}></a>`
+        ? `<a class="project-thumbnail" href="${escape(url)}" aria-label="Explore ${escape(p.title)}"><img src="${escape(p.media.thumbnail || p.media.image)}" alt="${escape(p.media.thumbnailAlt || p.media.alt)}" loading="lazy" decoding="async" width="352" height="264"${p.media.position ? ` style="object-position:${escape(p.media.position)}"` : ''}></a>`
         : '';
     return `<article class="project-row${media ? '' : ' project-row-text'}">${media}<div class="project-copy"><p class="project-category"><span class="project-year">${escape(p.year)}</span><span aria-hidden="true"> / </span>${escape(p.venue || p.category)}</p><h3><a href="${escape(url)}">${escape(p.title)}</a></h3>${p.authors ? `<p class="project-authors">${p.authors.map(author => author === profile.name ? `<strong>${escape(author)}</strong>` : escape(author)).join(', ')}</p>` : ''}<p class="project-summary">${escape(p.summary)}</p>${resources.length ? `<div class="project-resources" aria-label="${escape(p.title)} resources">${resources.map(resource => link(resource.url, resource.label)).join('')}</div>` : ''}</div></article>`;
   }).join('')}</div>`;
@@ -117,7 +117,7 @@ await page('/portfolio/', 'Projects', `<p class="eyebrow">Building & exploring</
 for (const project of projects) {
   if (!/^[a-z0-9-]+$/.test(project.slug)) throw new Error('Invalid project slug');
   const figure = project.media?.image ? `<figure class="project-figure"><img src="${escape(project.media.image)}" alt="${escape(project.media.alt)}" width="960" height="640">${project.media.caption ? `<figcaption>${escape(project.media.caption)}</figcaption>` : ''}</figure>` : '';
-  await page(`/portfolio/${project.slug}/`, project.title, `<a class="back-link" href="/portfolio/">Back to projects</a><p class="eyebrow project-detail-category">${escape(project.year)} / ${escape(project.category)}</p><h1 class="project-title">${escape(project.title)}</h1>${figure}<div class="prose project-body">${await markdown(`content/projects/${project.slug}.md`)}</div>`, 'projects', project.summary);
+  await page(`/portfolio/${project.slug}/`, project.title, `<a class="back-link" href="/portfolio/">Back to projects</a><p class="eyebrow project-detail-category">${escape(project.year)} / ${escape(project.category)}</p><h1 class="project-title">${escape(project.title)}</h1>${project.lead ? `<p class="page-intro">${escape(project.lead)}</p>` : ''}${figure}<div class="prose project-body">${await markdown(`content/projects/${project.slug}.md`)}</div>`, 'projects', project.summary);
 }
 await page('/404.html', 'Page not found', '<p class="eyebrow">404</p><h1>Page not found</h1><p class="page-intro">This page may have moved. <a href="/">Return to the homepage</a> or <a href="/portfolio/">explore my projects</a>.</p>', '');
 for (const alias of ['/about/', '/about.html', '/resume/', '/cv/']) {
