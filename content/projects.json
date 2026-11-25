@@ -2,13 +2,16 @@
   {
     "slug": "structure-aware-dj-transitions",
     "year": "2026",
-    "category": "Music information retrieval · Audio signal processing",
+    "category": "Sequence modeling · Music information retrieval",
     "title": "Structure-aware DJ transitions",
-    "summary": "Where should one song give way to the next? A section classifier maps each track, a DJ assistant picks cue points, and an audio engine mixes the handoff.",
+    "summary": "A CNN and bidirectional LSTM segment songs for a DJ planner. A checkpoint study traces one recording from acoustic features to cue points and measures the effect of future context.",
+    "lead": "A DJ needs two kinds of timing. The beat tells you when a kick lands. The arrangement tells you whether to enter on that kick or wait for the next chorus. This project learns a map of the arrangement and gives a transition planner access to it.",
     "media": {
-      "image": "/images/dj-transition/transition-spectrum.webp",
-      "alt": "Frequency ridges of two synthesized tracks, with a two-second overlap between six and eight seconds",
-      "caption": "The two tracks in the crossfade below. Each ridge follows a frequency band through time, with bass at the bottom. Both tracks play between the vertical lines."
+      "image": "/images/dj-transition/checkpoint-trace.png",
+      "alt": "Feature heatmap and four classifier probability curves for Baby. Verse and chorus alternate three times, with a close crossover near 39 seconds.",
+      "thumbnail": "/images/dj-transition/checkpoint-thumbnail.png",
+      "thumbnailAlt": "Acoustic features above the predicted sections of the example recording",
+      "caption": "One pass of the released model on “Baby” by Justin Bieber feat. Ludacris. Each column is approximately one second. Darker green means a higher value within that feature’s range for this song. The four curves show how the model scores each section."
     },
     "links": [{ "label": "GitHub", "url": "https://github.com/stevecho0101/Structure_Aware_DJ_Transition" }]
   },
