@@ -4,8 +4,8 @@
     "year": "2026",
     "category": "Sequence modeling · Music information retrieval",
     "title": "Structure-aware DJ transitions",
-    "summary": "A CNN and bidirectional LSTM segment songs for a DJ planner. A checkpoint study traces one recording from acoustic features to cue points and measures the effect of future context.",
-    "lead": "A DJ needs two kinds of timing. The beat tells you when a kick lands. The arrangement tells you whether to enter on that kick or wait for the next chorus. This project learns a map of the arrangement and gives a transition planner access to it.",
+    "summary": "A browser-based DJ assistant trained on song structure. It maps verses and choruses, recommends the next track and cue points, and mixes the handoff live.",
+    "lead": "Our DJ assistant can leave one song at the end of a chorus and enter the next at the start of a verse. A CNN and bidirectional LSTM map the arrangement of each track. Claude uses those maps to recommend a transition the DJ can hear and adjust in the browser.",
     "media": {
       "image": "/images/dj-transition/cue-records.webp",
       "alt": "Two translucent records in turquoise and pink with yellow cue markers, an illustration of a handoff between tracks.",
@@ -23,18 +23,13 @@
           "time": "00:08"
         }
       ],
-      "caption": "A low-pass sweep connects these two cues in the team’s presentation example."
+      "caption": "Example transition plan. A low-pass sweep connects the outgoing chorus to the incoming track."
     },
     "links": [
       {
         "label": "View on GitHub",
         "url": "https://github.com/stevecho0101/Structure_Aware_DJ_Transition",
         "kind": "repository"
-      },
-      {
-        "label": "Project slides",
-        "url": "https://docs.google.com/presentation/d/13Lema-lG4lF-Rf45SUMz7c2F7jSicOC4JTnabIUFyR8/edit",
-        "kind": "presentation"
       }
     ],
     "authors": [
