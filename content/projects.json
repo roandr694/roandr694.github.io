@@ -1,5 +1,21 @@
 [
   {
+    "slug": "primus",
+    "year": "2026",
+    "category": "Robotics · Control · Reinforcement learning",
+    "title": "PRIMUS, a wheel-legged biped",
+    "summary": "A self-balancing robot with closed five-bar legs that I designed in Fusion 360 and built. Its CAD becomes a MuJoCo model, a model-based controller balances it, and learned policies add robustness and hops over steps and gaps.",
+    "lead": "PRIMUS balances on two wheels and uses its legs as active suspension. This page follows it from the CAD to the controller, the learned skills and the pilot interface, with an interactive model of every part.",
+    "media": {
+      "image": "/images/primus/model-render.jpg",
+      "thumbnail": "/images/primus/model-card.jpg",
+      "alt": "PRIMUS rendered from its CAD meshes: a dark chassis on two white five-bar legs ending in black wheels.",
+      "thumbnailAlt": "The PRIMUS robot rendered from its CAD model",
+      "detail": false
+    },
+    "links": [{ "label": "Explore the 3D model", "url": "/portfolio/primus/#primus-3d" }]
+  },
+  {
     "slug": "structure-aware-dj-transitions",
     "year": "2026",
     "category": "Sequence modeling · Music information retrieval",

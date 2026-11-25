@@ -103,6 +103,12 @@ await mkdir('dist/assets/katex', { recursive: true });
 await cp('node_modules/katex/dist/katex.min.css', 'dist/assets/katex/katex.min.css');
 await cp('node_modules/katex/dist/fonts', 'dist/assets/katex/fonts', { recursive: true });
 await cp('node_modules/katex/LICENSE', 'dist/assets/katex/LICENSE');
+// three.js for the interactive 3D viewers: only the files the pages import
+for (const file of ['build/three.module.min.js', 'build/three.core.min.js', 'LICENSE', 'examples/jsm/loaders/GLTFLoader.js', 'examples/jsm/controls/OrbitControls.js', 'examples/jsm/utils/BufferGeometryUtils.js', 'examples/jsm/libs/meshopt_decoder.module.js']) {
+  const target = `dist/assets/vendor/three/${file.replace(/^examples\/jsm\//, 'addons/').replace(/^build\//, '')}`;
+  await mkdir(target.substring(0, target.lastIndexOf('/')), { recursive: true });
+  await cp(`node_modules/three/${file}`, target);
+}
 await writeFile('dist/.nojekyll', '');
 const pages = [];
 async function page(path, title, body, active, description, math = false) {
@@ -125,7 +131,7 @@ for (const project of projects) {
   const headerLinks = actions.length ? `<div class="project-actions">${actions.map(projectResource).join('')}</div>` : '';
   const credits = project.authors?.length ? `<p class="project-team">${project.authors.map(name => `<span>${escape(name)}</span>`).join(' · ')}</p>` : '';
   const cues = (project.media?.cues || []).map(cue => `<div><dt>${escape(cue.label)}</dt><dd>${escape(cue.track)} <span>${escape(cue.time)}</span></dd></div>`).join('');
-  const figure = project.media?.image ? `<figure class="project-figure"><img src="${escape(project.media.image)}" alt="${escape(project.media.alt)}" width="960" height="640">${cues ? `<dl class="project-cues">${cues}</dl>` : ''}${project.media.caption ? `<figcaption>${escape(project.media.caption)}</figcaption>` : ''}</figure>` : '';
+  const figure = project.media?.image && project.media.detail !== false ? `<figure class="project-figure"><img src="${escape(project.media.image)}" alt="${escape(project.media.alt)}" width="960" height="640">${cues ? `<dl class="project-cues">${cues}</dl>` : ''}${project.media.caption ? `<figcaption>${escape(project.media.caption)}</figcaption>` : ''}</figure>` : '';
   await page(`/portfolio/${project.slug}/`, project.title, `<a class="back-link" href="/portfolio/">Back to projects</a><p class="eyebrow project-detail-category">${escape(project.year)} / ${escape(project.category)}</p><h1 class="project-title">${escape(project.title)}</h1>${credits}${headerLinks}${project.lead ? `<p class="page-intro">${escape(project.lead)}</p>` : ''}${figure}<div class="prose project-body">${await markdown(`content/projects/${project.slug}.md`)}</div>`, 'projects', project.summary);
 }
 await page('/404.html', 'Page not found', '<p class="eyebrow">404</p><h1>Page not found</h1><p class="page-intro">This page may have moved. <a href="/">Return to the homepage</a> or <a href="/portfolio/">explore my projects</a>.</p>', '');

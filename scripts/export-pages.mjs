@@ -2,7 +2,7 @@ import { cp, rm } from 'node:fs/promises';
 
 // Keep the existing GitHub Pages branch configuration working. Only generated
 // page directories and the KaTeX bundle are replaced; authored assets stay put.
-for (const name of ['portfolio', 'writing', 'about', 'cv', 'resume', 'assets/katex']) {
+for (const name of ['portfolio', 'writing', 'about', 'cv', 'resume', 'assets/katex', 'assets/vendor']) {
   await rm(name, { recursive: true, force: true });
   await cp(`dist/${name}`, name, { recursive: true });
 }
