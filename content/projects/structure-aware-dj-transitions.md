@@ -1,7 +1,3 @@
-At 0:38 in the recording above, the classifier narrowly favors verse over chorus, 0.443 to 0.437. One row later, chorus takes the lead, 0.452 to 0.432. The planner receives a crisp instruction that the chorus starts at 0:39. It never sees how close that decision was. That boundary is a useful place to start understanding the system.
-
-[Project code](https://github.com/stevecho0101/Structure_Aware_DJ_Transition) · [Full-size inference trace](/images/dj-transition/checkpoint-trace.png) · [Per-second outputs (CSV)](/files/dj-transition/checkpoint-trace.csv)
-
 ## Learning a section label for every second
 
 The prediction task is temporal segmentation. Given a recording of length *T*, the model produces a sequence of *T* labels drawn from intro, verse, chorus, and outro. A chorus can return several times, so predicting one genre or one label for the whole track would discard the structure a DJ needs.
@@ -12,7 +8,14 @@ The training scripts draw supervision from SALAMI and Harmonix. Human annotators
 
 Each recording is resampled to 22.05 kHz and converted to mono. The feature extractor averages short-time measurements into roughly one-second rows. Five energy bands describe where the sound is loud. Thirteen mel-frequency cepstral coefficients (MFCCs) summarize the shape of the spectrum, which helps distinguish timbres. Twelve chroma values track pitch classes across octaves, so a returning chord progression can remain recognizable after the instrumentation changes. Six spectral-contrast values and three additional descriptors capture differences in texture, brightness, and noisiness.
 
-That gives this recording a **217 × 39** input matrix. Each feature is first scaled to its range within the song, then standardized using the statistics saved at training time. A dark cell in the opening heatmap means that feature is high *for this recording*. Absolute loudness across songs has already been lost at this stage. [Feature extractor](https://github.com/stevecho0101/Structure_Aware_DJ_Transition/blob/d6df1fe5c57185a5bed64b5f9494c165c2d38054/spectrogram.py)
+For the bundled recording of “Baby,” that gives the model a **217 × 39** input matrix. Each feature is first scaled to its range within the song, then standardized using the statistics saved at training time. A dark cell in the heatmap below means that feature is high *for this recording*. Absolute loudness across songs has already been lost at this stage. [Feature extractor](https://github.com/stevecho0101/Structure_Aware_DJ_Transition/blob/d6df1fe5c57185a5bed64b5f9494c165c2d38054/spectrogram.py)
+
+<figure class="project-figure">
+  <a href="/images/dj-transition/checkpoint-trace.png"><img src="/images/dj-transition/checkpoint-trace.png" width="1520" height="960" loading="lazy" alt="Acoustic features and section probabilities alternate between verse and chorus three times in the recording of Baby."></a>
+  <figcaption>One pass of the released model on “Baby” by Justin Bieber feat. Ludacris. Each column is about one second. The curves show the probability assigned to each section. <a href="/files/dj-transition/checkpoint-trace.csv">Per-second outputs (CSV)</a></figcaption>
+</figure>
+
+At 0:38 in this recording, the classifier narrowly favors verse over chorus, 0.443 to 0.437. One row later, chorus takes the lead, 0.452 to 0.432. The planner receives a crisp instruction that the chorus starts at 0:39. It never sees how close that decision was. That boundary is a useful place to start understanding the system.
 
 ### From a local change to a musical section
 
@@ -23,7 +26,7 @@ The first convolution slides a three-row filter along time and produces 32 chann
   <figcaption>Tracing one output back to its inputs. Each dot represents a vector of channels at one time step. The connections show the temporal receptive field before the recurrent layers.</figcaption>
 </figure>
 
-A short burst of bright instrumentation could be a fill or the start of a chorus. To resolve that ambiguity, two stacked bidirectional LSTM layers read the convolutional features in both time directions. At each row, the network joins a 128-value state from each direction. A linear layer maps those 256 values to four scores. Softmax turns the scores into the probabilities in the opening figure. The complete network has **609,220 trainable parameters**.
+A short burst of bright instrumentation could be a fill or the start of a chorus. To resolve that ambiguity, two stacked bidirectional LSTM layers read the convolutional features in both time directions. At each row, the network joins a 128-value state from each direction. A linear layer maps those 256 values to four scores. Softmax turns the scores into the probabilities in the inference trace. The complete network has **609,220 trainable parameters**.
 
 ### What was optimized
 
@@ -33,7 +36,7 @@ The code selects the checkpoint by overall per-row validation accuracy. A long c
 
 ## What happens at an actual boundary?
 
-On the bundled recording, the model produces eight continuous sections. The project applies a nine-row median filter to the labels and assigns the final run to outro. Neither step changes a label on this example. The alternating verse and chorus pattern in the opening plot comes from the checkpoint itself.
+On the bundled recording, the model produces eight continuous sections. The project applies a nine-row median filter to the labels and assigns the final run to outro. Neither step changes a label on this example. The alternating verse and chorus pattern in the inference trace comes from the checkpoint itself.
 
 Harmonix contains an annotation for the same song. Reading a few corresponding boundaries side by side shows why the distinction between identifying a section and locating its entrance matters.
 
@@ -62,6 +65,11 @@ With zero future rows, **39 of 217 labels changed (18.0%)**. Eight rows of looka
 ## From predicted sections to an audible transition
 
 The app caches each song’s labels and compresses consecutive repeats into a list of section start times. Claude receives those lists, filenames, playback history, and listener feedback. It proposes a next song, exit time, entry time, and one of four effects. The audio engine can crossfade, trade the bass with an EQ sweep, open and close a low-pass filter, or adjust playback rate for a beatmatch. A listener can override the effect and rate the result. That feedback goes into the next planning prompt. The section model’s weights stay fixed. [Planner](https://github.com/stevecho0101/Structure_Aware_DJ_Transition/blob/d6df1fe5c57185a5bed64b5f9494c165c2d38054/agent.py) · [Effects renderer](https://github.com/stevecho0101/Structure_Aware_DJ_Transition/blob/d6df1fe5c57185a5bed64b5f9494c165c2d38054/add_effect.py)
+
+<figure class="project-figure">
+  <a href="/images/dj-transition/dj-booth.webp"><img src="/images/dj-transition/dj-booth.webp" width="1518" height="1452" loading="lazy" alt="Browser DJ booth playing Rihanna’s SOS. A yellow tick marks the transition at 3:53 and Bruno Mars’s That’s What I Like is queued to enter at 0:09."></a>
+  <figcaption>The live booth from the team’s EE 460 presentation. The yellow marker shows when to leave “SOS.” Below it, the DJ can inspect the proposed entrance for “That’s What I Like,” change the effect, and rate the transition.</figcaption>
+</figure>
 
 The two clips below isolate the rendering step. They use original synthesized loops at 120 BPM, with identical manually selected cues. Track B enters six seconds into each clip. Listen to the bright arpeggio as the incoming chords take over.
 
