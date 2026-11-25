@@ -76,6 +76,11 @@ function layout({ title, path, active = 'about', body, description = profile.des
 </body></html>`;
 }
 
+function projectResource(resource) {
+  if (resource.kind !== 'repository') return link(resource.url, resource.label);
+  return `<a class="repository-link" href="${escape(resource.url)}"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 16 16" fill="currentColor"><path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"/></svg>${escape(resource.label)}</a>`;
+}
+
 function projectList(items) {
   return `<div class="project-list">${items.map(p => {
     const url = p.slug ? `/portfolio/${p.slug}/` : p.url;
@@ -85,7 +90,7 @@ function projectList(items) {
       : p.media?.image
         ? `<a class="project-thumbnail" href="${escape(url)}" aria-label="Explore ${escape(p.title)}"><img src="${escape(p.media.thumbnail || p.media.image)}" alt="${escape(p.media.thumbnailAlt || p.media.alt)}" loading="lazy" decoding="async" width="352" height="264"${p.media.position ? ` style="object-position:${escape(p.media.position)}"` : ''}></a>`
         : '';
-    return `<article class="project-row${media ? '' : ' project-row-text'}">${media}<div class="project-copy"><p class="project-category"><span class="project-year">${escape(p.year)}</span><span aria-hidden="true"> / </span>${escape(p.venue || p.category)}</p><h3><a href="${escape(url)}">${escape(p.title)}</a></h3>${p.authors ? `<p class="project-authors">${p.authors.map(author => author === profile.name ? `<strong>${escape(author)}</strong>` : escape(author)).join(', ')}</p>` : ''}<p class="project-summary">${escape(p.summary)}</p>${resources.length ? `<div class="project-resources" aria-label="${escape(p.title)} resources">${resources.map(resource => link(resource.url, resource.label)).join('')}</div>` : ''}</div></article>`;
+    return `<article class="project-row${media ? '' : ' project-row-text'}">${media}<div class="project-copy"><p class="project-category"><span class="project-year">${escape(p.year)}</span><span aria-hidden="true"> / </span>${escape(p.venue || p.category)}</p><h3><a href="${escape(url)}">${escape(p.title)}</a></h3>${p.authors ? `<p class="project-authors">${p.authors.map(author => author === profile.name ? `<strong>${escape(author)}</strong>` : escape(author)).join(', ')}</p>` : ''}<p class="project-summary">${escape(p.summary)}</p>${resources.length ? `<div class="project-resources" aria-label="${escape(p.title)} resources">${resources.map(projectResource).join('')}</div>` : ''}</div></article>`;
   }).join('')}</div>`;
 }
 
@@ -116,8 +121,12 @@ await page('/', 'About', `<h1 class="about-heading">About</h1><div class="prose 
 await page('/portfolio/', 'Projects', `<p class="eyebrow">Building & exploring</p><h1>Projects</h1><p class="page-intro">Engineering and science projects in audio, embedded systems, optics, and robotics.</p>${publicationSection}<section aria-labelledby="projects-heading"><div class="section-heading"><h2 id="projects-heading">Project notes</h2></div>${projectList(projects)}</section>`, 'projects');
 for (const project of projects) {
   if (!/^[a-z0-9-]+$/.test(project.slug)) throw new Error('Invalid project slug');
-  const figure = project.media?.image ? `<figure class="project-figure"><img src="${escape(project.media.image)}" alt="${escape(project.media.alt)}" width="960" height="640">${project.media.caption ? `<figcaption>${escape(project.media.caption)}</figcaption>` : ''}</figure>` : '';
-  await page(`/portfolio/${project.slug}/`, project.title, `<a class="back-link" href="/portfolio/">Back to projects</a><p class="eyebrow project-detail-category">${escape(project.year)} / ${escape(project.category)}</p><h1 class="project-title">${escape(project.title)}</h1>${project.lead ? `<p class="page-intro">${escape(project.lead)}</p>` : ''}${figure}<div class="prose project-body">${await markdown(`content/projects/${project.slug}.md`)}</div>`, 'projects', project.summary);
+  const actions = (project.links || []).filter(resource => resource.kind);
+  const headerLinks = actions.length ? `<div class="project-actions">${actions.map(projectResource).join('')}</div>` : '';
+  const credits = project.authors?.length ? `<p class="project-team">${project.authors.map(name => `<span>${escape(name)}</span>`).join(' · ')}</p>` : '';
+  const cues = (project.media?.cues || []).map(cue => `<div><dt>${escape(cue.label)}</dt><dd>${escape(cue.track)} <span>${escape(cue.time)}</span></dd></div>`).join('');
+  const figure = project.media?.image ? `<figure class="project-figure"><img src="${escape(project.media.image)}" alt="${escape(project.media.alt)}" width="960" height="640">${cues ? `<dl class="project-cues">${cues}</dl>` : ''}${project.media.caption ? `<figcaption>${escape(project.media.caption)}</figcaption>` : ''}</figure>` : '';
+  await page(`/portfolio/${project.slug}/`, project.title, `<a class="back-link" href="/portfolio/">Back to projects</a><p class="eyebrow project-detail-category">${escape(project.year)} / ${escape(project.category)}</p><h1 class="project-title">${escape(project.title)}</h1>${credits}${headerLinks}${project.lead ? `<p class="page-intro">${escape(project.lead)}</p>` : ''}${figure}<div class="prose project-body">${await markdown(`content/projects/${project.slug}.md`)}</div>`, 'projects', project.summary);
 }
 await page('/404.html', 'Page not found', '<p class="eyebrow">404</p><h1>Page not found</h1><p class="page-intro">This page may have moved. <a href="/">Return to the homepage</a> or <a href="/portfolio/">explore my projects</a>.</p>', '');
 for (const alias of ['/about/', '/about.html', '/resume/', '/cv/']) {

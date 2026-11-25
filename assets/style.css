@@ -110,3 +110,20 @@ footer{max-width:1040px;border-top:1px solid var(--line);padding:22px 0 30px;mar
 .profile-link-linkedin svg{color:#0a66c2}
 .profile-link-resume svg{color:#47765b}
 .about-heading{font:normal 26px/1.3 var(--serif);letter-spacing:-.4px;margin-bottom:20px}
+
+.project-team { margin: -20px 0 14px; color: var(--muted); font-size: .85rem; }
+.project-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 22px; margin: 0 0 24px; font-size: .9rem; }
+.project-actions .arrow { width: .8em; }
+a.repository-link { display: inline-flex; align-items: center; gap: .55em; padding: .5em .95em; border-radius: 5px; color: #fff; background: #243a33; font-weight: 600; text-decoration: none; }
+a.repository-link:hover { background: #365847; text-decoration: none; }
+.project-resources:has(.repository-link) { align-items: center; }
+.project-resources .repository-link { font-size: .75rem; }
+.project-resources .repository-link svg { width: 14px; height: 14px; }
+.project-figure:has(.project-cues) img { border-radius: 5px 5px 0 0; }
+.project-cues { display: grid; grid-template-columns: 1fr 1fr; margin: 0; padding: .9rem 1.15rem; background: #171825; border-radius: 0 0 5px 5px; color: white; }
+.project-cues > div { padding-left: .7rem; border-left: 3px solid #73d7cf; }
+.project-cues > div + div { border-color: #fa7197; }
+.project-cues dt { color: #d5d5df; font-size: .75rem; }
+.project-cues dd { display: flex; flex-wrap: wrap; align-items: baseline; gap: .15em .65em; margin: 0; font: 1.25rem var(--serif); }
+.project-cues dd span { color: #d5d5df; font: .8rem ui-monospace, monospace; }
+.project-team span { white-space: nowrap; }
