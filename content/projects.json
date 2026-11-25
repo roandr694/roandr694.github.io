@@ -1,5 +1,18 @@
 [
   {
+    "slug": "structure-aware-dj-transitions",
+    "year": "2026",
+    "category": "Music information retrieval · Audio signal processing",
+    "title": "Structure-aware DJ transitions",
+    "summary": "Where should one song give way to the next? A section classifier maps each track, a DJ assistant picks cue points, and an audio engine mixes the handoff.",
+    "media": {
+      "image": "/images/dj-transition/transition-spectrum.webp",
+      "alt": "Frequency ridges of two synthesized tracks, with a two-second overlap between six and eight seconds",
+      "caption": "The two tracks in the crossfade below. Each ridge follows a frequency band through time, with bass at the bottom. Both tracks play between the vertical lines."
+    },
+    "links": [{ "label": "GitHub", "url": "https://github.com/stevecho0101/Structure_Aware_DJ_Transition" }]
+  },
+  {
     "slug": "solar-panel-tracker",
     "year": "2023",
     "category": "Embedded systems \u00b7 Renewable energy",

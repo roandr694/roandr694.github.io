@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Structure-aware DJ transitions — Rodrigo Andrade</title>
+  <meta name="description" content="Where should one song give way to the next? A section classifier maps each track, a DJ assistant picks cue points, and an audio engine mixes the handoff.">
+  <link rel="canonical" href="https://roandr694.github.io/portfolio/structure-aware-dj-transitions/">
+  <meta property="og:title" content="Structure-aware DJ transitions — Rodrigo Andrade">
+  <meta property="og:description" content="Where should one song give way to the next? A section classifier maps each track, a DJ assistant picks cue points, and an audio engine mixes the handoff.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://roandr694.github.io/portfolio/structure-aware-dj-transitions/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/style.css?v=77ce3ce4095b">
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="masthead"><div class="header-inner">
+    <a class="wordmark" href="/">Rodrigo Andrade</a>
+    <nav aria-label="Main navigation"><a href="/">About</a><a href="/portfolio/" aria-current="page">Projects</a><a href="/writing/">Writing</a></nav>
+  </div></header>
+  <div class="page-grid">
+    <aside class="profile" aria-label="Profile">
+      <a class="monogram" href="/" aria-label="Rodrigo Andrade home">RA</a>
+      <h2>Rodrigo Andrade</h2>
+      <p class="role">Electrical &amp; Computer Engineering · USC</p>
+      <p class="profile-bio">Robot learning, manipulation, and humanoid robots.</p>
+      <p class="location"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/></svg>Los Angeles, US</p>
+      <div class="profile-links"><a class="profile-link profile-link-email" href="mailto:rpandrad@usc.edu"><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg>Email</a><a class="profile-link profile-link-github" href="https://github.com/roandr694"><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4 1-4-2-6-2m12 5v-4c0-1 .1-2-.5-2.5 3-.3 6-1.5 6-6a5 5 0 0 0-1.4-3.5 5 5 0 0 0-.1-3.5s-1.1-.3-3.6 1.4a12 12 0 0 0-6.8 0C6.1 2.2 5 2.5 5 2.5A5 5 0 0 0 4.9 6a5 5 0 0 0-1.4 3.5c0 4.5 3 5.7 6 6-.6.5-.6 1.5-.5 2.5v4"/></svg>GitHub</a><a class="profile-link profile-link-linkedin" href="https://www.linkedin.com/in/rodrigo-andr/"><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7m0-10v.1M11 17v-7m0 3c0-4 6-4 6 0v4"/></svg>LinkedIn</a><a class="profile-link profile-link-resume" href="/files/rodrigo-andrade-resume.pdf" type="application/pdf"><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H5v20h14V7zM14 2v5h5M8 12h8M8 16h8"/></svg>Resume</a></div>
+      <div class="interests"><h3>Research interests</h3><ul><li>Robot learning</li><li>Robotic manipulation</li><li>Humanoid robots</li></ul></div>
+    </aside>
+    <main id="main" tabindex="-1"><a class="back-link" href="/portfolio/">Back to projects</a><p class="eyebrow project-detail-category">2026 / Music information retrieval · Audio signal processing</p><h1 class="project-title">Structure-aware DJ transitions</h1><figure class="project-figure"><img src="/images/dj-transition/transition-spectrum.webp" alt="Frequency ridges of two synthesized tracks, with a two-second overlap between six and eight seconds" width="960" height="640"><figcaption>The two tracks in the crossfade below. Each ridge follows a frequency band through time, with bass at the bottom. Both tracks play between the vertical lines.</figcaption></figure><div class="prose project-body"><p>Two tracks can have the same tempo and still make an awkward mix. If the second song comes in halfway through a chorus, it can sound like someone changed the station. This project gives a DJ assistant a rough map of each song so it can choose where to leave one track, where to enter the next, and how to mix those few seconds.</p>
+<h2>Hear the handoff</h2>
+<p>These are two renders of the same 14 seconds. The first track has a quick, bright arpeggio. The second answers it with chords on the offbeat. Listen from about five seconds in and follow the high notes as the chords arrive.</p>
+<figure class="project-figure">
+  <h3 id="dj-crossfade">Crossfade</h3>
+  <audio controls preload="none" aria-labelledby="dj-crossfade" style="width:100%;max-width:34rem" src="/files/dj-transition/crossfade.mp3"><a href="/files/dj-transition/crossfade.mp3">Play the crossfade MP3</a></audio>
+  <figcaption>The arpeggio gets quieter while the chords come up underneath it.</figcaption>
+</figure>
+
+<figure class="project-figure">
+  <h3 id="dj-sweep">Low-pass sweep</h3>
+  <audio controls preload="none" aria-labelledby="dj-sweep" style="width:100%;max-width:34rem" src="/files/dj-transition/low-pass-sweep.mp3"><a href="/files/dj-transition/low-pass-sweep.mp3">Play the low-pass sweep MP3</a></audio>
+  <figcaption>The outgoing track also loses its high frequencies. The incoming chords start muffled and brighten as the filter opens.</figcaption>
+</figure>
+
+<p>Both examples use original synthesized material at 120 BPM and the project’s Python effects renderer. The cue points were set by hand and held fixed so you can hear what changing the effect does.</p>
+<h2>How does it know where the chorus is?</h2>
+<p>The classifier starts with 39 measurements for each second of audio. Five describe how energy is distributed from bass to treble. Twelve track the strength of the twelve pitch classes, grouping notes an octave apart together. Other measurements capture the shape of the spectrum and how noisy or tonal it sounds. A chorus might bring back a familiar chord pattern, with brighter cymbals and a fuller bass line. Each measurement captures a different piece of that change.</p>
+<p>A convolutional network looks for short patterns across neighboring seconds. A bidirectional LSTM, a sequence model that reads the song forward and backward, puts those patterns in context. A quiet second just before a chorus and a quiet second at the end of a song can look similar in isolation. Having the rest of the recording available helps the classifier tell them apart.</p>
+<p>The training pipeline uses section annotations from SALAMI and Harmonix, mapped to four labels: intro, verse, chorus, and outro. It holds out whole songs for validation. At inference, it smooths the second-by-second predictions with a nine-second median filter and assigns the final continuous segment to the outro. That last step is a design choice worth knowing about when a track ends abruptly.</p>
+<h2>Turning sections into cue points</h2>
+<p>Consecutive seconds with the same label collapse into a single entry, such as “chorus starts at 0:24.” The planner gets these short timelines for the current track and the candidates. Claude proposes the next track, an exit time, an entry time, and a transition effect, with a reason for each choice.</p>
+<figure class="project-figure">
+  <img src="/images/dj-transition/cue-map.webp" width="1080" height="560" loading="lazy" alt="Illustrative section maps. Song A exits at the end of its chorus at 0:32. Song B enters at the beginning of its verse at 0:08.">
+  <figcaption>An example plan. The timestamps refer to each track’s own clock. Section widths are schematic, and the labels illustrate what a planner receives.</figcaption>
+</figure>
+
+<p>In the listening example, the outgoing audio ends at 0:32 on track A. The renderer starts track B from its own 0:08 cue two seconds before A ends. The excerpt begins at 0:24 on A, so you hear B enter six seconds into the player. That offset is easy to miss when reading a pair of timestamps.</p>
+<h2>What the DJ controls</h2>
+<p>The Flask app lets the listener choose a starting song, inspect the recommendation, and override the effect. A crossfade changes volume. The EQ sweep trades bass between the tracks, the low-pass sweep changes brightness, and the beatmatch mode adjusts the incoming playback rate when tempo information is available. The browser plays the transition with the Web Audio API.</p>
+<p>After a transition, a rating and a short comment go into the next recommendation. The app keeps track of songs already played in the session. The section classifier stays fixed, so a comment like “bring the bass back sooner” reaches the planner while the cached song maps stay the same.</p>
+<p>One limit I’d keep in mind when listening is timing resolution. At 120 BPM, two beats fit inside a single one-second label. A section map can point to a promising chorus and still leave the kick drums half a beat apart. Finding a musically sensible section and landing on its downbeat are two separate jobs.</p>
+<p><a href="https://github.com/stevecho0101/Structure_Aware_DJ_Transition">Project repository and setup guide</a> · <a href="https://github.com/stevecho0101/Structure_Aware_DJ_Transition/blob/d6df1fe5c57185a5bed64b5f9494c165c2d38054/train_cnn_lstm.py">Section classifier</a> · <a href="https://github.com/stevecho0101/Structure_Aware_DJ_Transition/blob/d6df1fe5c57185a5bed64b5f9494c165c2d38054/add_effect.py">Transition effects</a></p>
+</div></main>
+  </div>
+  <footer><span>© 2026 Rodrigo Andrade</span></footer>
+</body></html>
