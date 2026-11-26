@@ -9,6 +9,8 @@ const styleVersion = createHash('sha256').update(await readFile('assets/style.cs
 const json = async path => JSON.parse(await readFile(path, 'utf8'));
 const profile = await json('content/profile.json');
 const projects = await json('content/projects.json');
+// Pages with a parent (for example a build guide) are published but only linked from their parent project.
+const listedProjects = projects.filter(project => !project.parent);
 const publications = await json('content/publications.json');
 const writing = await json('content/writing.json');
 const writingSlugs = new Set();
@@ -103,6 +105,12 @@ await mkdir('dist/assets/katex', { recursive: true });
 await cp('node_modules/katex/dist/katex.min.css', 'dist/assets/katex/katex.min.css');
 await cp('node_modules/katex/dist/fonts', 'dist/assets/katex/fonts', { recursive: true });
 await cp('node_modules/katex/LICENSE', 'dist/assets/katex/LICENSE');
+// three.js for the interactive 3D viewers: only the files the pages import
+for (const file of ['build/three.module.min.js', 'build/three.core.min.js', 'LICENSE', 'examples/jsm/loaders/GLTFLoader.js', 'examples/jsm/controls/OrbitControls.js', 'examples/jsm/utils/BufferGeometryUtils.js', 'examples/jsm/libs/meshopt_decoder.module.js']) {
+  const target = `dist/assets/vendor/three/${file.replace(/^examples\/jsm\//, 'addons/').replace(/^build\//, '')}`;
+  await mkdir(target.substring(0, target.lastIndexOf('/')), { recursive: true });
+  await cp(`node_modules/three/${file}`, target);
+}
 await writeFile('dist/.nojekyll', '');
 const pages = [];
 async function page(path, title, body, active, description, math = false) {
@@ -117,16 +125,19 @@ for (const post of publishedPosts) {
   await page(`/writing/${post.slug}/`, post.title, `<article><a class="back-link" href="/writing/">Back to writing</a><p class="eyebrow"><time datetime="${escape(post.date)}">${escape(postDate(post.date))}</time></p><h1>${escape(post.title)}</h1><p class="page-intro">${escape(post.description)}</p><div class="prose writing-body">${await markdown(`content/writing/${post.slug}.md`)}</div></article>`, 'writing', post.description, true);
 }
 
-await page('/', 'About', `<h1 class="about-heading">About</h1><div class="prose introduction">${await markdown('content/about.md')}</div>${publicationSection}<section class="selected-work" aria-labelledby="work-heading"><div class="section-heading"><h2 id="work-heading">Selected projects</h2><a class="subtle-link" href="/portfolio/">View all ${arrow}</a></div>${projectList(projects)}</section>`);
-await page('/portfolio/', 'Projects', `<p class="eyebrow">Building & exploring</p><h1>Projects</h1><p class="page-intro">Engineering and science projects in audio, embedded systems, optics, and robotics.</p>${publicationSection}<section aria-labelledby="projects-heading"><div class="section-heading"><h2 id="projects-heading">Project notes</h2></div>${projectList(projects)}</section>`, 'projects');
+await page('/', 'About', `<h1 class="about-heading">About</h1><div class="prose introduction">${await markdown('content/about.md')}</div>${publicationSection}<section class="selected-work" aria-labelledby="work-heading"><div class="section-heading"><h2 id="work-heading">Selected projects</h2><a class="subtle-link" href="/portfolio/">View all ${arrow}</a></div>${projectList(listedProjects)}</section>`);
+await page('/portfolio/', 'Projects', `<p class="eyebrow">Building & exploring</p><h1>Projects</h1><p class="page-intro">Engineering and science projects in audio, embedded systems, optics, and robotics.</p>${publicationSection}<section aria-labelledby="projects-heading"><div class="section-heading"><h2 id="projects-heading">Project notes</h2></div>${projectList(listedProjects)}</section>`, 'projects');
 for (const project of projects) {
   if (!/^[a-z0-9-]+$/.test(project.slug)) throw new Error('Invalid project slug');
   const actions = (project.links || []).filter(resource => resource.kind);
   const headerLinks = actions.length ? `<div class="project-actions">${actions.map(projectResource).join('')}</div>` : '';
   const credits = project.authors?.length ? `<p class="project-team">${project.authors.map(name => `<span>${escape(name)}</span>`).join(' · ')}</p>` : '';
   const cues = (project.media?.cues || []).map(cue => `<div><dt>${escape(cue.label)}</dt><dd>${escape(cue.track)} <span>${escape(cue.time)}</span></dd></div>`).join('');
-  const figure = project.media?.image ? `<figure class="project-figure"><img src="${escape(project.media.image)}" alt="${escape(project.media.alt)}" width="960" height="640">${cues ? `<dl class="project-cues">${cues}</dl>` : ''}${project.media.caption ? `<figcaption>${escape(project.media.caption)}</figcaption>` : ''}</figure>` : '';
-  await page(`/portfolio/${project.slug}/`, project.title, `<a class="back-link" href="/portfolio/">Back to projects</a><p class="eyebrow project-detail-category">${escape(project.year)} / ${escape(project.category)}</p><h1 class="project-title">${escape(project.title)}</h1>${credits}${headerLinks}${project.lead ? `<p class="page-intro">${escape(project.lead)}</p>` : ''}${figure}<div class="prose project-body">${await markdown(`content/projects/${project.slug}.md`)}</div>`, 'projects', project.summary);
+  const figure = project.media?.image && project.media.detail !== false ? `<figure class="project-figure"><img src="${escape(project.media.image)}" alt="${escape(project.media.alt)}" width="960" height="640">${cues ? `<dl class="project-cues">${cues}</dl>` : ''}${project.media.caption ? `<figcaption>${escape(project.media.caption)}</figcaption>` : ''}</figure>` : '';
+  const parent = project.parent && projects.find(item => item.slug === project.parent);
+  if (project.parent && !parent) throw new Error(`Unknown parent project ${project.parent}`);
+  const back = parent ? `<a class="back-link" href="/portfolio/${escape(parent.slug)}/">Back to ${escape(parent.title.split(',')[0])}</a>` : '<a class="back-link" href="/portfolio/">Back to projects</a>';
+  await page(`/portfolio/${project.slug}/`, project.title, `${back}<p class="eyebrow project-detail-category">${escape(project.year)} / ${escape(project.category)}</p><h1 class="project-title">${escape(project.title)}</h1>${credits}${headerLinks}${project.lead ? `<p class="page-intro">${escape(project.lead)}</p>` : ''}${figure}<div class="prose project-body">${await markdown(`content/projects/${project.slug}.md`)}</div>`, 'projects', project.summary);
 }
 await page('/404.html', 'Page not found', '<p class="eyebrow">404</p><h1>Page not found</h1><p class="page-intro">This page may have moved. <a href="/">Return to the homepage</a> or <a href="/portfolio/">explore my projects</a>.</p>', '');
 for (const alias of ['/about/', '/about.html', '/resume/', '/cv/']) {
