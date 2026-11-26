@@ -40,6 +40,8 @@ Virtual model control turns the balance output into hip torques. The controller 
 
 By default the controller only sees what the real robot can measure: the IMU attitude and gyro, wheel-encoder odometry corrected for the rotation of the shin, and wheel contact estimated from the hip torques. In simulation it held a steady pitch within 0.2° on flat ground, recovered from an 80 N push in about a second, climbed a 13° ramp with one wheel while keeping the body level, and drove through zig-zags at up to 2 m/s with legs as tall as 0.52 m without falling.
 
+The equations behind all of this, from the half-robot model and its linearisation to the LQR, the gain schedule and virtual model control, are worked through with numbers on a [separate page on control and learning](/portfolio/primus-control/).
+
 ## Learning on top of the controller
 
 My first reinforcement-learning attempt gave PPO raw torques for all six motors in Isaac Sim. The policy never learned to balance. It lowered the landing gear and sat on it, because the reward still paid well for a tilted robot. With a working LQR available, that approach wasted samples and invited the policy to exploit the reward.
@@ -66,7 +68,7 @@ The perception stack turns the D435i depth image into a robot-centred elevation 
 
 The current policy is a single network that always runs on top of the controller. It assists normal driving and switches to full authority for a skill. In simulation it fell 0.06 times per minute on flat ground with pushes, against 0.29 for the controller alone. It crossed gaps up to 45 cm in 94–100% of trials and passed under overhangs in 88–100%. A student policy that uses only the simulated camera map was distilled from it and stays within a few points of its teacher when riding, on stairs, under overhangs and across gaps up to 45 cm. It still trails the teacher on the tallest hurdles and the widest gaps.
 
-Getting there took thirteen teacher versions, and several lessons came from mistakes in evaluation rather than in learning. An apparent jump from 22% to 56% success turned out to come from about 20 robots per test cell, so every result now uses at least 150. A version that looked strong relied on motors and joints the robot does not have, and modelling the real ones cost 50 percentage points on the hardest stairs. Training on 24 cm hurdles and 0.8 m gaps mostly taught the policy to refuse, because those are close to what the hardware can physically do.
+Getting there took thirteen teacher versions, and several lessons came from mistakes in evaluation rather than in learning. An apparent jump from 22% to 56% success turned out to come from about 20 robots per test cell, so every result now uses at least 150. A version that looked strong relied on motors and joints the robot does not have, and modelling the real ones cost 50 percentage points on the hardest stairs. Training on 24 cm hurdles and 0.8 m gaps mostly taught the policy to refuse, because those are close to what the hardware can physically do. The [control and learning page](/portfolio/primus-control/) goes through each experiment, the reward design and the PPO details.
 
 ## Operating PRIMUS
 
