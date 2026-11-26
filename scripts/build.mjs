@@ -106,7 +106,7 @@ await cp('node_modules/katex/dist/katex.min.css', 'dist/assets/katex/katex.min.c
 await cp('node_modules/katex/dist/fonts', 'dist/assets/katex/fonts', { recursive: true });
 await cp('node_modules/katex/LICENSE', 'dist/assets/katex/LICENSE');
 // three.js for the interactive 3D viewers: only the files the pages import
-for (const file of ['build/three.module.min.js', 'build/three.core.min.js', 'LICENSE', 'examples/jsm/loaders/GLTFLoader.js', 'examples/jsm/controls/OrbitControls.js', 'examples/jsm/utils/BufferGeometryUtils.js', 'examples/jsm/libs/meshopt_decoder.module.js']) {
+for (const file of ['build/three.module.min.js', 'build/three.core.min.js', 'LICENSE', 'examples/jsm/loaders/GLTFLoader.js', 'examples/jsm/controls/OrbitControls.js', 'examples/jsm/utils/BufferGeometryUtils.js', 'examples/jsm/libs/meshopt_decoder.module.js', 'examples/jsm/environments/RoomEnvironment.js']) {
   const target = `dist/assets/vendor/three/${file.replace(/^examples\/jsm\//, 'addons/').replace(/^build\//, '')}`;
   await mkdir(target.substring(0, target.lastIndexOf('/')), { recursive: true });
   await cp(`node_modules/three/${file}`, target);
