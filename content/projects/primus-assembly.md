@@ -224,7 +224,7 @@ The order below is one the parts allow, not a timed procedure. Torques, cable ro
 After step 16 the robot is complete. It starts parked on its landing gear, and the [operating notes](/portfolio/primus/#operating-primus) describe how it stands up.
 
 <script type="importmap">{"imports":{"three":"/assets/vendor/three/three.module.min.js","three/addons/":"/assets/vendor/three/addons/"}}</script>
-<script type="module" src="/assets/primus-assembly.js"></script>
+<script type="module" src="/assets/primus-assembly.js?v=hq1"></script>
 
 ## Bill of materials
 

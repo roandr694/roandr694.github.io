@@ -7,7 +7,7 @@ The model below is the CAD assembly as the simulator sees it, link by link. The 
   <figcaption>Every component of the Fusion 360 assembly, with its CAD appearance, posed link by link with the same kinematics as the simulator. Hidden internals are simplified to keep the download near 7.5 MB. The leg length runs over the operating range, 0.18–0.52 m from hip to axle.</figcaption>
 </figure>
 <script type="importmap">{"imports":{"three":"/assets/vendor/three/three.module.min.js","three/addons/":"/assets/vendor/three/addons/"}}</script>
-<script type="module" src="/assets/primus-viewer.js"></script>
+<script type="module" src="/assets/primus-viewer.js?v=hq1"></script>
 
 ## The robot at a glance
 
