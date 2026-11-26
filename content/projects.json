@@ -16,6 +16,7 @@
     "links": [
       { "label": "Explore the 3D model", "url": "/portfolio/primus/#primus-3d" },
       { "label": "Assembly guide", "url": "/portfolio/primus-assembly/" },
+      { "label": "Control and learning", "url": "/portfolio/primus-control/" },
       { "label": "View on GitHub", "url": "https://github.com/roandr694/PRIMUS", "kind": "repository" }
     ]
   },
@@ -30,6 +31,19 @@
     "media": { "image": "/images/primus/assembly/17-complete.jpg", "alt": "PRIMUS fully assembled, rendered in Blender from the CAD: dark grey printed body, aluminium legs and green actuator housings on two black wheels.", "detail": false },
     "links": [
       { "label": "Download as PDF", "url": "/files/primus/primus-assembly-guide.pdf" },
+      { "label": "View on GitHub", "url": "https://github.com/roandr694/PRIMUS", "kind": "repository" }
+    ]
+  },
+  {
+    "slug": "primus-control",
+    "parent": "primus",
+    "year": "2026",
+    "category": "Robotics · Control and learning",
+    "title": "PRIMUS: control and reinforcement learning",
+    "math": true,
+    "summary": "How PRIMUS balances and learns: the half-robot model and its equations, the gain-scheduled LQR, virtual model control through the five-bar, and the residual and skill reinforcement-learning experiments in MuJoCo Warp.",
+    "lead": "The physics, the model-based controller with its math, and what the reinforcement-learning experiments taught, from the first failed run to the current skill policy.",
+    "links": [
       { "label": "View on GitHub", "url": "https://github.com/roandr694/PRIMUS", "kind": "repository" }
     ]
   },

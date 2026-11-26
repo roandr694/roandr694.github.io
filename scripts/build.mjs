@@ -137,7 +137,7 @@ for (const project of projects) {
   const parent = project.parent && projects.find(item => item.slug === project.parent);
   if (project.parent && !parent) throw new Error(`Unknown parent project ${project.parent}`);
   const back = parent ? `<a class="back-link" href="/portfolio/${escape(parent.slug)}/">Back to ${escape(parent.title.split(',')[0])}</a>` : '<a class="back-link" href="/portfolio/">Back to projects</a>';
-  await page(`/portfolio/${project.slug}/`, project.title, `${back}<p class="eyebrow project-detail-category">${escape(project.year)} / ${escape(project.category)}</p><h1 class="project-title">${escape(project.title)}</h1>${credits}${headerLinks}${project.lead ? `<p class="page-intro">${escape(project.lead)}</p>` : ''}${figure}<div class="prose project-body">${await markdown(`content/projects/${project.slug}.md`)}</div>`, 'projects', project.summary);
+  await page(`/portfolio/${project.slug}/`, project.title, `${back}<p class="eyebrow project-detail-category">${escape(project.year)} / ${escape(project.category)}</p><h1 class="project-title">${escape(project.title)}</h1>${credits}${headerLinks}${project.lead ? `<p class="page-intro">${escape(project.lead)}</p>` : ''}${figure}<div class="prose project-body">${await markdown(`content/projects/${project.slug}.md`)}</div>`, 'projects', project.summary, project.math === true);
 }
 await page('/404.html', 'Page not found', '<p class="eyebrow">404</p><h1>Page not found</h1><p class="page-intro">This page may have moved. <a href="/">Return to the homepage</a> or <a href="/portfolio/">explore my projects</a>.</p>', '');
 for (const alias of ['/about/', '/about.html', '/resume/', '/cv/']) {

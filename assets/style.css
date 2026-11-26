@@ -245,3 +245,11 @@ a.repository-link:hover { background: #365847; text-decoration: none; }
 .prose .asm-actions { margin: 0 0 12px; padding-left: 22px; }
 .prose .asm-actions li { margin: 0 0 6px; }
 @media print { .asm-tools { display: none !important; } .asm-stage { aspect-ratio: auto; border: 0; margin: 0; } .asm-stage img { max-height: 62mm; width: auto; margin: 0 auto !important; } .prose .asm-actions, .prose .asm-legend { font-size: 9pt; margin-bottom: 6px; } .prose .asm-actions li { margin-bottom: 2px; } .prose .assembly-step { margin-bottom: 10px; } }
+.project-body figure:not(.project-figure){margin:28px 0}
+.project-body figure:not(.project-figure) img{display:block;width:100%;height:auto}
+.project-body figure:not(.project-figure) figcaption{font-size:12px;line-height:1.6;color:var(--muted);margin-top:8px}
+.project-body figure.primus-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.project-body figure.primus-pair img{border-radius:4px}
+.project-body figure.primus-pair figcaption{grid-column:1/-1}
+.project-body .katex-display{overflow-x:auto;overflow-y:hidden;padding:2px 0}
+@media (max-width:640px){.project-body figure.primus-pair{grid-template-columns:1fr}}
