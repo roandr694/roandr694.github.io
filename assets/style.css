@@ -193,3 +193,34 @@ a.repository-link:hover { background: #365847; text-decoration: none; }
 .primus-viewer figcaption { margin-top: 14px; }
 .primus-specs td:first-child { color: var(--muted); white-space: nowrap; }
 @media (max-width: 600px) { .pv-stage { aspect-ratio: 4 / 3.4; } .pv-controls, .pv-side { grid-template-columns: 1fr; } }
+
+/* PRIMUS assembly guide */
+.assembly-legend figcaption { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; }
+.swatch { display: inline-block; width: 11px; height: 11px; border-radius: 2px; margin-left: 8px; vertical-align: -1px; }
+.swatch:first-child { margin-left: 0; }
+.swatch-printed { background: #e9a23b; } .swatch-aluminium { background: #a9bccd; } .swatch-electronics { background: #3b4450; }
+.swatch-actuator { background: #6b7480; } .swatch-hardware { background: #c8402f; }
+.prose .assembly-steps { list-style: none; counter-reset: step; margin: 34px 0 0; padding: 0; }
+.prose .assembly-step { counter-increment: step; margin: 0 0 44px; padding: 26px 0 0; border-top: 1px solid var(--line); }
+.prose .assembly-step h2 { margin: 0 0 14px; display: flex; align-items: baseline; gap: 12px; }
+.prose .assembly-step h2::before { content: counter(step); font: 600 13px var(--sans); color: #fff; background: #243a33; border-radius: 50%; min-width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; transform: translateY(-3px); }
+.assembly-step img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 4px; margin: 0 0 14px; background: #fff; }
+.prose .assembly-step .hardware { font-size: 13px; color: var(--muted); background: #f3f3ee; border-radius: 4px; padding: 9px 12px; }
+.prose .assembly-step .hardware strong { color: var(--ink); font-weight: 600; }
+
+@media print {
+  @page { size: A4; margin: 14mm 13mm; }
+  .skip-link, .masthead, .profile, .site-footer, footer, .back-link, .project-actions, .repository-link { display: none !important; }
+  .page-grid { display: block !important; max-width: none !important; padding: 0 !important; }
+  main { padding: 0 !important; max-width: none !important; }
+  body { background: #fff !important; font-size: 10.5pt; }
+  a { color: inherit; text-decoration: none; }
+  .prose .assembly-step { break-inside: avoid; page-break-inside: avoid; margin-bottom: 18px; }
+  .assembly-step img { max-height: 66mm; width: auto; max-width: 100%; margin: 0 auto 6px; }
+  .prose .assembly-step { padding-top: 10px; }
+  .prose .assembly-step p { margin: 0 0 6px; }
+  .prose h2, .prose h3 { break-after: avoid; }
+  .prose table { break-inside: auto; font-size: 9pt; }
+  .prose tr { break-inside: avoid; }
+  .assembly-legend img { max-height: 95mm; width: auto; margin: 0 auto; }
+}

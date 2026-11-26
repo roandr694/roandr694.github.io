@@ -91,7 +91,7 @@ The same pilot interface drives the simulator today and is meant for the robot. 
 
 The three responsiveness levels set how quickly the robot reaches the commanded speed, 0 to 1.5 m/s in about 2.7, 1.2 or 0.7 s at the nominal leg length. The edge guard is on by default. It caps the speed so the robot stops about 0.35 m before drops deeper than 6 cm, steps higher than 5 cm, gaps, walls, low overhangs or ground the camera has not seen yet. Piloting from a Quest 3 streams the robot's first-person camera to the headset over Wi-Fi, with a panel for the mode, leg height, torques and wheel contact.
 
-To run the simulation from the repository:
+To run the simulation from the [repository](https://github.com/roandr694/PRIMUS):
 
 ```bash
 cd sim
@@ -102,6 +102,10 @@ python3 scripts/run_quest_viewer.py          # pilot from a Meta Quest 3 or a de
 ```
 
 The robot starts parked on its landing gear and stands up by itself.
+
+## Building one
+
+The [assembly guide](/portfolio/primus-assembly/) walks through the build in sixteen steps, from the aluminium frame to the knee shafts and the top covers, with exploded views rendered from the Fusion 360 assembly and a full bill of materials. It is also available [as a PDF](/files/primus/primus-assembly-guide.pdf). The CAD-derived meshes, the simulator and the controller are in the [PRIMUS repository](https://github.com/roandr694/PRIMUS).
 
 ## Status
 

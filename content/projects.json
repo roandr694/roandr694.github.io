@@ -13,7 +13,25 @@
       "thumbnailAlt": "The PRIMUS robot rendered from its CAD model",
       "detail": false
     },
-    "links": [{ "label": "Explore the 3D model", "url": "/portfolio/primus/#primus-3d" }]
+    "links": [
+      { "label": "Explore the 3D model", "url": "/portfolio/primus/#primus-3d" },
+      { "label": "Assembly guide", "url": "/portfolio/primus-assembly/" },
+      { "label": "View on GitHub", "url": "https://github.com/roandr694/PRIMUS", "kind": "repository" }
+    ]
+  },
+  {
+    "slug": "primus-assembly",
+    "parent": "primus",
+    "year": "2026",
+    "category": "Robotics · Build guide",
+    "title": "Building PRIMUS",
+    "summary": "Step-by-step assembly of the PRIMUS wheel-legged biped, with the bill of materials and exploded views rendered from the Fusion 360 assembly.",
+    "lead": "Sixteen steps from a bare aluminium frame to a standing robot, with the parts and fasteners each step uses. Every illustration is rendered from the Fusion 360 assembly.",
+    "media": { "image": "/images/primus/assembly/17-complete.jpg", "alt": "PRIMUS fully assembled, rendered from the CAD with printed parts in orange, aluminium in blue-grey and electronics in dark grey.", "detail": false },
+    "links": [
+      { "label": "Download as PDF", "url": "/files/primus/primus-assembly-guide.pdf" },
+      { "label": "View on GitHub", "url": "https://github.com/roandr694/PRIMUS", "kind": "repository" }
+    ]
   },
   {
     "slug": "structure-aware-dj-transitions",
