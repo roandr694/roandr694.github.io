@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 const PARTS = [
   { id: 'base', bodies: ['base'], name: 'Chassis', role: 'Structure and electronics',
@@ -26,7 +27,7 @@ const EXPLODE = {
   base: [0, 0, 0], gear_front: [0, 0.07, -0.12], gear_rear: [0, -0.07, -0.12],
   armYp: [0.12, 0.03, 0.05], armYm: [0.12, -0.03, 0.05], shin: [0.23, 0.02, 0], linkYm: [0.23, -0.02, 0], wheel: [0.36, 0, -0.02]
 };
-const MODEL_MB = 2.2;
+const MODEL_MB = 7.5;
 
 function el(tag, attrs = {}, ...children) {
   const node = document.createElement(tag);
@@ -62,12 +63,17 @@ async function run(figure, base, stage, poster, reducedMotion) {
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.05;
   renderer.domElement.className = 'pv-canvas';
   renderer.domElement.setAttribute('aria-label', 'Interactive 3D model of PRIMUS. Drag to orbit, scroll or pinch to zoom, click a part to select it.');
   renderer.domElement.tabIndex = 0;
 
   const scene = new THREE.Scene();
   scene.background = new THREE.Color('#f0f0e9');
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+  scene.environmentIntensity = 0.75;
   const camera = new THREE.PerspectiveCamera(32, 1, 0.01, 30);
   camera.position.set(1.2, 0.7, -1.32);
   const controls = new OrbitControls(camera, renderer.domElement);
@@ -76,11 +82,11 @@ async function run(figure, base, stage, poster, reducedMotion) {
   controls.minDistance = 0.25; controls.maxDistance = 4;
   controls.maxPolarAngle = Math.PI * 0.53;
 
-  scene.add(new THREE.HemisphereLight('#ffffff', '#b8b4a6', 1.6));
-  const sun = new THREE.DirectionalLight('#ffffff', 2.1);
+  scene.add(new THREE.HemisphereLight('#ffffff', '#b8b4a6', 0.6));
+  const sun = new THREE.DirectionalLight('#ffffff', 1.9);
   sun.position.set(1.4, 2.6, -0.8);
   sun.castShadow = true;
-  sun.shadow.mapSize.set(2048, 2048);
+  sun.shadow.mapSize.set(2048, 2048); sun.shadow.radius = 4;
   Object.assign(sun.shadow.camera, { left: -0.8, right: 0.8, top: 0.8, bottom: -0.8, near: 0.5, far: 6 });
   sun.shadow.bias = -0.0004;
   scene.add(sun);
@@ -94,28 +100,38 @@ async function run(figure, base, stage, poster, reducedMotion) {
   // robot frame (Z up, Y forward) -> three.js (Y up); forward is -Z on screen
   const robot = new THREE.Group(); robot.rotation.x = -Math.PI / 2; scene.add(robot);
 
-  const [poses, ...gltfs] = await Promise.all([
+  const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
+  const [poses, partList, gltf] = await Promise.all([
     fetch(base + 'poses.json').then(r => r.json()),
-    ...PARTS.flatMap(p => p.bodies).map(b => new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).loadAsync(`${base}${b}.glb`).then(g => [b, g]))
+    fetch(base + 'parts.json').then(r => r.json()),
+    loader.loadAsync(base + 'primus.glb', e => { if (e.total) status.textContent = `Loading parts… ${Math.round(100 * e.loaded / e.total)}%`; })
   ]).catch(error => { status.textContent = 'The 3D model could not be loaded. ' + error.message; throw error; });
 
+  // The GLB holds every Fusion 360 component group in the robot base frame at the CAD pose. Each link gets a
+  // container posed by the five-bar solution and an inner group that undoes the link's CAD pose.
   const bodies = {};
   const pickables = [];
-  for (const [name, gltf] of gltfs) {
-    const node = new THREE.Group();
-    const obj = gltf.scene;
-    node.add(obj);  // vertices are already in the link frame of the robot (Z up)
-    obj.traverse(o => {
+  const linkOf = Object.fromEntries(partList.map(p => [p.id, p.link]));
+  for (const name of PARTS.flatMap(p => p.bodies)) {
+    const node = new THREE.Group(), inner = new THREE.Group();
+    const c = poses.cad[name];
+    inner.matrixAutoUpdate = false;
+    inner.matrix.compose(new THREE.Vector3(c[0], c[1], c[2]), new THREE.Quaternion(c[4], c[5], c[6], c[3]), new THREE.Vector3(1, 1, 1)).invert();
+    node.add(inner); robot.add(node);
+    bodies[name] = { node, inner, meshes: [], spin: 0 };
+  }
+  for (const child of [...gltf.scene.children]) {
+    const name = linkOf[child.name];
+    if (!name || !bodies[name]) continue;
+    bodies[name].inner.add(child);
+    child.traverse(o => {
       if (!o.isMesh) return;
       o.castShadow = true; o.receiveShadow = true;
       o.material = o.material.clone();
-      o.material.color.convertSRGBToLinear();  // CAD colours were exported as sRGB values
+      o.material.color.convertSRGBToLinear();
       o.userData.body = name;
-      pickables.push(o);
+      pickables.push(o); bodies[name].meshes.push(o);
     });
-    robot.add(node);
-    bodies[name] = { node, meshes: [], spin: 0 };
-    obj.traverse(o => o.isMesh && bodies[name].meshes.push(o));
   }
   const partOf = body => PARTS.find(p => p.bodies.includes(body));
 

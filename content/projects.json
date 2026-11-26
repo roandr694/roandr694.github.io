@@ -9,7 +9,7 @@
     "media": {
       "image": "/images/primus/model-render.jpg",
       "thumbnail": "/images/primus/model-card.jpg",
-      "alt": "PRIMUS rendered from its CAD meshes: a dark chassis on two white five-bar legs ending in black wheels.",
+      "alt": "PRIMUS rendered in Blender from the CAD: a dark grey body on two aluminium five-bar legs ending in black wheels.",
       "thumbnailAlt": "The PRIMUS robot rendered from its CAD model",
       "detail": false
     },
@@ -26,8 +26,8 @@
     "category": "Robotics · Build guide",
     "title": "Building PRIMUS",
     "summary": "Step-by-step assembly of the PRIMUS wheel-legged biped, with the bill of materials and exploded views rendered from the Fusion 360 assembly.",
-    "lead": "Sixteen steps from a bare aluminium frame to a standing robot, with the parts and fasteners each step uses. Every illustration is rendered from the Fusion 360 assembly.",
-    "media": { "image": "/images/primus/assembly/17-complete.jpg", "alt": "PRIMUS fully assembled, rendered from the CAD with printed parts in orange, aluminium in blue-grey and electronics in dark grey.", "detail": false },
+    "lead": "Sixteen steps from a bare aluminium frame to a standing robot, with the parts and fasteners each step uses. Every picture is rendered from the Fusion 360 assembly, and every step can be played as a 3D animation.",
+    "media": { "image": "/images/primus/assembly/17-complete.jpg", "alt": "PRIMUS fully assembled, rendered in Blender from the CAD: dark grey printed body, aluminium legs and green actuator housings on two black wheels.", "detail": false },
     "links": [
       { "label": "Download as PDF", "url": "/files/primus/primus-assembly-guide.pdf" },
       { "label": "View on GitHub", "url": "https://github.com/roandr694/PRIMUS", "kind": "repository" }

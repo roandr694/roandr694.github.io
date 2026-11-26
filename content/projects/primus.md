@@ -2,9 +2,9 @@ PRIMUS stands for Parallel-linkage Robot with Integrated Mobility and Underactua
 
 The model below is the CAD assembly as the simulator sees it, link by link. The leg slider drives the real five-bar geometry, so the knees and wheels move the way they do on the robot.
 
-<figure class="project-figure primus-viewer" id="primus-3d" data-models="/files/primus/models/">
-  <div class="pv-stage"><img src="/images/primus/model-render.jpg" width="1280" height="800" alt="PRIMUS rendered from the CAD meshes: a dark chassis on two white five-bar legs, each ending in a black wheel." loading="lazy"></div>
-  <figcaption>Every link of the robot, exported from the Fusion 360 assembly through the MuJoCo model. Meshes are simplified for the web, and tiny electronic components are left out. The leg length runs over the operating range, 0.18–0.52 m from hip to axle.</figcaption>
+<figure class="project-figure primus-viewer" id="primus-3d" data-models="/files/primus/model/">
+  <div class="pv-stage"><img src="/images/primus/model-render.jpg" width="1280" height="800" alt="PRIMUS rendered in Blender from the CAD: a dark grey body on two aluminium five-bar legs, each ending in a black wheel." loading="lazy"></div>
+  <figcaption>Every component of the Fusion 360 assembly, with its CAD appearance, posed link by link with the same kinematics as the simulator. Hidden internals are simplified to keep the download near 7.5 MB. The leg length runs over the operating range, 0.18–0.52 m from hip to axle.</figcaption>
 </figure>
 <script type="importmap">{"imports":{"three":"/assets/vendor/three/three.module.min.js","three/addons/":"/assets/vendor/three/addons/"}}</script>
 <script type="module" src="/assets/primus-viewer.js"></script>
@@ -30,7 +30,7 @@ The five-bar gives each leg two degrees of freedom in its plane. Turning the two
 
 I wanted the simulation to come straight from the CAD. Two Fusion 360 scripts classify every body by the link it belongs to and export it with its mass properties. A Python pipeline then turns those exports into simplified visual meshes, convex collision hulls (computed with CoACD) and an inertia for each link. From there the MuJoCo model (MJCF) and a URDF for Isaac Sim are generated. Imported vendor models often come in with the wrong material, so the battery, aluminium profiles, Jetson, lidar and Raspberry Pi get their real masses before the inertias are computed.
 
-The closed legs are kept as closed loops. In MuJoCo each five-bar is closed with an equality constraint at the wheel axle, and the measured gap stays below 0.1 mm. The meshes in the viewer above are the same files this pipeline produces.
+The closed legs are kept as closed loops. In MuJoCo each five-bar is closed with an equality constraint at the wheel axle, and the measured gap stays below 0.1 mm. The viewer above uses the same Fusion 360 assembly, exported body by body at full resolution.
 
 ## Balancing with a model-based controller
 
