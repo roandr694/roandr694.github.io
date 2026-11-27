@@ -93,7 +93,7 @@
     "math": true,
     "year": "2026",
     "category": "Numerical simulation · Optimization",
-    "title": "NightCurve",
+    "title": "NightCurve: optimizing a trajectory under uncertainty",
     "summary": "A constrained trajectory optimization project. A Swift solver integrates a nonlinear model, searches over discrete events and continuous timing, and tests the finalists under parameter uncertainty.",
     "lead": "I built NightCurve to study constrained trajectory tracking. The input is a hand-drawn blood alcohol concentration (BAC) curve. The unknowns are the events that might reproduce it in a nonlinear simulation. In this seven-hour example the simulated median peaks an hour and a half early. The objective function explains why a schedule can miss that landmark and still win.",
     "media": {
