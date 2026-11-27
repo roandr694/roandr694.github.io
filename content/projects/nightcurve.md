@@ -12,13 +12,41 @@ In the editor, you drag points to set the target at particular times. You also d
   <figcaption>The target editor in the local browser app. The circles are editable anchors. Shaded regions show where the rules for the search change.</figcaption>
 </figure>
 
-## How the search chooses a schedule
+## From a schedule to a trajectory
 
-The forward model takes a schedule as input. It tracks ethanol in the stomach and in circulation, accounting for absorption, food and elimination. NightCurve runs each candidate through several versions of that model, sampling parameters such as absorption rate and distribution volume. That produces a family of possible curves for the same input.
+NightCurve solves the problem in both directions. The forward calculation takes a schedule and predicts a curve. The inverse calculation starts with the desired curve and calls the forward calculation many times, changing the schedule between calls. The delay visible in the figure comes from the forward model's internal state.
 
-The search scores a schedule by accumulating the squared gap between its median curve and the target over time. Two smaller terms penalize the number of events and the total variation in the median. An extra event therefore has to improve the fit enough to earn its place. Each event must fit inside an allowed phase and finish before the next event begins.
+For event $i$, let $S_i$ be the grams still in the stomach, $u_i$ the input rate in grams per hour and $a_i$ the absorption rate per hour. In the model, $a_i$ depends on the event and the food buffer. The rate of transfer out of that compartment is $a_i S_i$. Let $B$ be the mass in circulation and $f$ the fraction lost on first pass. The two mass balances are
 
-A cross-entropy search samples candidate schedules, keeps the best-scoring group and uses that group to update where it samples next. After local refinement, the engine compares the finalists and an empty schedule on a larger set of model variations. At each minute it checks the 90th percentile against the configured ceiling. An optional end constraint applies the same check at the final time. The chart shows the ensemble used for that final decision. Its band describes variation within this model. Actual BAC and impairment require independent assessment.
+$$
+\frac{dS_i}{dt}=u_i-a_i S_i
+$$
+
+$$
+\frac{dB}{dt}=(1-f)\sum_i a_i S_i-E(C).
+$$
+
+Concentration $C$ is circulating mass divided by distribution volume. The elimination rate is $E(C)=V_{\max} C/(K_m+C)$, where $V_{\max}$ is the limiting rate and $K_m$ is the concentration at half that rate. This gives the inverse problem a memory. Setting every input rate to zero during the middle phase leaves the absorption terms active, so the simulated curve can keep rising. The Swift backend integrates these equations with fourth-order Runge–Kutta steps.
+
+## What counts as a better fit?
+
+Each candidate is simulated with a shared set of parameter draws. The engine stratifies each uncertain parameter's distribution before sampling, so a finite ensemble covers both central and tail values. At each output minute it sorts the simulated concentrations to obtain the median and upper percentile. Using the same draws for competing schedules makes their scores comparable.
+
+Write $m_j$ for the median BAC at minute $j$ and $r_j$ for the target interpolated between the drawn anchors. Both use the chart's percent units, so a gap from 0.04 to 0.05 gives a scaled error $e_j=100(m_j-r_j)$ of magnitude one. With target weights $w_j$ and time measured in hours, the engine integrates the weighted squared error by the trapezoidal rule. For feasible schedules its objective is
+
+$$
+J=\int w(t)e(t)^2\,dt+0.1N+0.05\sum_j 100\lvert m_{j+1}-m_j\rvert .
+$$
+
+Here $N$ counts events. The last term measures the total movement of the median, including every rise and fall. Suppose a candidate adds one event and leaves that total movement unchanged. Its integrated tracking error must fall by more than 0.1 to improve its score. In the seven-hour run above, the tracking term was 3.268, four events contributed 0.400, and curve movement added about 0.531. The final score was 4.199.
+
+## How the backend searches and decides
+
+A candidate combines discrete choices, such as which item to use in a phase, with continuous choices about timing and amount. The engine decodes a bounded vector into events that fit the phase rules without overlapping. A small change to the vector can switch an event on or change its type. NightCurve uses a derivative-free cross-entropy search so it can compare these alternatives by simulating them.
+
+The first generation includes several starting schedules. In each round the engine ranks a population by score, then moves the sampling mean and spread of each coordinate toward the best group, giving higher-ranked candidates more weight. It retains promising alternatives and refines several of them by changing one coordinate at a time. Quick, Standard and High set the computational budget. The result is the best feasible candidate found in that search, with no guarantee of a global optimum.
+
+Tracking the median is only one part of selection. During search, squared penalties discourage candidates whose pointwise 90th percentile exceeds the configured ceiling or an enforced final target. For the final decision the engine evaluates the shortlist again with a larger ensemble, checks feasibility and compares it with the empty schedule. A candidate that tracked the target closely in the smaller ensemble can lose here. The returned chart uses the same larger ensemble that determined the winner. Its shaded band describes modeled variation at each time, and does not estimate an individual's actual impairment.
 
 ## The 30-second test
 

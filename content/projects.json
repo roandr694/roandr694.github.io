@@ -90,11 +90,12 @@
   },
   {
     "slug": "nightcurve",
+    "math": true,
     "year": "2026",
     "category": "Numerical simulation · Optimization",
     "title": "NightCurve",
-    "summary": "A drawn curve becomes the target for a constrained search. NightCurve simulates absorption and elimination, then shows how closely a schedule can track that target as the model parameters vary.",
-    "lead": "I built NightCurve to explore an inverse problem. Given a curve for blood alcohol concentration (BAC), which timed inputs could produce something close to it in a simulation? In the example below, the simulated curve reaches its highest point about an hour and a half before the target does.",
+    "summary": "A constrained trajectory optimization project. A Swift solver integrates a nonlinear model, searches over discrete events and continuous timing, and tests the finalists under parameter uncertainty.",
+    "lead": "I built NightCurve to study constrained trajectory tracking. The input is a hand-drawn blood alcohol concentration (BAC) curve. The unknowns are the events that might reproduce it in a nonlinear simulation. In this seven-hour example the simulated median peaks an hour and a half early. The objective function explains why a schedule can miss that landmark and still win.",
     "media": {
       "image": "/images/nightcurve/trajectory.webp",
       "thumbnail": "/images/nightcurve/icon-card.webp",
