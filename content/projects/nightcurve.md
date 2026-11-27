@@ -1,3 +1,16 @@
+## Why did this curve win?
+
+The peak arrives early, yet this schedule wins among the feasible candidates the solver evaluated. To see why, start with the actual score from the seven-hour simulation. The solver minimizes the sum of three terms.
+
+$$
+\underbrace{3.268}_{\text{tracking error}}+
+\underbrace{0.400}_{\text{four events}}+
+\underbrace{0.531}_{\text{curve movement}}
+\approx 4.199
+$$
+
+Peak timing has no separate penalty. Moving a peak closer to its target helps only if the improvement outweighs the error introduced elsewhere on the curve. The blue line below shows where the winning schedule gained and lost ground against the orange target.
+
 <figure class="project-figure">
   <a href="/images/nightcurve/trajectory.webp"><img src="/images/nightcurve/trajectory.webp" width="1440" height="960" alt="The orange target peaks at hour 3.5. The blue simulated median peaks near hour 2, falls and rises again. Its shaded percentile band widens toward hour 7."></a>
   <figcaption>A seven-hour run using the default synthetic profile and the Standard search preset. The target stays flat through the last two hours, while the simulated median rises and then falls. The blue band spans the 10th to 90th percentile at each minute across the sampled model parameters.</figcaption>
