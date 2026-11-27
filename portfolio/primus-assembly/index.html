@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Building PRIMUS — Rodrigo Andrade</title>
-  <meta name="description" content="Step-by-step assembly of the PRIMUS wheel-legged biped, with the bill of materials and exploded views rendered from the Fusion 360 assembly.">
+  <meta name="description" content="An animated, step-by-step build of the PRIMUS wheel-legged biped generated from its Fusion 360 assembly: the actuators part by part, the hip modules, body, legs and covers, with the bill of materials.">
   <link rel="canonical" href="https://roandr694.github.io/portfolio/primus-assembly/">
   <meta property="og:title" content="Building PRIMUS — Rodrigo Andrade">
-  <meta property="og:description" content="Step-by-step assembly of the PRIMUS wheel-legged biped, with the bill of materials and exploded views rendered from the Fusion 360 assembly.">
+  <meta property="og:description" content="An animated, step-by-step build of the PRIMUS wheel-legged biped generated from its Fusion 360 assembly: the actuators part by part, the hip modules, body, legs and covers, with the bill of materials.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://roandr694.github.io/portfolio/primus-assembly/">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/assets/style.css?v=853868ff3e6b">
+  <link rel="stylesheet" href="/assets/style.css?v=068a39d12fc2">
   
 </head>
 <body>
@@ -20,7 +20,7 @@
     <a class="wordmark" href="/">Rodrigo Andrade</a>
     <nav aria-label="Main navigation"><a href="/">About</a><a href="/portfolio/" aria-current="page">Projects</a><a href="/writing/">Writing</a></nav>
   </div></header>
-  <div class="page-grid">
+  <div class="page-grid page-wide">
     <aside class="profile" aria-label="Profile">
       <a class="monogram" href="/" aria-label="Rodrigo Andrade home">RA</a>
       <h2>Rodrigo Andrade</h2>
@@ -30,225 +30,66 @@
       <div class="profile-links"><a class="profile-link profile-link-email" href="mailto:rpandrad@usc.edu"><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg>Email</a><a class="profile-link profile-link-github" href="https://github.com/roandr694"><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4 1-4-2-6-2m12 5v-4c0-1 .1-2-.5-2.5 3-.3 6-1.5 6-6a5 5 0 0 0-1.4-3.5 5 5 0 0 0-.1-3.5s-1.1-.3-3.6 1.4a12 12 0 0 0-6.8 0C6.1 2.2 5 2.5 5 2.5A5 5 0 0 0 4.9 6a5 5 0 0 0-1.4 3.5c0 4.5 3 5.7 6 6-.6.5-.6 1.5-.5 2.5v4"/></svg>GitHub</a><a class="profile-link profile-link-linkedin" href="https://www.linkedin.com/in/rodrigo-andr/"><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7m0-10v.1M11 17v-7m0 3c0-4 6-4 6 0v4"/></svg>LinkedIn</a><a class="profile-link profile-link-resume" href="/files/rodrigo-andrade-resume.pdf" type="application/pdf"><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H5v20h14V7zM14 2v5h5M8 12h8M8 16h8"/></svg>Resume</a></div>
       <div class="interests"><h3>Research interests</h3><ul><li>Robot learning</li><li>Robotic manipulation</li><li>Humanoid robots</li></ul></div>
     </aside>
-    <main id="main" tabindex="-1"><a class="back-link" href="/portfolio/primus/">Back to PRIMUS</a><p class="eyebrow project-detail-category">2026 / Robotics · Build guide</p><h1 class="project-title">Building PRIMUS</h1><div class="project-actions"><a class="repository-link" href="https://github.com/roandr694/PRIMUS"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 16 16" fill="currentColor"><path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"/></svg>View on GitHub</a></div><p class="page-intro">Sixteen steps from a bare aluminium frame to a standing robot, with the parts and fasteners each step uses. Every picture is rendered from the Fusion 360 assembly, and every step can be played as a 3D animation.</p><div class="prose project-body"><p>This guide follows the main Fusion 360 assembly of <a href="/portfolio/primus/">PRIMUS</a>. Each step lists the parts it adds and the hardware that holds them. The hardware is counted directly from the CAD: a screw belongs to the last step among the parts it touches. The pictures are rendered in Blender from the CAD with its materials; the parts added in a step are pulled out along their assembly direction, with dashed lines to where they go and numbers that match the list under each picture. Every step can also be played as a 3D animation.</p>
-<p>The order below is one the parts allow, not a timed procedure. Torques, cable routing and wiring are not in the CAD and are not covered yet. Where the CAD leaves something open, such as how the aluminium profiles join each other, the step says so. Part names in parentheses are the component names in the Fusion file and in the exported STL files.</p>
-<h2>Before you start</h2>
-<p><strong>Print the parts.</strong> All printed parts are listed in the <a href="#bill-of-materials">bill of materials</a>. The CAD assigns PET (PETG) to most of them, ABS to the arm cores, and a carbon-filled PA12 to the landing-gear struts and stops. The tyres are modelled as rubber.</p>
-<p><strong>Install the heat-set inserts.</strong> Brass inserts go into the printed parts before assembly: 41 × M3 × 5.7 mm (OD 4.6), 12 × M3 × 5.7 mm (OD 5), 16 × M3 × 6 mm (OD 5), 4 × M3 × 4 mm and 8 × M2.5 × 4 mm. Each step lists the inserts its parts carry, so you can also set them step by step. Press them in square to the surface with the iron at the temperature the insert maker recommends, and let the part cool before loading the thread.</p>
-<p><strong>Build the six actuators.</strong> PRIMUS uses actuators derived from Aaed Musa&#39;s <a href="https://github.com/aaedmusa/OpenQDD-V1">OpenQDD V1</a>, a 3D-printed quasi-direct-drive actuator with a 9:1 helical planetary gearbox. PRIMUS keeps the 9:1 ratio but uses a stronger, modified printed gearbox, a 130 kV motor and mjbots moteus-r4 controllers at 24 V. Four are hip actuators and two drive the wheels; the wheel version has a larger output housing. Build them following the <a href="https://www.instructables.com/OpenQDD-V1-3D-Printed-Robotic-Actuator">OpenQDD instructions</a> with the PRIMUS parts. On the hip actuators, the four M4 screws that close the housing are 45 mm long so they continue through the hip box in step 2.</p>
-<p><strong>Tools.</strong> Hex keys of 1.3, 2, 2.5, 3 and 4 mm (countersunk M2 to M5 and the socket-head screws), and a soldering iron with an insert tip.</p>
-<p><strong>How to read the steps.</strong> Every step has a rendered exploded view with numbered parts, the list of what those numbers are, the actions in order, and the hardware it uses. Press <strong>Play animation</strong> on any step to watch the parts go together in 3D; you can drag to look around while it plays.</p>
-<div data-assembly-model="/files/primus/model/" hidden></div>
-<ol class="assembly-steps">
-<li class="assembly-step" id="step-1" data-step="frame">
-<h2>Frame</h2>
-<img src="/images/primus/assembly/01-frame.jpg" width="1500" height="1000" loading="lazy" alt="Step 1: the aluminium 20×20 frame, a rectangular cage of profiles with two upper rails.">
-<ol class="asm-legend"><li>20×20 aluminium frame</li></ol>
-<ol class="asm-actions">
-<li>Cut or buy the thirteen 20×20 profiles: 2 × 400 mm, 2 × 228 mm, 1 × 188 mm, 4 × 140 mm and 4 × 53 mm.</li>
-<li>Join them into the cage shown. The CAD does not model the joints between profiles, so use the method you prefer for 2020 extrusion and check that the cage sits flat and square.</li>
-<li>Slide the two T-nuts for this step into the slots before closing the profile ends that would block them.</li>
-</ol>
-<p class="hardware"><strong>Hardware.</strong> 2 × M5 drop-in T-nuts (2020, slot 6).</p>
-</li>
-
-<li class="assembly-step" id="step-2" data-step="hip-modules">
-<h2>Hip boxes and hip actuators</h2>
-<img src="/images/primus/assembly/02-hip-modules.jpg" width="1500" height="1000" loading="lazy" alt="Step 2: two hip actuators go into each printed hip box, and the boxes move onto the left and right ends of the frame.">
-<ol class="asm-legend"><li>Hip actuator (4)</li><li>Hip box (Caixa do quadril X+ and X−)</li></ol>
-<ol class="asm-actions">
-<li>Place two hip actuators in each hip box, outputs facing out through the box wall. The front and rear actuators sit 140 mm apart.</li>
-<li>Fix each actuator with its four M4 × 45 screws from the actuator build and their M4 nuts.</li>
-<li>Drop the T-nuts for this step into the profile slots where the boxes meet the frame. Several of them only receive their screws later, with the belly in step 7.</li>
-<li>Bring each box onto its end of the frame and fix it with the M5 × 10 socket-head screws and washers.</li>
-</ol>
-<p class="hardware"><strong>Hardware.</strong> 10 × M5 drop-in T-nuts, 4 × M5 × 10 socket head (ISO 4762), 6 × washers 5.3 × 15 × 1.2.</p>
-</li>
-
-<li class="assembly-step" id="step-3" data-step="rear-and-top">
-<h2>Rear covers and upper supports</h2>
-<img src="/images/primus/assembly/03-rear-and-top.jpg" width="1500" height="1000" loading="lazy" alt="Step 3: the two halves of the rear cover close the back of the body, and the printed upper supports go on top of the frame.">
-<ol class="asm-legend"><li>Magnet holder (6)</li><li>Rear cover half (Tampa Y− metade X+ and X−)</li><li>Upper supports (Suportes superiores)</li><li>Small Orin support</li></ol>
-<ol class="asm-actions">
-<li>Fit the six magnet holders on the rear face of the frame.</li>
-<li>Close the back of the body with the two rear cover halves.</li>
-<li>Fix the upper supports across the top of the frame; they later hold the magnetic top covers. Add the small Orin support.</li>
-</ol>
-<p class="hardware"><strong>Hardware.</strong> 4 × M5 drop-in T-nuts, 4 × M5 × 10 socket head, 2 × washers 5.3 × 15 × 1.2.</p>
-</li>
-
-<li class="assembly-step" id="step-4" data-step="electronics">
-<h2>Electronics tray</h2>
-<img src="/images/primus/assembly/04-electronics.jpg" width="1500" height="1000" loading="lazy" alt="Step 4: the two-part printed electronics tray goes into the body, then the Jetson Orin Nano, the Raspberry Pi 5 and the power distribution board go on it.">
-<ol class="asm-legend"><li>Electronics tray (Base eletronica v2)</li><li>Jetson Orin Nano in its case</li><li>Raspberry Pi 5</li><li>Power board bridge</li><li>Power distribution board</li></ol>
-<ol class="asm-actions">
-<li>Join the two halves of the electronics tray with 2 × M3 × 12 button-head screws into the two M3 inserts.</li>
-<li>Lower the tray onto the frame and fix it with 7 × M5 × 10 countersunk screws into T-nuts.</li>
-<li>Screw the four M2.5 × 20 brass standoffs into the inserts of the tray and the bridge, mount the Raspberry Pi 5 on them, and fix the power distribution board on its bridge.</li>
-<li>Fix the Orin case to the tray with 4 × M3 × 8 button-head screws.</li>
-</ol>
-<p class="hardware"><strong>Hardware.</strong> 7 × M5 × 10 countersunk (DIN 7991), 7 × M5 T-nuts; 4 × M2.5 × 20 male–female brass standoffs, 8 × M2.5 × 4 inserts, 4 × M2.5 × 6 and 4 × M2.5 × 5 button head; 4 × M3 × 8 button head; 2 × M3 × 12 button head, 2 × M3 × 5.7 inserts.</p>
-</li>
-
-<li class="assembly-step" id="step-5" data-step="front">
-<h2>Converters and front cover with the camera</h2>
-<img src="/images/primus/assembly/05-front.jpg" width="1500" height="1000" loading="lazy" alt="Step 5: the shelf with two XL4016 converters goes on the front of the frame, then the front cover carrying the RealSense camera closes the front.">
-<ol class="asm-legend"><li>Converter shelf</li><li>XL4016 converters (2)</li><li>Camera bracket</li><li>RealSense D435i</li><li>Front cover (Tampa frontal Y+)</li></ol>
-<ol class="asm-actions">
-<li>Screw the two XL4016 converters to their shelf with M3 × 6 button-head screws into the shelf inserts.</li>
-<li>Fix the shelf to the front of the frame with 4 × M5 × 10 button-head screws into T-nuts.</li>
-<li>Mount the RealSense on its bracket with 2 × M3 × 6, and the bracket on the front cover with 4 × M3 × 8 into the cover's inserts.</li>
-<li>Close the front of the body with the cover, fixing it with M5 × 10 socket-head screws into T-nuts.</li>
-</ol>
-<p class="hardware"><strong>Hardware.</strong> 12 × M5 drop-in T-nuts, 8 × M5 × 10 socket head, 4 × M5 × 10 button head (ISO 7380); 10 × M3 × 6 button head, 4 × M3 × 8 button head, 12 × M3 × 5.7 inserts.</p>
-</li>
-
-<li class="assembly-step" id="step-6" data-step="lower-frame">
-<h2>Lower frame, IMU and battery shoe</h2>
-<img src="/images/primus/assembly/06-lower-frame.jpg" width="1500" height="1000" loading="lazy" alt="Step 6: seen from below, the printed lower frame, the IMU, the battery shoe and the two lower side covers come up under the body.">
-<ol class="asm-legend"><li>Lower frame (Quadro inferior, two halves)</li><li>IMU (WitMotion WT901C)</li><li>Battery shoe (Receptor M18)</li><li>Lower side cover (X+ and X−)</li></ol>
-<ol class="asm-actions">
-<li>Turn the body over. Join the two mitred halves of the lower frame and fix it under the body.</li>
-<li>Screw the IMU to the lower frame with 2 × M3 × 8 button-head screws into inserts. Its orientation sets the robot's attitude estimate, so mount it square to the frame.</li>
-<li>Fit the battery shoe; its screws go in with the battery in step 8.</li>
-<li>Close the sides under the hip boxes with the two lower side covers, using M3 × 8 countersunk screws.</li>
-</ol>
-<p class="hardware"><strong>Hardware.</strong> 8 × M5 drop-in T-nuts; 6 × M3 × 8 countersunk, 2 × M3 × 8 button head, 8 × M3 × 5.7 inserts, 4 × M3 × 4 inserts.</p>
-</li>
-
-<li class="assembly-step" id="step-7" data-step="belly">
-<h2>Belly and retractable landing gear</h2>
-<img src="/images/primus/assembly/07-belly.jpg" width="1500" height="1000" loading="lazy" alt="Step 7: the landing-gear struts, servos and linkages go into the printed belly, and the belly moves up under the body.">
-<ol class="asm-legend"><li>Landing-gear strut (front and rear)</li><li>MG90S servo (2)</li><li>Servo horn</li><li>Rear gear crank</li><li>Tie-rod (M2, 76.5 mm)</li><li>Gear stops</li><li>TPU plugs</li><li>Belly</li></ol>
-<ol class="asm-actions">
-<li>Screw the two MG90S servos into the belly with 2 × 8 self-tapping screws.</li>
-<li>Insert the strut axles through the belly and close the insertion holes with the two TPU plugs.</li>
-<li>Connect the front strut to its servo through the horn and the 76.5 mm tie-rod, and the rear strut through the printed crank.</li>
-<li>Fix the four gear stops with M3 × 10 button-head screws into inserts; they set the end of the strut travel.</li>
-<li>Lift the finished belly under the body and fix it with 8 × M5 × 12 button-head screws into the T-nuts placed in step 2, plus the M3 countersunk screws into the lower frame.</li>
-</ol>
-<p class="hardware"><strong>Hardware.</strong> 8 × M5 × 12 button head; 4 × self-tapping 2 × 8 pan head; 4 × M3 × 10 button head, 6 × M3 × 10 countersunk, 4 × M3 × 8 countersunk, 14 × M3 × 5.7 inserts.</p>
-</li>
-
-<li class="assembly-step" id="step-8" data-step="battery">
-<h2>Battery and battery door</h2>
-<img src="/images/primus/assembly/08-battery.jpg" width="1500" height="1000" loading="lazy" alt="Step 8: the Milwaukee M18 battery slides into the front of the belly and the battery door closes over it.">
-<ol class="asm-legend"><li>Milwaukee M18 battery</li><li>Battery door</li></ol>
-<ol class="asm-actions">
-<li>Screw the battery shoe to the lower frame with 4 × M3 × 20 button-head screws.</li>
-<li>Slide the M18 battery into the shoe from the front.</li>
-<li>Press the four Ø6 × 3 magnets into the door and the belly and close the door over the battery.</li>
-</ol>
-<p class="hardware"><strong>Hardware.</strong> 4 × N52 magnets Ø6 × 3; 4 × M3 × 20 button head, 4 × M3 × 10 button head, 1 × M3 × 30 socket head, 5 × M3 × 5.7 inserts.</p>
-</li>
-
-<li class="assembly-step" id="step-9" data-step="arm-build">
-<h2>Hip arms</h2>
-<img src="/images/primus/assembly/09-arm-build.jpg" width="1500" height="1000" loading="lazy" alt="Step 9: one hip arm pulled apart into its inner aluminium plate, printed core and outer aluminium plate, with brass standoffs and screws.">
-<ol class="asm-legend"><li>Inner arm plate</li><li>Thin steel plate (Body1 in the CAD)</li><li>Arm core (ABS)</li><li>Outer arm plate</li></ol>
-<ol class="asm-actions">
-<li>Lay the inner aluminium plate down and place the printed core on it.</li>
-<li>Screw four M4 × 27 brass standoffs through the inner plate with M4 × 8 countersunk screws.</li>
-<li>Close the arm with the outer plate and the remaining M4 × 8 screws.</li>
-<li>Build four arms: two as drawn and two mirrored (upper arm espelhado).</li>
-</ol>
-<p class="hardware"><strong>Hardware, for all four arms.</strong> 16 × M4 × 27 female–female brass standoffs, 32 × M4 × 8 countersunk.</p>
-</li>
-
-<li class="assembly-step" id="step-10" data-step="arms">
-<h2>Arms on the hip actuators</h2>
-<img src="/images/primus/assembly/10-arms.jpg" width="1500" height="1000" loading="lazy" alt="Step 10: the four hip arms move onto the outputs of the hip actuators, two on each side of the body.">
-<ol class="asm-legend"><li>Hip arm (4)</li><li>Cable gland (2)</li></ol>
-<ol class="asm-actions">
-<li>Fit each arm onto the output of its hip actuator, with the mirrored arms on the opposite corners as in the drawing.</li>
-<li>Fix each arm with six M3 × 12 countersunk screws into the actuator output.</li>
-<li>Fit the two M12 × 1.5 cable glands in the hip boxes, next to the front arms.</li>
-</ol>
-<p class="hardware"><strong>Hardware.</strong> 24 × M3 × 12 countersunk; 2 × M12 × 1.5 cable glands with locknut.</p>
-</li>
-
-<li class="assembly-step" id="step-11" data-step="rear-link">
-<h2>Rear lower links</h2>
-<img src="/images/primus/assembly/11-rear-link.jpg" width="1500" height="1000" loading="lazy" alt="Step 11: the rear lower link pulled apart into two aluminium plates around a printed core.">
-<ol class="asm-legend"><li>Inner link plate</li><li>Link core with knee bearings</li><li>Outer link plate</li></ol>
-<ol class="asm-actions">
-<li>Press two 608-2RS bearings into the knee end of the printed core.</li>
-<li>Screw the M2 × 22 and M3 × 22 brass standoffs to the inner plate with M2 × 6 and M3 × 6 countersunk screws.</li>
-<li>Place the core and close the link with the outer plate. Build two links.</li>
-</ol>
-<p class="hardware"><strong>Hardware, for both links.</strong> 4 × 608-2RS bearings (8 × 22 × 7); 16 × M2 × 22 and 4 × M3 × 22 female–female brass standoffs; 32 × M2 × 6 and 8 × M3 × 6 countersunk.</p>
-</li>
-
-<li class="assembly-step" id="step-12" data-step="shin">
-<h2>Shins and wheel actuators</h2>
-<img src="/images/primus/assembly/12-shin.jpg" width="1500" height="1000" loading="lazy" alt="Step 12: the shin, made of two aluminium plates and a printed core, with the wheel actuator fixed at its lower end.">
-<ol class="asm-legend"><li>Inner shin plate</li><li>Shin core with knee bearings</li><li>Outer shin plate</li><li>Wheel actuator</li></ol>
-<ol class="asm-actions">
-<li>Build the shin like the rear link: two 608-2RS bearings in the core, standoffs on the inner plate, core, then the outer plate.</li>
-<li>Set the sixteen M3 × 6 inserts (OD 5) for the wheel actuator, eight per shin.</li>
-<li>Fix the wheel actuator to the lower end of the shin with 8 × M3 × 30 socket-head screws. This puts most of the leg's mass at the wheel. Build two shins.</li>
-</ol>
-<p class="hardware"><strong>Hardware, for both shins.</strong> 4 × 608-2RS bearings; 8 × M2 × 22 and 8 × M3 × 22 female–female standoffs; 16 × M2 × 6 and 16 × M3 × 6 countersunk; 16 × M3 × 30 socket head, 16 × M3 × 6 inserts (OD 5).</p>
-</li>
-
-<li class="assembly-step" id="step-13" data-step="wheel">
-<h2>Wheels and the closing joint</h2>
-<img src="/images/primus/assembly/13-wheel.jpg" width="1500" height="1000" loading="lazy" alt="Step 13: the 12×28×8 bearings, the wheel and its screws move onto the wheel actuator, where the rear link meets the shin.">
-<ol class="asm-legend"><li>12 × 28 × 8 bearing</li><li>Tyre</li><li>Wheel hub parts</li></ol>
-<ol class="asm-actions">
-<li>Fit the two 12 × 28 × 8 mm bearings at the wheel axle, where the rear lower link meets the shin and closes the five-bar loop.</li>
-<li>Fit the tyre on the hub and bring the wheel onto the wheel actuator.</li>
-<li>Fix the wheel and the joint with six M3 × 30 low-head screws and six M3 × 8 countersunk screws into inserts, then check that the wheel turns freely. Repeat for the other leg.</li>
-</ol>
-<p class="hardware"><strong>Hardware, for both wheels.</strong> 4 × 12 × 28 × 8 mm bearings; 12 × M3 × 30 low-head socket (DIN 7984); 12 × M3 × 8 countersunk, 12 × M3 × 5.7 inserts (OD 5).</p>
-</li>
-
-<li class="assembly-step" id="step-14" data-step="legs">
-<h2>Lower legs on the robot</h2>
-<img src="/images/primus/assembly/14-legs.jpg" width="1500" height="1000" loading="lazy" alt="Step 14: the two finished lower legs, each with its wheel, come in from the sides toward the hip arms.">
-<ol class="asm-legend"><li>Lower leg (2)</li></ol>
-<ol class="asm-actions">
-<li>Bring each lower leg to its side of the robot.</li>
-<li>Line the knee bearings of the shin up with the end of the front arm, and those of the rear link with the end of the rear arm.</li>
-</ol>
-</li>
-
-<li class="assembly-step" id="step-15" data-step="knees">
-<h2>Knee shafts</h2>
-<img src="/images/primus/assembly/15-knees.jpg" width="1500" height="1000" loading="lazy" alt="Step 15: four steel knee shafts slide in from the outside, one through each pair of arm and link ends.">
-<ol class="asm-legend"><li>Knee shaft Ø8 × 50 with two collars (4)</li></ol>
-<ol class="asm-actions">
-<li>Slide a Ø8 × 50 mm shaft through each knee: through the arm end and the two 608 bearings of the link or shin.</li>
-<li>Lock each shaft with a collar on each side, tightening the M4 set screws.</li>
-<li>Move each leg by hand through its full range. The knees are passive, so they must fold and extend freely without binding.</li>
-</ol>
-<p class="hardware"><strong>Hardware.</strong> 4 × Ø8 × 50 mm shafts, 8 × Ø8 shaft collars with M4 set screws.</p>
-</li>
-
-<li class="assembly-step" id="step-16" data-step="top">
-<h2>Top covers and lidar</h2>
-<img src="/images/primus/assembly/16-top.jpg" width="1500" height="1000" loading="lazy" alt="Step 16: the four printed top covers and the lidar come down onto the top of the body.">
-<ol class="asm-legend"><li>Top cover (4)</li><li>RPLIDAR A1</li></ol>
-<ol class="asm-actions">
-<li>Press the eight Ø10 × 3 magnets into the top covers and their seats.</li>
-<li>Screw the RPLIDAR A1 to the two front covers.</li>
-<li>Place the four covers; the magnets hold them, so the electronics stay reachable.</li>
-</ol>
-<p class="hardware"><strong>Hardware.</strong> 8 × N52 magnets Ø10 × 3; 8 × M5 × 6 button head.</p>
-</li>
-</ol>
-
-<figure class="project-figure">
-  <img src="/images/primus/assembly/17-complete.jpg" width="1500" height="1000" loading="lazy" alt="PRIMUS fully assembled, rendered from the CAD.">
-  <figcaption>The finished robot, rendered in Blender from the Fusion 360 assembly.</figcaption>
-</figure>
-
-<p>After step 16 the robot is complete. It starts parked on its landing gear, and the <a href="/portfolio/primus/#operating-primus">operating notes</a> describe how it stands up.</p>
+    <main id="main" tabindex="-1"><nav class="project-tabs" aria-label="PRIMUS pages"><a href="/portfolio/primus/">Overview</a><a href="/portfolio/primus-assembly/" aria-current="page">Build guide</a><a href="/portfolio/primus-control/">Control and learning</a><a class="project-tab-external" href="https://github.com/roandr694/PRIMUS">Code</a></nav><p class="eyebrow project-detail-category">2026 / Robotics · Build guide</p><h1 class="project-title">Building PRIMUS</h1><p class="page-intro">Thirty-four steps from loose parts to a standing robot, starting inside the actuators. Each step plays as a 3D animation built from the CAD: parts come in from where you would bring them, screws turn in under a hex key and inserts go in under the iron.</p><div class="prose project-body"><p>This guide builds PRIMUS from loose parts: first the six actuators, then the hip modules, the body, the legs and the covers. It follows the main Fusion 360 assembly part by part, in an order the parts allow: sub-assemblies are built on the bench and then joined, screws go in before the parts that would cover them, and every screw, insert and nut in the CAD has its place in a step.</p>
+<p>The 3D view beside the steps plays each step as an animation built from the CAD itself. It follows the step you are reading; select any action in a step to replay it, drag to look around, and use the buttons to pause, scrub or move between steps.</p>
+<div class="build" data-build="/files/primus/build/">
+<nav class="build-toc" aria-label="Chapters"><a href="#before">Before you start</a><a href="#actuators"><span>1</span>Actuators</a><a href="#hip"><span>2</span>Hip modules</a><a href="#body"><span>3</span>Frame and body</a><a href="#legs"><span>4</span>Legs</a><a href="#covers"><span>5</span>Covers and lidar</a><a href="#bill-of-materials">Bill of materials</a></nav>
+<div class="build-grid">
+<div class="build-flow">
+<section class="build-before" id="before"><h2>Before you start</h2><p><strong>Print the parts.</strong> The printed parts are listed in the <a href="#bill-of-materials">bill of materials</a>. The CAD assigns PETG to most of them, ABS to the arm cores, a carbon-filled PA12 to the landing-gear struts and stops, and TPU to the feet and plugs.</p><p><strong>Heat-set inserts.</strong> Brass inserts go into the printed parts with a soldering iron. Each step presses the inserts its parts need just before they are used. Press them in square to the surface with the iron at the temperature the insert maker recommends, and let the part cool before loading the thread.</p><p><strong>The actuators.</strong> PRIMUS uses actuators derived from Aaed Musa's <a href="https://github.com/aaedmusa/OpenQDD-V1">OpenQDD V1</a>, a 3D-printed quasi-direct-drive actuator with a 9:1 helical planetary gearbox. PRIMUS keeps the 9:1 ratio but uses a stronger, modified printed gearbox, a 130 kV motor and mjbots moteus-r4 drivers at 24 V. Chapter 1 builds one actuator part by part from the PRIMUS CAD.</p><p><strong>Tools.</strong> 1.3 mm hex key, 1.5 mm hex key, 2 mm hex key, 2.5 mm hex key, 3 mm hex key, 4 mm hex key, Phillips screwdriver, soldering iron with an insert tip. Glue for the magnets.</p><p><strong>Not covered yet.</strong> Wiring, cable routing and screw torques are not in the CAD, so this guide does not cover them. Where the CAD leaves something open, such as how the aluminium profiles join each other, the step says so.</p></section>
+<section class="build-chapter" id="actuators"><h2><span class="build-ch-num">1</span>Actuators</h2><p class="build-ch-intro">All six joints use the same quasi-direct-drive actuator, a modified OpenQDD with a 9:1 helical planetary gearbox and a moteus driver on the back. Build the four hip actuators and the two wheel actuators the same way up to the last step; only the way they are closed differs.</p>
+<article class="build-step" id="step-act-casing" data-step="act-casing"><header><span class="build-num">1.1</span><h3>Heat-set inserts in the motor casing</h3><button type="button" class="build-play" aria-label="Play step 1.1 in 3D">Play</button></header><p>Start with the printed motor casing lying on its front face, back side up. The two inserts on the back hold the driver bracket later.</p><ol class="build-actions"><li>Place the motor casing on the bench, back side up.</li><li>Press the two M3 heat-set inserts into the back of the casing.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Motor casing</span><span class="build-qty">×1</span></li><li><span>M3×6 heat-set insert</span><span class="build-qty">×2</span></li></ul></details><p class="build-tools"><strong>Tools</strong> soldering iron with an insert tip</p><img class="build-still" src="/images/primus/build/act-casing.jpg" width="1200" height="800" loading="lazy" alt="Step 1.1, heat-set inserts in the motor casing: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-act-stator" data-step="act-stator"><header><span class="build-num">1.2</span><h3>Stator into the casing</h3><button type="button" class="build-play" aria-label="Play step 1.2 in 3D">Play</button></header><p>Turn the casing over. The stator drops into the casing from the front, then four M4 screws through the back of the casing clamp it.</p><ol class="build-actions"><li>Turn the casing over.</li><li>Lower the stator into the casing from the front, with its leads towards the cable slot.</li><li>Turn the casing over, holding the stator in place.</li><li>Fix the stator with four M4×10 socket-head screws from the back.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Stator</span><span class="build-qty">×1</span></li><li><span>M4×10 socket-head screw</span><span class="build-qty">×4</span></li></ul></details><p class="build-tools"><strong>Tools</strong> 3 mm hex key</p><img class="build-still" src="/images/primus/build/act-stator.jpg" width="1200" height="800" loading="lazy" alt="Step 1.2, stator into the casing: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-act-rotor-sun" data-step="act-rotor-sun"><header><span class="build-num">1.3</span><h3>Sun gear on the rotor</h3><button type="button" class="build-play" aria-label="Play step 1.3 in 3D">Play</button></header><p>Build the rotor next to the casing. The 8-tooth helical sun gear bolts to the front face of the rotor with four M3×18 screws.</p><ol class="build-actions"><li>Turn the casing over.</li><li>Set the rotor on the bench, magnets down, shaft up.</li><li>Fit the sun gear onto the rotor face, lining up the four holes.</li><li>Fasten the sun gear with four M3×18 socket-head screws.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Rotor</span><span class="build-qty">×1</span></li><li><span>Sun gear (8 teeth, helical)</span><span class="build-qty">×1</span></li><li><span>M3×18 socket-head screw</span><span class="build-qty">×4</span></li></ul></details><p class="build-tools"><strong>Tools</strong> 2.5 mm hex key</p><img class="build-still" src="/images/primus/build/act-rotor-sun.jpg" width="1200" height="800" loading="lazy" alt="Step 1.3, sun gear on the rotor: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-act-rotor-in" data-step="act-rotor-in"><header><span class="build-num">1.4</span><h3>Rotor into the stator</h3><button type="button" class="build-play" aria-label="Play step 1.4 in 3D">Play</button></header><p>The rotor magnets pull hard on the stator. Hold the rotor by its rim, keep it centred and let it down slowly so the magnets do not slam onto the stator teeth.</p><ol class="build-actions"><li>Lower the rotor straight down over the stator until the shaft seats in the bearing.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul></ul></details><img class="build-still" src="/images/primus/build/act-rotor-in.jpg" width="1200" height="800" loading="lazy" alt="Step 1.4, rotor into the stator: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-act-encoder" data-step="act-encoder"><header><span class="build-num">1.5</span><h3>Encoder magnet</h3><button type="button" class="build-play" aria-label="Play step 1.5 in 3D">Play</button></header><p>Turn the motor over. The encoder magnet sits in a small holder on the end of the rotor shaft, facing the encoder chip on the driver board.</p><ol class="build-actions"><li>Turn the casing over.</li><li>Press the magnet holder onto the end of the rotor shaft.</li><li>Glue the encoder magnet into the holder.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Encoder magnet holder</span><span class="build-qty">×1</span></li><li><span>Encoder magnet</span><span class="build-qty">×1</span></li></ul></details><img class="build-still" src="/images/primus/build/act-encoder.jpg" width="1200" height="800" loading="lazy" alt="Step 1.5, encoder magnet: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-act-driver" data-step="act-driver"><header><span class="build-num">1.6</span><h3>Driver board</h3><button type="button" class="build-play" aria-label="Play step 1.6 in 3D">Play</button></header><p>The driver bracket screws to the back of the casing. The board sits on the bracket with the encoder chip over the magnet, four self-tapping screws hold it, and the cover goes over the board and its screws.</p><ol class="build-actions"><li>Place the driver bracket over the magnet.</li><li>Fix the bracket with two M3×10 screws into the inserts.</li><li>Set the driver board on the bracket, encoder side down, connectors towards the cable slot.</li><li>Fix the board to the bracket with four 3×5 self-tapping screws.</li><li>Fit the driver cover over the board.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Driver bracket</span><span class="build-qty">×1</span></li><li><span>M3×10 socket-head screw</span><span class="build-qty">×2</span></li><li><span>Driver board with encoder</span><span class="build-qty">×1</span></li><li><span>3×5 pan-head self-tapping screw</span><span class="build-qty">×4</span></li><li><span>Driver cover</span><span class="build-qty">×1</span></li></ul></details><p class="build-tools"><strong>Tools</strong> 2.5 mm hex key, Phillips screwdriver</p><img class="build-still" src="/images/primus/build/act-driver.jpg" width="1200" height="800" loading="lazy" alt="Step 1.6, driver board: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-act-carrier" data-step="act-carrier"><header><span class="build-num">1.7</span><h3>Planet carrier</h3><button type="button" class="build-play" aria-label="Play step 1.7 in 3D">Play</button></header><p>The carrier is built beside the motor. Three planet gears turn on M3×14 screws between the two halves of the carrier; the top half is the output flange that the arm or the wheel bolts to.</p><ol class="build-actions"><li>Turn the casing over.</li><li>Set the bottom half of the planet carrier on the bench.</li><li>Press three M3 inserts into the bottom half.</li><li>Lay the cover disc in its recess.</li><li>Fix the disc with three M3×6 screws.</li><li>Place the three planet gears on their bosses.</li><li>Put the top half of the carrier on the planets.</li><li>Drive the three M3×14 screws through the top half and the planets; they are the planet axles, so stop when the planets still spin freely.</li><li>Press six M3 inserts into the output flange.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Planet carrier, bottom</span><span class="build-qty">×1</span></li><li><span>M3×6 heat-set insert</span><span class="build-qty">×9</span></li><li><span>Planet carrier cover disc</span><span class="build-qty">×1</span></li><li><span>M3×6 socket-head screw</span><span class="build-qty">×3</span></li><li><span>Planet gear (28 teeth, helical)</span><span class="build-qty">×3</span></li><li><span>Planet carrier, top (output flange)</span><span class="build-qty">×1</span></li><li><span>M3×14 socket-head screw</span><span class="build-qty">×3</span></li></ul></details><p class="build-tools"><strong>Tools</strong> soldering iron with an insert tip, 2.5 mm hex key</p><img class="build-still" src="/images/primus/build/act-carrier.jpg" width="1200" height="800" loading="lazy" alt="Step 1.7, planet carrier: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-act-bearing" data-step="act-bearing"><header><span class="build-num">1.8</span><h3>Bearing housing</h3><button type="button" class="build-play" aria-label="Play step 1.8 in 3D">Play</button></header><p>The thin-section 75×95×10 bearing is a press fit in the printed housing. Push it in evenly all round; a flat plate over the bearing helps.</p><ol class="build-actions"><li>Set the bearing housing on the bench.</li><li>Press the 75×95×10 bearing into the housing.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Bearing housing</span><span class="build-qty">×1</span></li><li><span>75×95×10 thin-section bearing</span><span class="build-qty">×1</span></li></ul></details><img class="build-still" src="/images/primus/build/act-bearing.jpg" width="1200" height="800" loading="lazy" alt="Step 1.8, bearing housing: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-act-gearbox" data-step="act-gearbox"><header><span class="build-num">1.9</span><h3>Gearbox half</h3><button type="button" class="build-play" aria-label="Play step 1.9 in 3D">Play</button></header><p>The carrier goes into the bearing from the front, then the ring gear slides over the planets. Turn the carrier slightly while lowering the ring so the helical teeth engage.</p><ol class="build-actions"><li>Lower the planet carrier into the bearing.</li><li>Slide the ring gear over the planets, turning the carrier until the teeth engage.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Ring gear (internal, helical)</span><span class="build-qty">×1</span></li></ul></details><img class="build-still" src="/images/primus/build/act-gearbox.jpg" width="1200" height="800" loading="lazy" alt="Step 1.9, gearbox half: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-act-wheel-close" data-step="act-wheel-close"><header><span class="build-num">1.10</span><h3>Closing a wheel actuator</h3><button type="button" class="build-play" aria-label="Play step 1.10 in 3D">Play</button></header><p>The two wheel actuators close with eight M3×30 screws into inserts in the casing flange. Their output flange is the wheel hub. The four hip actuators stay open: they are closed through the hip plates in the next chapter.</p><ol class="build-actions"><li>Press eight M3 inserts into the front flange of the casing.</li><li>Lower the gearbox half onto the motor, turning it slightly so the sun gear slides between the planets.</li><li>Close the actuator with eight M3×30 socket-head screws.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Motor casing</span><span class="build-qty">×1</span></li><li><span>Encoder magnet holder</span><span class="build-qty">×1</span></li><li><span>Sun gear (8 teeth, helical)</span><span class="build-qty">×1</span></li><li><span>Planet gear (28 teeth, helical)</span><span class="build-qty">×3</span></li><li><span>M3×6 heat-set insert</span><span class="build-qty">×11</span></li><li><span>Stator</span><span class="build-qty">×1</span></li><li><span>Rotor</span><span class="build-qty">×1</span></li><li><span>M3×10 socket-head screw</span><span class="build-qty">×2</span></li><li><span>M3×18 socket-head screw</span><span class="build-qty">×4</span></li><li><span>M4×10 socket-head screw</span><span class="build-qty">×4</span></li><li><span>Encoder magnet</span><span class="build-qty">×1</span></li><li><span>Driver cover</span><span class="build-qty">×2</span></li><li><span>Driver bracket</span><span class="build-qty">×1</span></li><li><span>Driver board with encoder</span><span class="build-qty">×1</span></li><li><span>3×5 pan-head self-tapping screw</span><span class="build-qty">×4</span></li><li><span>Bearing housing</span><span class="build-qty">×1</span></li><li><span>Planet carrier, bottom</span><span class="build-qty">×1</span></li><li><span>Planet carrier cover disc</span><span class="build-qty">×1</span></li><li><span>Planet carrier, top (output flange)</span><span class="build-qty">×1</span></li><li><span>75×95×10 thin-section bearing</span><span class="build-qty">×1</span></li><li><span>M3×6 socket-head screw</span><span class="build-qty">×2</span></li><li><span>M3×14 socket-head screw</span><span class="build-qty">×3</span></li><li><span>M3×6 heat-set insert (Ø5)</span><span class="build-qty">×8</span></li><li><span>M3×30 socket-head screw (ISO 4762)</span><span class="build-qty">×8</span></li></ul></details><p class="build-tools"><strong>Tools</strong> soldering iron with an insert tip, 2.5 mm hex key</p><img class="build-still" src="/images/primus/build/act-wheel-close.jpg" width="1200" height="800" loading="lazy" alt="Step 1.10, closing a wheel actuator: exploded view of the parts this step adds."></article>
+</section>
+<section class="build-chapter" id="hip"><h2><span class="build-ch-num">2</span>Hip modules</h2><p class="build-ch-intro">Each side of the body carries a hip module: one printed hip plate with the front and rear hip actuators. The two modules are mirror images.</p>
+<article class="build-step" id="step-hip-xp-front" data-step="hip-xp-front"><header><span class="build-num">2.1</span><h3>Front hip actuator on the X+ hip plate</h3><button type="button" class="build-play" aria-label="Play step 2.1 in 3D">Play</button></header><p>The hip plate is clamped between the gearbox half and the motor half of each actuator. Four M4×45 screws go in from the outside of the plate, through the ring gear and the bearing housing, into nuts held in the motor casing.</p><ol class="build-actions"><li>Stand the hip plate on the bench, outer face away from you.</li><li>Drop four M4 nuts into the hex pockets of the motor casing.</li><li>Seat the gearbox half in the front bore of the plate from the inside; the output flange shows on the outside.</li><li>Bring the motor half up behind it so the sun gear enters the planets.</li><li>Clamp the stack with four M4×45 socket-head screws from the outside of the plate.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Hip actuator, motor half</span><span class="build-qty">×1</span></li><li><span>Hip plate</span><span class="build-qty">×1</span></li><li><span>M4 hex nut (ISO 4032)</span><span class="build-qty">×4</span></li><li><span>Hip actuator, gearbox half</span><span class="build-qty">×1</span></li><li><span>M4×45 socket-head screw</span><span class="build-qty">×4</span></li></ul></details><p class="build-tools"><strong>Tools</strong> 3 mm hex key</p><img class="build-still" src="/images/primus/build/hip-xp-front.jpg" width="1200" height="800" loading="lazy" alt="Step 2.1, front hip actuator on the x+ hip plate: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-hip-xp-rear" data-step="hip-xp-rear"><header><span class="build-num">2.2</span><h3>Rear hip actuator and cable gland</h3><button type="button" class="build-play" aria-label="Play step 2.2 in 3D">Play</button></header><p>The rear actuator goes into the second bore the same way. The cable gland in the plate carries the motor cables out of the body.</p><ol class="build-actions"><li>Drop four M4 nuts into the motor casing.</li><li>Seat the gearbox half in the rear bore.</li><li>Bring the motor half up behind it.</li><li>Clamp it with four M4×45 screws.</li><li>Push the M12 cable gland through the plate from the outside.</li><li>Tighten the lock nut on the inside.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Hip actuator, motor half</span><span class="build-qty">×1</span></li><li><span>M4 hex nut (ISO 4032)</span><span class="build-qty">×4</span></li><li><span>Hip actuator, gearbox half</span><span class="build-qty">×1</span></li><li><span>M4×45 socket-head screw</span><span class="build-qty">×4</span></li><li><span>M12 cable gland</span><span class="build-qty">×1</span></li></ul></details><p class="build-tools"><strong>Tools</strong> 3 mm hex key</p><img class="build-still" src="/images/primus/build/hip-xp-rear.jpg" width="1200" height="800" loading="lazy" alt="Step 2.2, rear hip actuator and cable gland: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-hip-xm-front" data-step="hip-xm-front"><header><span class="build-num">2.3</span><h3>Front hip actuator on the X− hip plate</h3><button type="button" class="build-play" aria-label="Play step 2.3 in 3D">Play</button></header><p>The hip plate is clamped between the gearbox half and the motor half of each actuator. Four M4×45 screws go in from the outside of the plate, through the ring gear and the bearing housing, into nuts held in the motor casing.</p><ol class="build-actions"><li>Stand the hip plate on the bench, outer face away from you.</li><li>Drop four M4 nuts into the hex pockets of the motor casing.</li><li>Seat the gearbox half in the front bore of the plate from the inside; the output flange shows on the outside.</li><li>Bring the motor half up behind it so the sun gear enters the planets.</li><li>Clamp the stack with four M4×45 socket-head screws from the outside of the plate.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Hip actuator, motor half</span><span class="build-qty">×1</span></li><li><span>Hip plate</span><span class="build-qty">×1</span></li><li><span>M4 hex nut (ISO 4032)</span><span class="build-qty">×4</span></li><li><span>Hip actuator, gearbox half</span><span class="build-qty">×1</span></li><li><span>M4×45 socket-head screw</span><span class="build-qty">×4</span></li></ul></details><p class="build-tools"><strong>Tools</strong> 3 mm hex key</p><img class="build-still" src="/images/primus/build/hip-xm-front.jpg" width="1200" height="800" loading="lazy" alt="Step 2.3, front hip actuator on the x− hip plate: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-hip-xm-rear" data-step="hip-xm-rear"><header><span class="build-num">2.4</span><h3>Rear hip actuator and cable gland</h3><button type="button" class="build-play" aria-label="Play step 2.4 in 3D">Play</button></header><p>The rear actuator goes into the second bore the same way. The cable gland in the plate carries the motor cables out of the body.</p><ol class="build-actions"><li>Drop four M4 nuts into the motor casing.</li><li>Seat the gearbox half in the rear bore.</li><li>Bring the motor half up behind it.</li><li>Clamp it with four M4×45 screws.</li><li>Push the M12 cable gland through the plate from the outside.</li><li>Tighten the lock nut on the inside.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Hip actuator, motor half</span><span class="build-qty">×1</span></li><li><span>M4 hex nut (ISO 4032)</span><span class="build-qty">×4</span></li><li><span>Hip actuator, gearbox half</span><span class="build-qty">×1</span></li><li><span>M4×45 socket-head screw</span><span class="build-qty">×4</span></li><li><span>M12 cable gland</span><span class="build-qty">×1</span></li></ul></details><p class="build-tools"><strong>Tools</strong> 3 mm hex key</p><img class="build-still" src="/images/primus/build/hip-xm-rear.jpg" width="1200" height="800" loading="lazy" alt="Step 2.4, rear hip actuator and cable gland: exploded view of the parts this step adds."></article>
+</section>
+<section class="build-chapter" id="body"><h2><span class="build-ch-num">3</span>Frame and body</h2><p class="build-ch-intro">The body is a frame of 20×20 aluminium profile. The hip modules bolt to its sides, the electronics sit inside on printed trays, and the belly with the retractable landing gear hangs underneath.</p>
+<article class="build-step" id="step-body-frame" data-step="body-frame"><header><span class="build-num">3.1</span><h3>Frame</h3><button type="button" class="build-play" aria-label="Play step 3.1 in 3D">Play</button></header><p>Cut the profiles to length and lay out the two side ladders, the front rails, the middle rail and the two long rear rails. The corner joints between profiles are not modelled in the CAD yet; join them with 2020 corner brackets or tapped ends, and keep the channel positions used by the T-nuts in the later steps free.</p><ol class="build-actions"><li>Lay out the X− side ladder: two 140 mm rails and two 53 mm posts.</li><li>Lay out the X+ side ladder.</li><li>Join the ladders with the two 228 mm front rails.</li><li>Add the 188 mm middle rail on top.</li><li>Add the two 400 mm rear rails.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>20×20 aluminium profile</span><span class="build-qty">×13</span></li></ul></details><img class="build-still" src="/images/primus/build/body-frame.jpg" width="1200" height="800" loading="lazy" alt="Step 3.1, frame: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-body-hips" data-step="body-hips"><header><span class="build-num">3.2</span><h3>Hip modules on the frame</h3><button type="button" class="build-play" aria-label="Play step 3.2 in 3D">Play</button></header><p>Each hip module hangs on the outside of a side ladder from six M5×10 screws into drop-in T-nuts. Put the T-nuts in the outer channels first; drop-in nuts can also go in after the profiles are joined.</p><ol class="build-actions"><li>Drop six M5 T-nuts into the outer channels of the X+ ladder.</li><li>Hang the X+ hip module on the frame.</li><li>Fix it with six M5×10 socket-head screws.</li><li>Drop six T-nuts into the X− ladder.</li><li>Hang the X− hip module on the other side.</li><li>Fix it with six M5×10 screws.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>M5 drop-in T-nut (2020)</span><span class="build-qty">×12</span></li><li><span>Hip actuator, motor half</span><span class="build-qty">×4</span></li><li><span>Hip actuator, gearbox half</span><span class="build-qty">×4</span></li><li><span>M4×45 socket-head screw</span><span class="build-qty">×16</span></li><li><span>M4 hex nut (ISO 4032)</span><span class="build-qty">×16</span></li><li><span>Hip plate</span><span class="build-qty">×2</span></li><li><span>M12 cable gland</span><span class="build-qty">×2</span></li><li><span>M5×10 socket-head screw (ISO 4762)</span><span class="build-qty">×12</span></li></ul></details><p class="build-tools"><strong>Tools</strong> 4 mm hex key</p><img class="build-still" src="/images/primus/build/body-hips.jpg" width="1200" height="800" loading="lazy" alt="Step 3.2, hip modules on the frame: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-body-top" data-step="body-top"><header><span class="build-num">3.3</span><h3>Upper supports and cover catches</h3><button type="button" class="build-play" aria-label="Play step 3.3 in 3D">Play</button></header><p>The top covers are held by magnets. Their catches are the steel washers under eight M5×6 button-head screws on the top rails.</p><ol class="build-actions"><li>Fit the two upper supports on the middle rail.</li><li>Drop T-nuts into the top channels.</li><li>Lay an M5 washer over each T-nut.</li><li>Screw the washers down with M5×6 button-head screws.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Upper support</span><span class="build-qty">×1</span></li><li><span>M5 drop-in T-nut (2020)</span><span class="build-qty">×8</span></li><li><span>M5 washer 5.3×15×1.2</span><span class="build-qty">×8</span></li><li><span>M5×6 button-head screw (ISO 7380)</span><span class="build-qty">×8</span></li></ul></details><p class="build-tools"><strong>Tools</strong> 3 mm hex key</p><img class="build-still" src="/images/primus/build/body-top.jpg" width="1200" height="800" loading="lazy" alt="Step 3.3, upper supports and cover catches: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-body-electronics" data-step="body-electronics"><header><span class="build-num">3.4</span><h3>Electronics tray</h3><button type="button" class="build-play" aria-label="Play step 3.4 in 3D">Play</button></header><p>The two printed trays carry the Jetson Orin Nano on one side and the Raspberry Pi 5 with the power distribution board on the other. Fit the Orin on the bench, because its screws go in from underneath, and press the inserts into the power-board bridge there too. The tray goes into the body before the Raspberry Pi, because the Pi covers two of the tray screws.</p><ol class="build-actions"><li>Set the Raspberry Pi half of the tray on the bench.</li><li>Press the two M3 inserts for the joint and the four M2.5 inserts for the Pi.</li><li>Set the Orin half next to it.</li><li>Join the two halves with two M3×12 screws.</li><li>Set the Jetson Orin Nano on its tray.</li><li>Fix it from underneath with four M3×8 screws.</li><li>Fit the small Orin support.</li><li>Set the power-board bridge on the bench.</li><li>Press four M2.5 inserts into the bridge.</li><li>Drop seven T-nuts into the lower rails.</li><li>Lower the tray into the body.</li><li>Fix the tray with seven M5×10 countersunk screws.</li><li>Set the Raspberry Pi 5 on its side of the tray.</li><li>Screw four M2.5×20 standoffs through the Pi into the inserts.</li><li>Set the bridge on the standoffs.</li><li>Fix it with four M2.5×6 screws. One of them ends up under the power board, so do this before the board goes on.</li><li>Set the power distribution board on the bridge.</li><li>Fix it with four M2.5×5 screws.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Electronics tray (RPi side)</span><span class="build-qty">×1</span></li><li><span>M3×5.7 heat-set insert (Ø4.6)</span><span class="build-qty">×2</span></li><li><span>M2.5×4 heat-set insert (Ø3.5)</span><span class="build-qty">×8</span></li><li><span>Electronics tray (Orin side)</span><span class="build-qty">×1</span></li><li><span>M3×12 button-head screw (ISO 7380)</span><span class="build-qty">×2</span></li><li><span>Jetson Orin Nano developer kit</span><span class="build-qty">×1</span></li><li><span>M3×8 button-head screw (ISO 7380)</span><span class="build-qty">×4</span></li><li><span>Small Orin support</span><span class="build-qty">×1</span></li><li><span>Power-board bridge</span><span class="build-qty">×1</span></li><li><span>M5 drop-in T-nut (2020)</span><span class="build-qty">×7</span></li><li><span>M5×10 countersunk screw (DIN 7991)</span><span class="build-qty">×7</span></li><li><span>Raspberry Pi 5</span><span class="build-qty">×1</span></li><li><span>M2.5×20 brass standoff (male-female)</span><span class="build-qty">×4</span></li><li><span>M2.5×6 button-head screw (ISO 7380)</span><span class="build-qty">×4</span></li><li><span>Power distribution board</span><span class="build-qty">×1</span></li><li><span>M2.5×5 button-head screw (ISO 7380)</span><span class="build-qty">×4</span></li></ul></details><p class="build-tools"><strong>Tools</strong> soldering iron with an insert tip, 2 mm hex key, 3 mm hex key, 1.5 mm hex key</p><img class="build-still" src="/images/primus/build/body-electronics.jpg" width="1200" height="800" loading="lazy" alt="Step 3.4, electronics tray: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-body-shelf" data-step="body-shelf"><header><span class="build-num">3.5</span><h3>Converter shelf</h3><button type="button" class="build-play" aria-label="Play step 3.5 in 3D">Play</button></header><p>The two XL4016 buck converters sit on a printed shelf at the front of the body.</p><ol class="build-actions"><li>Set the converter shelf on the bench.</li><li>Press eight M3 inserts into the shelf.</li><li>Place the two converters.</li><li>Fix them with eight M3×6 button-head screws.</li><li>Drop four T-nuts into the front and middle rails.</li><li>Lower the shelf into the front of the body.</li><li>Fix it with four M5×10 button-head screws.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Converter shelf</span><span class="build-qty">×1</span></li><li><span>M3×5.7 heat-set insert (Ø4.6)</span><span class="build-qty">×8</span></li><li><span>XL4016 buck converters (2×)</span><span class="build-qty">×1</span></li><li><span>M3×6 button-head screw (ISO 7380)</span><span class="build-qty">×8</span></li><li><span>M5 drop-in T-nut (2020)</span><span class="build-qty">×4</span></li><li><span>M5×10 button-head screw (ISO 7380)</span><span class="build-qty">×4</span></li></ul></details><p class="build-tools"><strong>Tools</strong> soldering iron with an insert tip, 2 mm hex key, 3 mm hex key</p><img class="build-still" src="/images/primus/build/body-shelf.jpg" width="1200" height="800" loading="lazy" alt="Step 3.5, converter shelf: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-body-front" data-step="body-front"><header><span class="build-num">3.6</span><h3>Camera and front cover</h3><button type="button" class="build-play" aria-label="Play step 3.6 in 3D">Play</button></header><p>The RealSense D435i looks out through the window in the front cover. Its bracket screws to the back of the cover, so build cover, bracket and camera together and fit them as one piece.</p><ol class="build-actions"><li>Set the front cover on the bench.</li><li>Press four M3 inserts into the back of the cover.</li><li>Put the camera in the window.</li><li>Place the bracket behind the camera.</li><li>Fix the camera to the bracket with two M3×6 screws.</li><li>Fix the bracket to the cover with four M3×8 screws.</li><li>Drop four T-nuts into the front rails.</li><li>Offer the cover up to the front of the frame.</li><li>Fix it with four M5×10 socket-head screws.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Front cover</span><span class="build-qty">×1</span></li><li><span>M3×5.7 heat-set insert (Ø4.6)</span><span class="build-qty">×4</span></li><li><span>Intel RealSense D435i</span><span class="build-qty">×1</span></li><li><span>RealSense bracket</span><span class="build-qty">×1</span></li><li><span>M3×6 button-head screw (ISO 7380)</span><span class="build-qty">×2</span></li><li><span>M3×8 button-head screw (ISO 7380)</span><span class="build-qty">×4</span></li><li><span>M5 drop-in T-nut (2020)</span><span class="build-qty">×4</span></li><li><span>M5×10 socket-head screw (ISO 4762)</span><span class="build-qty">×4</span></li></ul></details><p class="build-tools"><strong>Tools</strong> soldering iron with an insert tip, 2 mm hex key, 4 mm hex key</p><img class="build-still" src="/images/primus/build/body-front.jpg" width="1200" height="800" loading="lazy" alt="Step 3.6, camera and front cover: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-body-lower" data-step="body-lower"><header><span class="build-num">3.7</span><h3>Lower frame and IMU</h3><button type="button" class="build-play" aria-label="Play step 3.7 in 3D">Play</button></header><p>Turn the body upside down. The IMU sits on the inside of the lower frame, so fit it while the frame is still on the bench, then put the frame on the bottom rails.</p><ol class="build-actions"><li>Turn the body over.</li><li>Set the two lower-frame halves on the bench, inside face up.</li><li>Press two M3 inserts for the IMU.</li><li>Stick the IMU on its foam pad.</li><li>Fix the IMU with two M3×8 screws.</li><li>Drop T-nuts into the bottom channels of the lower rails.</li><li>Turn the lower frame over onto the bottom rails.</li><li>Fix it with eight M5×12 button-head screws.</li><li>Press four M3×4 inserts across the joint between the halves.</li><li>Join the halves with four M3×8 countersunk screws.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Lower frame, X− half</span><span class="build-qty">×1</span></li><li><span>Lower frame, X+ half</span><span class="build-qty">×1</span></li><li><span>M3×5.7 heat-set insert (Ø4.6)</span><span class="build-qty">×2</span></li><li><span>IMU (WitMotion WT901C-TTL)</span><span class="build-qty">×1</span></li><li><span>M3×8 button-head screw (ISO 7380)</span><span class="build-qty">×2</span></li><li><span>M5 drop-in T-nut (2020)</span><span class="build-qty">×8</span></li><li><span>M5×12 button-head screw (ISO 7380)</span><span class="build-qty">×8</span></li><li><span>M3×4 heat-set insert (Ø4.6)</span><span class="build-qty">×4</span></li><li><span>M3×8 countersunk screw (DIN 7991)</span><span class="build-qty">×4</span></li></ul></details><p class="build-tools"><strong>Tools</strong> soldering iron with an insert tip, 2 mm hex key, 3 mm hex key</p><img class="build-still" src="/images/primus/build/body-lower.jpg" width="1200" height="800" loading="lazy" alt="Step 3.7, lower frame and imu: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-body-shoe" data-step="body-shoe"><header><span class="build-num">3.8</span><h3>Battery shoe and side covers</h3><button type="button" class="build-play" aria-label="Play step 3.8 in 3D">Play</button></header><p>The printed shoe takes the M18 battery. The two lower side covers close the gaps beside it. In the current model the two front shoe screws sit under the battery rail with nothing open above them, so they cannot be driven once the shoe is in place. Press all four inserts, fit the two rear screws, and leave the front pair out until the shoe gets access holes through the rail.</p><ol class="build-actions"><li>Press four M3 inserts for the shoe.</li><li>Place the battery shoe.</li><li>Fix it with the two rear M3×20 button-head screws.</li><li>Press the inserts for the side covers and the belly.</li><li>Place the two lower side covers.</li><li>Fix each cover with three M3×8 countersunk screws.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>M3×5.7 heat-set insert (Ø4.6)</span><span class="build-qty">×16</span></li><li><span>M18 battery shoe</span><span class="build-qty">×1</span></li><li><span>M3×20 button-head screw (ISO 7380)</span><span class="build-qty">×2</span></li><li><span>Lower side cover</span><span class="build-qty">×2</span></li><li><span>M3×8 countersunk screw (DIN 7991)</span><span class="build-qty">×6</span></li></ul></details><p class="build-tools"><strong>Tools</strong> soldering iron with an insert tip, 2 mm hex key</p><img class="build-still" src="/images/primus/build/body-shoe.jpg" width="1200" height="800" loading="lazy" alt="Step 3.8, battery shoe and side covers: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-body-gear" data-step="body-gear"><header><span class="build-num">3.9</span><h3>Belly and landing gear</h3><button type="button" class="build-play" aria-label="Play step 3.9 in 3D">Play</button></header><p>Turn the body back over. The landing gear lives in the printed belly: two MG90S servos fold two pairs of legs on D-shafts. Build it in the belly on the bench; the legs stand the belly on the bench while you work.</p><ol class="build-actions"><li>Turn the body over.</li><li>Set the belly shell on the bench.</li><li>Put the two servos in their pockets.</li><li>Fix each servo with two 2×8 self-tapping screws.</li><li>Hold the four legs in place inside the belly.</li><li>Slide the 98 mm D-shaft through the side of the belly and the front legs.</li><li>Slide the 55 mm D-shaft through the rear legs.</li><li>Fit the front lever with its ball stud on the front shaft.</li><li>Fit the slotted lever on the rear shaft.</li><li>Fit the horn with its ball stud on the front servo.</li><li>Fit the crank and its dowel pin on the rear servo; the pin runs in the slotted lever.</li><li>Clip the tie rod between the two ball studs.</li><li>Press the inserts into the four gear stops.</li><li>Hold the stops under the belly.</li><li>Fix the stops with eight M3×10 screws from inside.</li><li>Push the TPU plugs into the shaft holes.</li><li>Push the TPU feet onto the legs.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Belly shell</span><span class="build-qty">×1</span></li><li><span>MG90S servo</span><span class="build-qty">×2</span></li><li><span>2×8 pan-head self-tapping screw</span><span class="build-qty">×4</span></li><li><span>Front gear leg</span><span class="build-qty">×2</span></li><li><span>Rear gear leg</span><span class="build-qty">×2</span></li><li><span>Ø5 D-shaft, 98 mm</span><span class="build-qty">×1</span></li><li><span>Ø5 D-shaft, 55 mm</span><span class="build-qty">×1</span></li><li><span>Front lever</span><span class="build-qty">×1</span></li><li><span>M2 ball stud</span><span class="build-qty">×2</span></li><li><span>Rear slotted lever</span><span class="build-qty">×1</span></li><li><span>Servo horn</span><span class="build-qty">×1</span></li><li><span>Horn screw</span><span class="build-qty">×1</span></li><li><span>Rear crank</span><span class="build-qty">×1</span></li><li><span>Ø3×8 dowel pin</span><span class="build-qty">×1</span></li><li><span>M2 threaded rod</span><span class="build-qty">×1</span></li><li><span>M2 ball ends (2×)</span><span class="build-qty">×1</span></li><li><span>M3×5.7 heat-set insert (Ø4.6)</span><span class="build-qty">×8</span></li><li><span>Gear stop</span><span class="build-qty">×4</span></li><li><span>M3×10 button-head screw (ISO 7380)</span><span class="build-qty">×8</span></li><li><span>TPU plug</span><span class="build-qty">×1</span></li><li><span>TPU foot</span><span class="build-qty">×4</span></li></ul></details><p class="build-tools"><strong>Tools</strong> Phillips screwdriver, soldering iron with an insert tip, 2 mm hex key</p><img class="build-still" src="/images/primus/build/body-gear.jpg" width="1200" height="800" loading="lazy" alt="Step 3.9, belly and landing gear: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-body-belly" data-step="body-belly"><header><span class="build-num">3.10</span><h3>Belly on the body</h3><button type="button" class="build-play" aria-label="Play step 3.10 in 3D">Play</button></header><p>The belly hangs from the lower frame on six M3×10 screws. Reach them from inside through the battery opening at the front.</p><ol class="build-actions"><li>Set the body down onto the belly.</li><li>Fix the belly with six M3×10 countersunk screws from inside.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>M3×10 countersunk screw (DIN 7991)</span><span class="build-qty">×6</span></li></ul></details><p class="build-tools"><strong>Tools</strong> 2 mm hex key</p><img class="build-still" src="/images/primus/build/body-belly.jpg" width="1200" height="800" loading="lazy" alt="Step 3.10, belly on the body: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-body-battery" data-step="body-battery"><header><span class="build-num">3.11</span><h3>Battery and nose</h3><button type="button" class="build-play" aria-label="Play step 3.11 in 3D">Play</button></header><p>The M18 battery slides into the shoe from the front. The nose closes over it on two pairs of magnets and one M3 screw underneath. In the current model the pocket around that screw is about 15 mm deep for a 30 mm screw, so the screw cannot go in straight with the nose on. Press its insert now and let the magnets hold the nose until the pocket is opened up.</p><ol class="build-actions"><li>Slide the M18 battery into the shoe until it clicks.</li><li>Glue the four Ø6 magnets into the nose and the belly.</li><li>Press the insert for the nose screw.</li><li>Close the nose. The magnets pull it into place.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>M18 5 Ah battery</span><span class="build-qty">×1</span></li><li><span>N52 magnet Ø6×3</span><span class="build-qty">×4</span></li><li><span>M3×5.7 heat-set insert (Ø4.6)</span><span class="build-qty">×1</span></li><li><span>Belly nose (battery door)</span><span class="build-qty">×1</span></li></ul></details><p class="build-tools"><strong>Tools</strong> soldering iron with an insert tip</p><img class="build-still" src="/images/primus/build/body-battery.jpg" width="1200" height="800" loading="lazy" alt="Step 3.11, battery and nose: exploded view of the parts this step adds."></article>
+</section>
+<section class="build-chapter" id="legs"><h2><span class="build-ch-num">4</span>Legs</h2><p class="build-ch-intro">Each leg is a five-bar linkage: the two hip actuators drive an upper arm each; a shin hangs from the front arm and carries the wheel actuator, and a rear link from the rear arm closes the loop at the wheel axle.</p>
+<article class="build-step" id="step-leg-arm" data-step="leg-arm"><header><span class="build-num">4.1</span><h3>Upper arm</h3><button type="button" class="build-play" aria-label="Play step 4.1 in 3D">Play</button></header><p>An arm is two aluminium plates on four M4×27 brass standoffs, with a printed core between them. Build all four the same way; two of them are mirror images.</p><ol class="build-actions"><li>Lay the inner plate on the bench.</li><li>Stand the four brass standoffs on it.</li><li>Turn the plate over, holding the standoffs.</li><li>Fix them with four M4×8 countersunk screws.</li><li>Turn it back.</li><li>Fit the printed core between the standoffs.</li><li>Lay the thin steel plate and the outer plate on top.</li><li>Fix the outer plate with four M4×8 screws.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Inner arm plate</span><span class="build-qty">×1</span></li><li><span>M4×27 brass standoff</span><span class="build-qty">×4</span></li><li><span>M4×8 countersunk screw (DIN 7991)</span><span class="build-qty">×8</span></li><li><span>Arm core</span><span class="build-qty">×1</span></li><li><span>Thin steel plate</span><span class="build-qty">×1</span></li><li><span>Outer arm plate</span><span class="build-qty">×1</span></li></ul></details><p class="build-tools"><strong>Tools</strong> 2.5 mm hex key</p><img class="build-still" src="/images/primus/build/leg-arm.jpg" width="1200" height="800" loading="lazy" alt="Step 4.1, upper arm: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-leg-arms-on" data-step="leg-arms-on"><header><span class="build-num">4.2</span><h3>Arms on the hip actuators</h3><button type="button" class="build-play" aria-label="Play step 4.2 in 3D">Play</button></header><p>Each arm bolts to an actuator output flange with six M3×12 countersunk screws, reached through the holes in the outer plate. The hip motors turn freely while unpowered, so you can swing the arms to line up the holes.</p><ol class="build-actions"><li>Offer the arm up to the front X+ actuator.</li><li>Fix it with six M3×12 countersunk screws.</li><li>Fit the other three arms the same way.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>M3×12 countersunk screw (DIN 7991)</span><span class="build-qty">×24</span></li><li><span>M4×27 brass standoff</span><span class="build-qty">×12</span></li><li><span>M4×8 countersunk screw (DIN 7991)</span><span class="build-qty">×24</span></li><li><span>Thin steel plate</span><span class="build-qty">×3</span></li><li><span>Outer arm plate</span><span class="build-qty">×3</span></li><li><span>Inner arm plate</span><span class="build-qty">×3</span></li><li><span>Arm core</span><span class="build-qty">×3</span></li></ul></details><p class="build-tools"><strong>Tools</strong> 2 mm hex key</p><img class="build-still" src="/images/primus/build/leg-arms-on.jpg" width="1200" height="800" loading="lazy" alt="Step 4.2, arms on the hip actuators: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-leg-link" data-step="leg-link"><header><span class="build-num">4.3</span><h3>Rear link</h3><button type="button" class="build-play" aria-label="Play step 4.3 in 3D">Play</button></header><p>The rear link is two aluminium plates on brass standoffs around a printed core. Two 608 bearings in the top end ride on the knee shaft; the bottom end clamps the wheel axle.</p><ol class="build-actions"><li>Lay the inner plate on the bench.</li><li>Place the two halves of the printed core.</li><li>Press the two 608 bearings into the top end.</li><li>Stand the brass standoffs in their holes.</li><li>Put the axle spacer in the bottom end.</li><li>Lay the outer plate on top.</li><li>Screw the outer plate down: M2×6 into the M2 standoffs, M3×6 into the M3 ones.</li><li>Turn the link over.</li><li>Screw the inner plate down the same way.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Rear link plate</span><span class="build-qty">×2</span></li><li><span>Rear link core</span><span class="build-qty">×1</span></li><li><span>608-2RS bearing (8×22×7)</span><span class="build-qty">×2</span></li><li><span>M2×22 brass standoff</span><span class="build-qty">×8</span></li><li><span>M3×22 brass standoff</span><span class="build-qty">×2</span></li><li><span>Axle spacer</span><span class="build-qty">×1</span></li><li><span>M2×6 countersunk screw (DIN 7991)</span><span class="build-qty">×16</span></li><li><span>M3×6 countersunk screw (DIN 7991)</span><span class="build-qty">×4</span></li></ul></details><p class="build-tools"><strong>Tools</strong> 1.3 mm hex key, 2 mm hex key</p><img class="build-still" src="/images/primus/build/leg-link.jpg" width="1200" height="800" loading="lazy" alt="Step 4.3, rear link: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-leg-shin" data-step="leg-shin"><header><span class="build-num">4.4</span><h3>Shin and wheel actuator</h3><button type="button" class="build-play" aria-label="Play step 4.4 in 3D">Play</button></header><p>The shin has the same plate-and-core construction. The wheel actuator sits across the bottom end on two of the M3 standoffs.</p><ol class="build-actions"><li>Lay the inner shin plate on the bench.</li><li>Place the printed core.</li><li>Press the two 608 bearings into the top end.</li><li>Fit the wheel actuator, output facing out.</li><li>Stand the brass standoffs, two of them through the actuator ears.</li><li>Lay the outer plate on top.</li><li>Screw the outer plate down.</li><li>Turn the shin over.</li><li>Screw the inner plate down.</li><li>Turn it back, actuator output up.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Shin plate</span><span class="build-qty">×2</span></li><li><span>Shin core</span><span class="build-qty">×1</span></li><li><span>608-2RS bearing (8×22×7)</span><span class="build-qty">×2</span></li><li><span>M3×30 socket-head screw (ISO 4762)</span><span class="build-qty">×8</span></li><li><span>M3×6 heat-set insert (Ø5)</span><span class="build-qty">×8</span></li><li><span>Wheel actuator, motor half</span><span class="build-qty">×1</span></li><li><span>Wheel actuator, gearbox half</span><span class="build-qty">×1</span></li><li><span>M3×22 brass standoff</span><span class="build-qty">×4</span></li><li><span>M2×22 brass standoff</span><span class="build-qty">×4</span></li><li><span>M3×6 countersunk screw (DIN 7991)</span><span class="build-qty">×8</span></li><li><span>M2×6 countersunk screw (DIN 7991)</span><span class="build-qty">×8</span></li></ul></details><p class="build-tools"><strong>Tools</strong> 2 mm hex key, 1.3 mm hex key</p><img class="build-still" src="/images/primus/build/leg-shin.jpg" width="1200" height="800" loading="lazy" alt="Step 4.4, shin and wheel actuator: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-leg-wheel" data-step="leg-wheel"><header><span class="build-num">4.5</span><h3>Wheel</h3><button type="button" class="build-play" aria-label="Play step 4.5 in 3D">Play</button></header><p>The rim bolts to the actuator output flange. The axle runs through two 6001 bearings, one in the rim and one in the outer hub, so the rear link can turn freely about the wheel axis.</p><ol class="build-actions"><li>Set the rim on the bench.</li><li>Press six M3 inserts into the rim.</li><li>Press a 6001 bearing into the rim hub.</li><li>Stretch the tyre over the rim.</li><li>Drop the inner axle collar into the output flange.</li><li>Set the wheel on the output flange.</li><li>Lay the cover disc on the rim.</li><li>Fix it with six M3×8 countersunk screws.</li><li>Press the second bearing into the outer hub and set hub and shim on the disc.</li><li>Clamp hub, disc and rim to the output flange with six M3×30 low-head screws.</li><li>Slide the axle through both bearings into the inner collar.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Rim</span><span class="build-qty">×1</span></li><li><span>M3×5.7 heat-set insert (Ø5)</span><span class="build-qty">×6</span></li><li><span>6001 bearing (12×28×8)</span><span class="build-qty">×2</span></li><li><span>Tyre</span><span class="build-qty">×1</span></li><li><span>Inner axle collar</span><span class="build-qty">×1</span></li><li><span>Rim cover disc</span><span class="build-qty">×1</span></li><li><span>M3×8 countersunk screw (DIN 7991)</span><span class="build-qty">×6</span></li><li><span>Outer bearing hub</span><span class="build-qty">×1</span></li><li><span>Shim</span><span class="build-qty">×1</span></li><li><span>M3×30 low-head screw (DIN 7984)</span><span class="build-qty">×6</span></li><li><span>Wheel axle (Ø12)</span><span class="build-qty">×1</span></li></ul></details><p class="build-tools"><strong>Tools</strong> soldering iron with an insert tip, 2 mm hex key</p><img class="build-still" src="/images/primus/build/leg-wheel.jpg" width="1200" height="800" loading="lazy" alt="Step 4.5, wheel: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-leg-close" data-step="leg-close"><header><span class="build-num">4.6</span><h3>Closing the leg</h3><button type="button" class="build-play" aria-label="Play step 4.6 in 3D">Play</button></header><p>The bottom end of the rear link goes over the outer end of the axle. With the link fitted, shin, wheel and link form one lower leg that you offer up to the two arms.</p><ol class="build-actions"><li>Fit the rear link over the axle end.</li><li>Offer the lower leg up to the two arms on the X+ side, knee holes lined up.</li><li>Push an Ø8×50 knee shaft through each knee: arm plates and link bearings.</li><li>Slide a shaft collar onto each shaft end.</li><li>Tighten the collar set screws.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Ø8×50 knee shaft</span><span class="build-qty">×2</span></li><li><span>Ø8 shaft collar</span><span class="build-qty">×4</span></li><li><span>M4×4 set screw</span><span class="build-qty">×4</span></li></ul></details><p class="build-tools"><strong>Tools</strong> 2 mm hex key</p><img class="build-still" src="/images/primus/build/leg-close.jpg" width="1200" height="800" loading="lazy" alt="Step 4.6, closing the leg: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-leg-other" data-step="leg-other"><header><span class="build-num">4.7</span><h3>The other leg</h3><button type="button" class="build-play" aria-label="Play step 4.7 in 3D">Play</button></header><p>Build the second lower leg as a mirror image and fit it to the X− arms the same way.</p><ol class="build-actions"><li>Offer up the X− lower leg.</li><li>Fit the two knee shafts with their collars.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Tyre</span><span class="build-qty">×1</span></li><li><span>Rim cover disc</span><span class="build-qty">×1</span></li><li><span>Outer bearing hub</span><span class="build-qty">×1</span></li><li><span>Rim</span><span class="build-qty">×1</span></li><li><span>Shim</span><span class="build-qty">×1</span></li><li><span>Wheel axle (Ø12)</span><span class="build-qty">×1</span></li><li><span>Axle spacer</span><span class="build-qty">×1</span></li><li><span>Inner axle collar</span><span class="build-qty">×1</span></li><li><span>Rear link plate</span><span class="build-qty">×2</span></li><li><span>M2×6 countersunk screw (DIN 7991)</span><span class="build-qty">×24</span></li><li><span>M3×6 countersunk screw (DIN 7991)</span><span class="build-qty">×12</span></li><li><span>Rear link core</span><span class="build-qty">×1</span></li><li><span>M2×22 brass standoff</span><span class="build-qty">×12</span></li><li><span>608-2RS bearing (8×22×7)</span><span class="build-qty">×4</span></li><li><span>M3×22 brass standoff</span><span class="build-qty">×6</span></li><li><span>6001 bearing (12×28×8)</span><span class="build-qty">×2</span></li><li><span>Shin plate</span><span class="build-qty">×2</span></li><li><span>Shin core</span><span class="build-qty">×1</span></li><li><span>M3×30 socket-head screw (ISO 4762)</span><span class="build-qty">×8</span></li><li><span>M3×6 heat-set insert (Ø5)</span><span class="build-qty">×8</span></li><li><span>M3×8 countersunk screw (DIN 7991)</span><span class="build-qty">×6</span></li><li><span>M3×5.7 heat-set insert (Ø5)</span><span class="build-qty">×6</span></li><li><span>M3×30 low-head screw (DIN 7984)</span><span class="build-qty">×6</span></li><li><span>Wheel actuator, motor half</span><span class="build-qty">×1</span></li><li><span>Wheel actuator, gearbox half</span><span class="build-qty">×1</span></li><li><span>Ø8×50 knee shaft</span><span class="build-qty">×2</span></li><li><span>Ø8 shaft collar</span><span class="build-qty">×4</span></li><li><span>M4×4 set screw</span><span class="build-qty">×4</span></li></ul></details><img class="build-still" src="/images/primus/build/leg-other.jpg" width="1200" height="800" loading="lazy" alt="Step 4.7, the other leg: exploded view of the parts this step adds."></article>
+</section>
+<section class="build-chapter" id="covers"><h2><span class="build-ch-num">5</span>Covers and lidar</h2><p class="build-ch-intro">The covers close the body and the lidar goes on top.</p>
+<article class="build-step" id="step-cov-rear" data-step="cov-rear"><header><span class="build-num">5.1</span><h3>Rear covers</h3><button type="button" class="build-play" aria-label="Play step 5.1 in 3D">Play</button></header><p>The back of the body closes with two cover halves that seat on six printed magnet holders on the rear rails.</p><ol class="build-actions"><li>Fit the six magnet holders on the rear rails.</li><li>Fit the two rear cover halves.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>Rear magnet holder</span><span class="build-qty">×6</span></li><li><span>Rear cover half</span><span class="build-qty">×2</span></li></ul></details><img class="build-still" src="/images/primus/build/cov-rear.jpg" width="1200" height="800" loading="lazy" alt="Step 5.1, rear covers: exploded view of the parts this step adds."></article>
+<article class="build-step" id="step-cov-top" data-step="cov-top"><header><span class="build-num">5.2</span><h3>Top covers and lidar</h3><button type="button" class="build-play" aria-label="Play step 5.2 in 3D">Play</button></header><p>Glue two Ø10 magnets into each top cover. The covers then snap onto the steel washers on the top rails and lift off for access.</p><ol class="build-actions"><li>Glue two Ø10×3 magnets into each top cover.</li><li>Snap the four top covers on.</li><li>Set the RPLIDAR A1 in its place on top.</li></ol><details class="build-parts"><summary>Parts in this step</summary><ul><li><span>N52 magnet Ø10×3</span><span class="build-qty">×8</span></li><li><span>Top cover, front</span><span class="build-qty">×2</span></li><li><span>Top cover, rear</span><span class="build-qty">×2</span></li><li><span>RPLIDAR A1</span><span class="build-qty">×1</span></li></ul></details><img class="build-still" src="/images/primus/build/cov-top.jpg" width="1200" height="800" loading="lazy" alt="Step 5.2, top covers and lidar: exploded view of the parts this step adds."></article>
+</section>
+</div>
+<aside class="build-player" aria-label="3D assembly animation"><div class="bp-head"><span class="bp-step">Loading…</span></div><div class="bp-stage"><p class="bp-caption" hidden></p><p class="bp-status" hidden></p></div><div class="bp-controls"><button type="button" data-bp="prev" aria-label="Previous step"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M19 5l-10 7 10 7z"/></svg></button><button type="button" data-bp="play" aria-label="Play" data-state="paused"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5l12 7-12 7z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3v14H7zM14 5h3v14h-3z"/></svg></button><button type="button" data-bp="next" aria-label="Next step"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5v14M5 5l10 7-10 7z"/></svg></button><input type="range" data-bp="scrub" min="0" max="10" step="0.01" value="0" aria-label="Position in this step"><select data-bp="speed" aria-label="Playback speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select><button type="button" data-bp="camera" aria-pressed="true" aria-label="Automatic camera" title="Automatic camera"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h4l2-3h6l2 3h4v11H3z"/><circle cx="12" cy="13" r="3.5"/></svg></button></div></aside>
+</div>
+</div>
 <script type="importmap">{"imports":{"three":"/assets/vendor/three/three.module.min.js","three/addons/":"/assets/vendor/three/addons/"}}</script>
-<script type="module" src="/assets/primus-assembly.js?v=hq1"></script>
+<script type="module" src="/assets/primus-build.js?v=b1"></script>
 
 <h2>Bill of materials</h2>
-<p>Quantities are for one robot and come from the Fusion 360 assembly. The parts inside the actuators are covered by the OpenQDD bill of materials.</p>
+<p>Quantities are for one robot and come from the Fusion 360 assembly.</p>
 <h3>Printed parts</h3>
 <table>
 <thead>
@@ -381,7 +222,1027 @@
 <tr>
 <td>Printed parts of the six actuators</td>
 <td align="right"></td>
-<td>see OpenQDD</td>
+<td>see below</td>
+</tr>
+</tbody></table>
+<h3>Inside each actuator</h3>
+<p>Counted from one hip actuator in the CAD. The wheel actuators use the same parts, with a wheel-hub output flange instead of the arm flange and eight M3 inserts in the casing flange. The parts that close the actuators are listed with the hip modules (4 × M4×45 screws and 4 × M4 nuts per hip actuator) and with the wheel actuators (8 × M3×30 screws and 8 × M3 inserts each).</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th align="right">Qty per actuator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3×5 pan-head self-tapping screw</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>75×95×10 thin-section bearing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Bearing housing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver board with encoder</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver bracket</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver cover</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Encoder magnet</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Encoder magnet holder</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Motor casing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier cover disc</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier, bottom</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier, top (output flange)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet gear (28 teeth, helical)</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>Ring gear (internal, helical)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Rotor</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Stator</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Sun gear (8 teeth, helical)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>M3×10 socket-head screw</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>M3×14 socket-head screw</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>M3×18 socket-head screw</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>M3×6 heat-set insert</td>
+<td align="right">11</td>
+</tr>
+<tr>
+<td>M3×6 socket-head screw</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>M4×10 socket-head screw</td>
+<td align="right">4</td>
+</tr>
+</tbody></table>
+<h3>Inside each actuator</h3>
+<p>Counted from one hip actuator in the CAD. The wheel actuators use the same parts, with a wheel-hub output flange instead of the arm flange and eight M3 inserts in the casing flange. The parts that close the actuators are listed with the hip modules (4 × M4×45 screws and 4 × M4 nuts per hip actuator) and with the wheel actuators (8 × M3×30 screws and 8 × M3 inserts each).</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th align="right">Qty per actuator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Bearing housing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver board with encoder</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver bracket</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver cover</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Encoder magnet</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Encoder magnet holder</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Motor casing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier cover disc</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier, bottom</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier, top (output flange)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet gear (28 teeth, helical)</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>Ring gear (internal, helical)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Rotor</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Stator</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Sun gear (8 teeth, helical)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>3×5 pan-head self-tapping screw</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>75×95×10 thin-section bearing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>M3×10 socket-head screw</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>M3×14 socket-head screw</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>M3×18 socket-head screw</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>M3×6 heat-set insert</td>
+<td align="right">11</td>
+</tr>
+<tr>
+<td>M3×6 socket-head screw</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>M4×10 socket-head screw</td>
+<td align="right">4</td>
+</tr>
+</tbody></table>
+<h3>Inside each actuator</h3>
+<p>Counted from one hip actuator in the CAD. The wheel actuators use the same parts, with a wheel-hub output flange instead of the arm flange and eight M3 inserts in the casing flange. The parts that close the actuators are listed with the hip modules (4 × M4×45 screws and 4 × M4 nuts per hip actuator) and with the wheel actuators (8 × M3×30 screws and 8 × M3 inserts each).</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th align="right">Qty per actuator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Bearing housing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver board with encoder</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver bracket</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver cover</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Encoder magnet</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Encoder magnet holder</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Motor casing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier cover disc</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier, bottom</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier, top (output flange)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet gear (28 teeth, helical)</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>Ring gear (internal, helical)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Rotor</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Stator</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Sun gear (8 teeth, helical)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>3×5 pan-head self-tapping screw</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>75×95×10 thin-section bearing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>M3×10 socket-head screw</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>M3×14 socket-head screw</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>M3×18 socket-head screw</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>M3×6 heat-set insert</td>
+<td align="right">11</td>
+</tr>
+<tr>
+<td>M3×6 socket-head screw</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>M4×10 socket-head screw</td>
+<td align="right">4</td>
+</tr>
+</tbody></table>
+<h3>Inside each actuator</h3>
+<p>Counted from one hip actuator in the CAD. The wheel actuators use the same parts, with a wheel-hub output flange instead of the arm flange and eight M3 inserts in the casing flange. The parts that close the actuators are listed with the hip modules (4 × M4×45 screws and 4 × M4 nuts per hip actuator) and with the wheel actuators (8 × M3×30 screws and 8 × M3 inserts each).</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th align="right">Qty per actuator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Bearing housing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver board with encoder</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver bracket</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver cover</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Encoder magnet</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Encoder magnet holder</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Motor casing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier cover disc</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier, bottom</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier, top (output flange)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet gear (28 teeth, helical)</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>Ring gear (internal, helical)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Rotor</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Stator</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Sun gear (8 teeth, helical)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>3×5 pan-head self-tapping screw</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>75×95×10 thin-section bearing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>M3×10 socket-head screw</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>M3×14 socket-head screw</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>M3×18 socket-head screw</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>M3×6 heat-set insert</td>
+<td align="right">11</td>
+</tr>
+<tr>
+<td>M3×6 socket-head screw</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>M4×10 socket-head screw</td>
+<td align="right">4</td>
+</tr>
+</tbody></table>
+<h3>Inside each actuator</h3>
+<p>Counted from one hip actuator in the CAD. The wheel actuators use the same parts, with a wheel-hub output flange instead of the arm flange and eight M3 inserts in the casing flange. The parts that close the actuators are listed with the hip modules (4 × M4×45 screws and 4 × M4 nuts per hip actuator) and with the wheel actuators (8 × M3×30 screws and 8 × M3 inserts each).</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th align="right">Qty per actuator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Bearing housing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver board with encoder</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver bracket</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver cover</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Encoder magnet</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Encoder magnet holder</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Motor casing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier cover disc</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier, bottom</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier, top (output flange)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet gear (28 teeth, helical)</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>Ring gear (internal, helical)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Rotor</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Stator</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Sun gear (8 teeth, helical)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>3×5 pan-head self-tapping screw</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>75×95×10 thin-section bearing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>M3×10 socket-head screw</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>M3×14 socket-head screw</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>M3×18 socket-head screw</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>M3×6 heat-set insert</td>
+<td align="right">11</td>
+</tr>
+<tr>
+<td>M3×6 socket-head screw</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>M4×10 socket-head screw</td>
+<td align="right">4</td>
+</tr>
+</tbody></table>
+<h3>Inside each actuator</h3>
+<p>Counted from one hip actuator in the CAD. The wheel actuators use the same parts, with a wheel-hub output flange instead of the arm flange and eight M3 inserts in the casing flange. The parts that close the actuators are listed with the hip modules (4 × M4×45 screws and 4 × M4 nuts per hip actuator) and with the wheel actuators (8 × M3×30 screws and 8 × M3 inserts each).</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th align="right">Qty per actuator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Bearing housing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver board with encoder</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver bracket</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver cover</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Encoder magnet</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Encoder magnet holder</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Motor casing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier cover disc</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier, bottom</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier, top (output flange)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet gear (28 teeth, helical)</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>Ring gear (internal, helical)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Rotor</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Stator</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Sun gear (8 teeth, helical)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>3×5 pan-head self-tapping screw</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>75×95×10 thin-section bearing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>M3×10 socket-head screw</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>M3×14 socket-head screw</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>M3×18 socket-head screw</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>M3×6 heat-set insert</td>
+<td align="right">11</td>
+</tr>
+<tr>
+<td>M3×6 socket-head screw</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>M4×10 socket-head screw</td>
+<td align="right">4</td>
+</tr>
+</tbody></table>
+<h3>Inside each actuator</h3>
+<p>Counted from one hip actuator in the CAD. The wheel actuators use the same parts, with a wheel-hub output flange instead of the arm flange and eight M3 inserts in the casing flange. The parts that close the actuators are listed with the hip modules (4 × M4×45 screws and 4 × M4 nuts per hip actuator) and with the wheel actuators (8 × M3×30 screws and 8 × M3 inserts each).</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th align="right">Qty per actuator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Bearing housing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver board with encoder</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver bracket</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver cover</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Encoder magnet</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Encoder magnet holder</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Motor casing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier cover disc</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier, bottom</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier, top (output flange)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet gear (28 teeth, helical)</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>Ring gear (internal, helical)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Rotor</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Stator</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Sun gear (8 teeth, helical)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>3×5 pan-head self-tapping screw</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>75×95×10 thin-section bearing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>M3×10 socket-head screw</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>M3×14 socket-head screw</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>M3×18 socket-head screw</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>M3×6 heat-set insert</td>
+<td align="right">11</td>
+</tr>
+<tr>
+<td>M3×6 socket-head screw</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>M4×10 socket-head screw</td>
+<td align="right">4</td>
+</tr>
+</tbody></table>
+<h3>Inside each actuator</h3>
+<p>Counted from one hip actuator in the CAD. The wheel actuators use the same parts, with a wheel-hub output flange instead of the arm flange and eight M3 inserts in the casing flange. The parts that close the actuators are listed with the hip modules (4 × M4×45 screws and 4 × M4 nuts per hip actuator) and with the wheel actuators (8 × M3×30 screws and 8 × M3 inserts each).</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th align="right">Qty per actuator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Bearing housing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver board with encoder</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver bracket</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver cover</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Encoder magnet</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Encoder magnet holder</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Motor casing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier cover disc</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier, bottom</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier, top (output flange)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet gear (28 teeth, helical)</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>Ring gear (internal, helical)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Rotor</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Stator</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Sun gear (8 teeth, helical)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>3×5 pan-head self-tapping screw</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>75×95×10 thin-section bearing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>M3×10 socket-head screw</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>M3×14 socket-head screw</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>M3×18 socket-head screw</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>M3×6 heat-set insert</td>
+<td align="right">11</td>
+</tr>
+<tr>
+<td>M3×6 socket-head screw</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>M4×10 socket-head screw</td>
+<td align="right">4</td>
+</tr>
+</tbody></table>
+<h3>Inside each actuator</h3>
+<p>Counted from one hip actuator in the CAD. The wheel actuators use the same parts, with a wheel-hub output flange instead of the arm flange and eight M3 inserts in the casing flange. The parts that close the actuators are listed with the hip modules (4 × M4×45 screws and 4 × M4 nuts per hip actuator) and with the wheel actuators (8 × M3×30 screws and 8 × M3 inserts each).</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th align="right">Qty per actuator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Bearing housing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver board with encoder</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver bracket</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver cover</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Encoder magnet</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Encoder magnet holder</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Motor casing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier cover disc</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier, bottom</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier, top (output flange)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet gear (28 teeth, helical)</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>Ring gear (internal, helical)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Rotor</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Stator</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Sun gear (8 teeth, helical)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>3×5 pan-head self-tapping screw</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>75×95×10 thin-section bearing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>M3×10 socket-head screw</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>M3×14 socket-head screw</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>M3×18 socket-head screw</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>M3×6 heat-set insert</td>
+<td align="right">11</td>
+</tr>
+<tr>
+<td>M3×6 socket-head screw</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>M4×10 socket-head screw</td>
+<td align="right">4</td>
+</tr>
+</tbody></table>
+<h3>Inside each actuator</h3>
+<p>Counted from one hip actuator in the CAD. The wheel actuators use the same parts, with a wheel-hub output flange instead of the arm flange and eight M3 inserts in the casing flange. The parts that close the actuators are listed with the hip modules (4 × M4×45 screws and 4 × M4 nuts per hip actuator) and with the wheel actuators (8 × M3×30 screws and 8 × M3 inserts each).</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th align="right">Qty per actuator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Bearing housing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver board with encoder</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver bracket</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Driver cover</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Encoder magnet</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Encoder magnet holder</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Motor casing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier cover disc</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier, bottom</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet carrier, top (output flange)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Planet gear (28 teeth, helical)</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>Ring gear (internal, helical)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Rotor</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Stator</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Sun gear (8 teeth, helical)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>3×5 pan-head self-tapping screw</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>75×95×10 thin-section bearing</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>M3×10 socket-head screw</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>M3×14 socket-head screw</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>M3×18 socket-head screw</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>M3×6 heat-set insert</td>
+<td align="right">11</td>
+</tr>
+<tr>
+<td>M3×6 socket-head screw</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>M4×10 socket-head screw</td>
+<td align="right">4</td>
 </tr>
 </tbody></table>
 <h3>Aluminium</h3>

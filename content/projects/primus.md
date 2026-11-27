@@ -1,5 +1,11 @@
 PRIMUS stands for Parallel-linkage Robot with Integrated Mobility and Underactuated Stabilization. It is a wheel-legged biped that I designed in Fusion 360 and built. Each leg is a closed five-bar linkage driven by two hip actuators, with a wheel at the foot. The robot balances on its two wheels like an inverted pendulum and uses its legs to change ride height, keep the body level and absorb rough ground.
 
+<div class="primus-cards">
+<a href="#primus-3d"><img src="/images/primus/model-card.jpg" width="352" height="264" alt="PRIMUS rendered from its CAD model" loading="lazy"><strong>Explore the 3D model</strong><span>Every part of the CAD, posed with the real leg kinematics.</span></a>
+<a href="/portfolio/primus-assembly/"><img src="/images/primus/build/act-carrier.jpg" width="352" height="264" alt="An exploded step of the actuator build: the planet carrier beside the motor casing" loading="lazy"><strong>Build guide</strong><span>Thirty-four animated steps, from inside the actuators to the finished robot.</span></a>
+<a href="/portfolio/primus-control/"><img src="/images/primus/control/pole-and-gain.svg" width="352" height="264" alt="Charts of the controller's unstable pole and gain against leg length" loading="lazy"><strong>Control and learning</strong><span>The controller's equations and the reinforcement-learning experiments.</span></a>
+</div>
+
 The model below is the CAD assembly as the simulator sees it, link by link. The leg slider drives the real five-bar geometry, so the knees and wheels move the way they do on the robot.
 
 <figure class="project-figure primus-viewer" id="primus-3d" data-models="/files/primus/model/">
@@ -107,7 +113,7 @@ The robot starts parked on its landing gear and stands up by itself.
 
 ## Building one
 
-The [assembly guide](/portfolio/primus-assembly/) walks through the build in sixteen steps, from the aluminium frame to the knee shafts and the top covers, with exploded views rendered from the Fusion 360 assembly and a full bill of materials. It is also available [as a PDF](/files/primus/primus-assembly-guide.pdf). The CAD-derived meshes, the simulator and the controller are in the [PRIMUS repository](https://github.com/roandr694/PRIMUS).
+The [build guide](/portfolio/primus-assembly/) takes PRIMUS from loose parts to a standing robot in thirty-four steps, starting with the inside of the actuators. Each step plays as a 3D animation generated from the Fusion 360 assembly, in an order the parts allow, and the page ends with the full bill of materials. It is also available [as a PDF](/files/primus/primus-assembly-guide.pdf). The CAD-derived meshes, the simulator and the controller are in the [PRIMUS repository](https://github.com/roandr694/PRIMUS).
 
 ## Status
 
