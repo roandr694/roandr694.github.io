@@ -39,7 +39,7 @@ function profileLink(url, label, icon) {
  return `<a class="profile-link profile-link-${icon}" href="${escape(url)}"${icon === 'resume' ? ' type="application/pdf"' : ''}><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${profileIcons[icon]}</svg>${escape(label)}</a>`;
 }
 
-function layout({ title, path, active = 'about', body, description = profile.description, math = false }) {
+function layout({ title, path, active = 'about', body, description = profile.description, math = false, wide = false }) {
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -62,7 +62,7 @@ function layout({ title, path, active = 'about', body, description = profile.des
     <a class="wordmark" href="/">${escape(profile.name)}</a>
     <nav aria-label="Main navigation">${[['about', '/', 'About'], ['projects', '/portfolio/', 'Projects'], ['writing', '/writing/', 'Writing']].map(([id, url, label]) => `<a href="${escape(url)}"${id === 'resume' ? ' type="application/pdf"' : ''}${active === id ? ' aria-current="page"' : ''}>${label}</a>`).join('')}</nav>
   </div></header>
-  <div class="page-grid">
+  <div class="page-grid${wide ? ' page-wide' : ''}">
     <aside class="profile" aria-label="Profile">
       <a class="monogram" href="/" aria-label="${escape(profile.name)} home">${escape(profile.initials)}</a>
       <h2>${escape(profile.name)}</h2>
@@ -86,7 +86,8 @@ function projectResource(resource) {
 function projectList(items) {
   return `<div class="project-list">${items.map(p => {
     const url = p.slug ? `/portfolio/${p.slug}/` : p.url;
-    const resources = [...(p.slug ? [{ label: 'Project notes', url }] : []), ...(p.links || [])];
+    const children = p.slug ? projects.filter(child => child.parent === p.slug).map(child => ({ label: child.tab || child.title, url: `/portfolio/${child.slug}/` })) : [];
+    const resources = [...(p.slug ? [{ label: 'Project notes', url }] : []), ...children, ...(p.links || [])];
     const media = p.media?.video
       ? `<video class="project-thumbnail" controls playsinline preload="none" poster="${escape(p.media.image)}" aria-label="${escape(p.title)} demonstration"><source src="${escape(p.media.video)}">${link(p.media.video, 'Watch demonstration')}</video>`
       : p.media?.image
@@ -113,10 +114,10 @@ for (const file of ['build/three.module.min.js', 'build/three.core.min.js', 'LIC
 }
 await writeFile('dist/.nojekyll', '');
 const pages = [];
-async function page(path, title, body, active, description, math = false) {
+async function page(path, title, body, active, description, math = false, wide = false) {
   const target = path.endsWith('.html') ? `dist${path}` : `dist${path}index.html`;
   await mkdir(target.substring(0, target.lastIndexOf('/')), { recursive: true });
-  await writeFile(target, layout({ title, path, body, active, description, math }));
+  await writeFile(target, layout({ title, path, body, active, description, math, wide }));
   if (path !== '/404.html') pages.push(path);
 }
 const postDate = value => new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).format(new Date(value));
@@ -137,7 +138,10 @@ for (const project of projects) {
   const parent = project.parent && projects.find(item => item.slug === project.parent);
   if (project.parent && !parent) throw new Error(`Unknown parent project ${project.parent}`);
   const back = parent ? `<a class="back-link" href="/portfolio/${escape(parent.slug)}/">Back to ${escape(parent.title.split(',')[0])}</a>` : '<a class="back-link" href="/portfolio/">Back to projects</a>';
-  await page(`/portfolio/${project.slug}/`, project.title, `${back}<p class="eyebrow project-detail-category">${escape(project.year)} / ${escape(project.category)}</p><h1 class="project-title">${escape(project.title)}</h1>${credits}${headerLinks}${project.lead ? `<p class="page-intro">${escape(project.lead)}</p>` : ''}${figure}<div class="prose project-body">${await markdown(`content/projects/${project.slug}.md`)}</div>`, 'projects', project.summary, project.math === true);
+  const familyRoot = parent || project;
+  const family = [familyRoot, ...projects.filter(item => item.parent === familyRoot.slug)];
+  const tabs = family.length > 1 ? `<nav class="project-tabs" aria-label="${escape(familyRoot.title.split(',')[0])} pages">${family.map(item => `<a href="/portfolio/${escape(item.slug)}/"${item === project ? ' aria-current="page"' : ''}>${escape(item.tab || item.title)}</a>`).join('')}${(familyRoot.links || []).filter(r => r.kind === 'repository').map(r => `<a class="project-tab-external" href="${escape(r.url)}">Code</a>`).join('')}</nav>` : '';
+  await page(`/portfolio/${project.slug}/`, project.title, `${tabs ? '' : back}${tabs}<p class="eyebrow project-detail-category">${escape(project.year)} / ${escape(project.category)}</p><h1 class="project-title">${escape(project.title)}</h1>${credits}${headerLinks}${project.lead ? `<p class="page-intro">${escape(project.lead)}</p>` : ''}${figure}<div class="prose project-body">${await markdown(`content/projects/${project.slug}.md`)}</div>`, 'projects', project.summary, project.math === true, project.layout === 'wide');
 }
 await page('/404.html', 'Page not found', '<p class="eyebrow">404</p><h1>Page not found</h1><p class="page-intro">This page may have moved. <a href="/">Return to the homepage</a> or <a href="/portfolio/">explore my projects</a>.</p>', '');
 for (const alias of ['/about/', '/about.html', '/resume/', '/cv/']) {
