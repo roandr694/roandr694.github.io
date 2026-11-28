@@ -1,74 +1,98 @@
-## Why did this curve win?
+## What makes a reference hard to follow?
 
-The peak arrives early, yet this schedule wins among the feasible candidates the solver evaluated. To see why, start with the actual score from the seven-hour simulation. The solver minimizes the sum of three terms.
-
-$$
-\underbrace{3.268}_{\text{tracking error}}+
-\underbrace{0.400}_{\text{four events}}+
-\underbrace{0.531}_{\text{curve movement}}
-\approx 4.199
-$$
-
-Peak timing has no separate penalty. Moving a peak closer to its target helps only if the improvement outweighs the error introduced elsewhere on the curve. The blue line below shows where the winning schedule gained and lost ground against the orange target.
+I started with a seven-hour reference curve drawn as a set of points. The reference is flat between 1.5 and 2 hours, when the model allows no new input. The simulated concentration rises through that interval and reaches its maximum at 2 hours and 5 minutes. The target reaches its maximum at 3 hours and 30 minutes. That gap captures the design problem. I choose the inputs. Their timing and the stored mass determine the trajectory.
 
 <figure class="project-figure">
-  <a href="/images/nightcurve/trajectory.webp"><img src="/images/nightcurve/trajectory.webp" width="1440" height="960" alt="The orange target peaks at hour 3.5. The blue simulated median peaks near hour 2, falls and rises again. Its shaded percentile band widens toward hour 7."></a>
-  <figcaption>A seven-hour run using the default synthetic profile and the Standard search preset. The target stays flat through the last two hours, while the simulated median rises and then falls. The blue band spans the 10th to 90th percentile at each minute across the sampled model parameters.</figcaption>
+  <a href="/images/nightcurve/tracking-result.webp"><img src="/images/nightcurve/tracking-result.webp" width="1376" height="680" alt="A dashed target peaks at hour 3.5. The simulated median peaks shortly after the no-input interval from 1.5 to 2 hours. A shaded band shows pointwise uncertainty."></a>
+  <figcaption>Output from the Swift solver for a synthetic seven-hour case using the Standard preset. The shaded interval on the time axis disables new inputs. The green band spans the 10th to 90th percentile at each simulated minute.</figcaption>
 </figure>
 
-## Drawing the problem
+## Modeling the system forward
 
-In the editor, you drag points to set the target at particular times. You also divide the timeline into phases. In the example below, the target stays level between hours 1.5 and 2, and the middle phase allows no new input. The model still has ethanol moving from the stomach into circulation during that interval. Holding the orange line level on screen is easy. Finding a schedule whose simulated response does the same is harder.
+My case study uses blood alcohol concentration (BAC) as the output of a nonlinear pharmacokinetic model. Time is measured in hours and the state records mass in grams. For an event that delivers mass $G_i$ over $d_i$ hours, its input $u_i(t)$ is $G_i/d_i$ while that event is active and zero otherwise. I gave each event its own stomach compartment $S_i$ so that two events can have different rates of absorption even after both inputs have ended.
 
 <figure class="project-figure">
-  <a href="/images/nightcurve/editor.webp"><img src="/images/nightcurve/editor.webp" width="1322" height="716" loading="lazy" alt="NightCurve’s browser editor shows seven draggable target points across a timeline, with a flat segment over the half-hour phase marked zero."></a>
-  <figcaption>The target editor in the local browser app. The circles are editable anchors. Shaded regions show where the rules for the search change.</figcaption>
+  <a href="/images/nightcurve/compartment-model.webp"><img src="/images/nightcurve/compartment-model.webp" width="1376" height="688" loading="lazy" alt="Two separate stomach compartments feed circulation after first-pass loss. The food buffer slows absorption. Circulation determines the modeled concentration and loses mass through elimination."></a>
+  <figcaption>Two events shown schematically. The implementation adds one stomach state per scheduled event and shares the circulating mass and food buffer within each simulated subject.</figcaption>
 </figure>
 
-## From a schedule to a trajectory
-
-NightCurve solves the problem in both directions. The forward calculation takes a schedule and predicts a curve. The inverse calculation starts with the desired curve and calls the forward calculation many times, changing the schedule between calls. The delay visible in the figure comes from the forward model's internal state.
-
-For event $i$, let $S_i$ be the grams still in the stomach, $u_i$ the input rate in grams per hour and $a_i$ the absorption rate per hour. In the model, $a_i$ depends on the event and the food buffer. The rate of transfer out of that compartment is $a_i S_i$. Let $B$ be the mass in circulation and $f$ the fraction lost on first pass. The two mass balances are
+Absorption moves mass out of $S_i$ at a rate $a_iS_i$. The baseline absorption constant is $k_{a,i}$. I divide it by $1+\alpha F$ to slow absorption when the food buffer $F$ is large. The buffer itself decays at rate $k_F$. This gives two coupled equations.
 
 $$
-\frac{dS_i}{dt}=u_i-a_i S_i
+\frac{dS_i}{dt}=u_i(t)-a_i S_i,
+\qquad a_i=\frac{k_{a,i}}{1+\alpha F}.
 $$
 
 $$
-\frac{dB}{dt}=(1-f)\sum_i a_i S_i-E(C).
+\frac{dF}{dt}=-k_F F.
 $$
 
-Concentration $C$ is circulating mass divided by distribution volume. The elimination rate is $E(C)=V_{\max} C/(K_m+C)$, where $V_{\max}$ is the limiting rate and $K_m$ is the concentration at half that rate. This gives the inverse problem a memory. Setting every input rate to zero during the middle phase leaves the absorption terms active, so the simulated curve can keep rising. The Swift backend integrates these equations with fourth-order Runge–Kutta steps.
-
-## What counts as a better fit?
-
-Each candidate is simulated with a shared set of parameter draws. The engine stratifies each uncertain parameter's distribution before sampling, so a finite ensemble covers both central and tail values. At each output minute it sorts the simulated concentrations to obtain the median and upper percentile. Using the same draws for competing schedules makes their scores comparable.
-
-Write $m_j$ for the median BAC at minute $j$ and $r_j$ for the target interpolated between the drawn anchors. Both use the chart's percent units, so a gap from 0.04 to 0.05 gives a scaled error $e_j=100(m_j-r_j)$ of magnitude one. With target weights $w_j$ and time measured in hours, the engine integrates the weighted squared error by the trapezoidal rule. For feasible schedules its objective is
+A fraction $f$ is removed on first pass, before the absorbed mass reaches circulation. Circulating mass $B$ divided by apparent distribution volume $V_d$ gives concentration $C$ in grams per liter. The published curves use $b=C/10$ in BAC percent. I model elimination with a saturating rate $E(C)$, where $V_{\max}$ is the maximum elimination rate and $K_m$ is the concentration at which it reaches half that rate.
 
 $$
-J=\int w(t)e(t)^2\,dt+0.1N+0.05\sum_j 100\lvert m_{j+1}-m_j\rvert .
+\frac{dB}{dt}=(1-f)\sum_i a_iS_i-E(C),
+\qquad E(C)=\frac{V_{\max}C}{K_m+C}.
 $$
 
-Here $N$ counts events. The last term measures the total movement of the median, including every rise and fall. Suppose a candidate adds one event and leaves that total movement unchanged. Its integrated tracking error must fall by more than 0.1 to improve its score. In the seven-hour run above, the tracking term was 3.268, four events contributed 0.400, and curve movement added about 0.531. The final score was 4.199.
+Concentration rises whenever absorption into circulation exceeds elimination, even when every $u_i$ is zero. A flat segment needs those two rates to balance throughout the interval. That is why picking an input by looking only at the target at that minute can give the wrong intuition.
 
-## How the backend searches and decides
+### A closed-form check before running the search
 
-A candidate combines discrete choices, such as which item to use in a phase, with continuous choices about timing and amount. The engine decodes a bounded vector into events that fit the phase rules without overlapping. A small change to the vector can switch an event on or change its type. NightCurve uses a derivative-free cross-entropy search so it can compare these alternatives by simulating them.
+With no further absorption, I can separate the elimination equation and integrate from a starting BAC $b_0$ down to a positive endpoint $b_T$. The time estimate is
 
-The first generation includes several starting schedules. In each round the engine ranks a population by score, then moves the sampling mean and spread of each coordinate toward the best group, giving higher-ranked candidates more weight. It retains promising alternatives and refines several of them by changing one coordinate at a time. Quick, Standard and High set the computational budget. The result is the best feasible candidate found in that search, with no guarantee of a global optimum.
+$$
+\tau=\frac{V_d}{V_{\max}}
+\left[10(b_0-b_T)+K_m\log(b_0/b_T)\right].
+$$
 
-Tracking the median is only one part of selection. During search, squared penalties discourage candidates whose pointwise 90th percentile exceeds the configured ceiling or an enforced final target. For the final decision the engine evaluates the shortlist again with a larger ensemble, checks feasibility and compares it with the empty schedule. A candidate that tracked the target closely in the smaller ensemble can lose here. The returned chart uses the same larger ensemble that determined the winner. Its shaded band describes modeled variation at each time, and does not estimate an individual's actual impairment.
+The backend uses this expression with nominal parameters to estimate a decay window. It can also run the calculation backward by bisection to find a starting level compatible with a given window. Residual absorption can lengthen the decline in the full simulation, so this is an optimistic estimate for the nominal model. When the drawn curve stays above the requested endpoint, the interface offers an edited taper for review. The solver applies the terminal constraint when the visible curve ends within the configured tolerance.
 
-## The 30-second test
+## Turning a curve into an optimization problem
 
-A short event exposed a numerical error. The simulator reports one point per minute, but an input can start and finish between two of those points. To isolate the error, I turned off absorption in a test and gave the stomach compartment a 30-second input containing 14 grams. With nowhere else for the mass to go, the compartment had to end with 14 grams. One alignment of the old integrator produced only about 4.67 grams.
+I interpolate the drawn anchors to form the reference $r(t)$. The solver uses a bounded copy of those anchors when they exceed the configured ceiling margin. Each phase is divided into slots of approximately 15 minutes. The vector for a slot encodes an activation value, one score per allowed input type, an amount and a duration variable. A threshold switches an event on, and the highest type score selects its input. Depending on the phase, the amount can vary or be fixed to one serving. Duration can be bucketed or set by the selected input and phase. The decoder skips overlapping events and enforces phase boundaries. This makes the inverse problem mixed discrete and continuous. A slight change in a vector can switch an event off entirely.
 
-The solver now splits its integration step wherever an input starts or stops, while still reporting the curve once per minute. The regression test moves the same input to three offsets within the minute, starting at 0, 7.5 and 25 seconds. All three recover the full 14 grams. That matters to the optimizer because an error tied to the clock can make one candidate look better simply by shifting its start time.
+### Modeling uncertainty before scoring a candidate
 
-## One calculation on phone and desktop
+I vary distribution volume, maximum elimination rate, first-pass loss and the two food parameters around nominal values. Independent draws can cluster and leave gaps, especially with small batches. For each parameter I divide the probability range into $M$ equal bins and draw once from each bin. A draw from bin $i$ is $u_i=(i+\xi_i)/M$, where $\xi_i$ is uniform on $[0,1)$. For a positive parameter with nominal value $\theta_0$, the engine uses the transformation $\theta_i=\theta_0\exp\big(\sigma\Phi^{-1}(u_i)\big)$, where $\Phi^{-1}$ converts a probability into a standard normal value and $\sigma$ sets the spread. I shuffle the bins independently for each parameter before pairing them into simulated subjects. This is Latin hypercube sampling.
 
-The offline SwiftUI app, the local browser app and the command-line tool share a Swift engine. A saved input captures the target anchors, phase rules, model profile, constraints and search preset. The Python interface can send that same input to the engine and read back the schedule and its trajectories.
+For a candidate schedule $s$, I rank its simulated outputs separately at each minute $t_j$. The median $m_j$ drives tracking and the 90th percentile $q_j$ drives the upper-limit check. Reusing the same parameter draws across candidates lets the search compare schedules on equal terms. The band in the first figure summarizes variation under these assumed parameters. Its edges can come from different simulations at different times. Interpreting the band as a whole-trajectory probability would require a joint analysis across time.
 
-I compared macOS and Linux results for three saved inputs, one each at Quick, Standard and High quality. For each input, the event times and amounts matched, as did every reported value in the median and both percentile curves. The seven-hour Standard case had 421 samples, including both endpoints. That check tests whether the software reproduces a calculation across machines. How well the model represents an individual is a separate question.
+### Defining what wins
+
+I minimize the time integral of the squared gap between the median and the reference, evaluated by the trapezoidal rule. I add a cost for each scheduled event and a cost for total variation, which sums the absolute changes in the median. The factor of 100 makes a gap from 0.04 to 0.05 one unit of error before squaring. If $n_s$ is the number of events, the score for feasible candidates is
+
+$$
+J(s)=\int_0^T [100(m(t)-r(t))]^2\,dt
+     +0.1n_s+0.05\sum_j 100|m_{j+1}-m_j|.
+$$
+
+The engine supports time weights in the tracking integral, with unit weights in this example. During the search, exceeding the ceiling or an enforced terminal limit adds a squared penalty of $10^5(100\Delta)^2$ for each excess $\Delta$. At final selection I apply the modeled limits as rejection rules. The maximum of $q_j$ must stay below or equal to the ceiling, and $q_j$ at the last sample must meet the terminal limit when it is active.
+
+In the first figure, integrated tracking error contributes **3.268**, four events contribute **0.400**, and total variation contributes **0.531**, for a score of **4.199**. The all-zero schedule scores **102.841** against this same target. The early peak matters through its contribution to tracking error across time. Moving it closer to the target can still worsen the objective if that move increases the error elsewhere.
+
+## Searching when the decoder is discontinuous
+
+I use a bounded, diagonal cross-entropy search. Each coordinate of the candidate vector has a mean and a spread. I sample a population, decode and simulate each candidate, then rank them by score. The best group updates the sampling means and spreads, with more weight on higher-ranked candidates. Diagonal means each coordinate is sampled independently before decoding. For coordinate $k$, let $\mu_k$ be its current mean and $\sigma_k$ its spread. I draw a standard normal value $z_k$, scale it and clip the result to the allowed range.
+
+$$
+x_k=\operatorname{clip}(\mu_k+\sigma_k z_k,\,l_k,\,u_k).
+$$
+
+The next mean and spread move toward the rank-weighted mean and standard deviation of the top candidates. Smoothing carries part of the previous distribution forward, and a lower bound on the spread keeps the search exploring.
+
+<figure class="project-figure">
+  <a href="/images/nightcurve/search-update.webp"><img src="/images/nightcurve/search-update.webp" width="1376" height="552" loading="lazy" alt="A broad gray sampling curve shifts and narrows around high-ranked samples, shown in rust, to produce a new green sampling curve."></a>
+  <figcaption>Illustration of one coordinate in a search update. The dots represent trial values and the highlighted trials contribute to the next sampling distribution. The curves illustrate the algorithm using schematic data.</figcaption>
+</figure>
+
+I seed the population with several timings around the reference. I also keep an archive and refine several promising schedules. Local refinement can move an event to an earlier slot and turn the original slot off in the same trial. Trying those edits separately can make each trial score worse, even when applying them together improves the fit.
+
+The Standard preset runs 28 generations of 24 candidates, followed by local refinement. It uses 30 simulated subjects during the search and a separate set of 72 for final selection. The larger ensemble can change the ranking or expose a ceiling violation. I compare the feasible finalists with an empty schedule and use the final ensemble again for the plotted result. This gives me a reproducible way to compare the schedules I found. The search is finite, so the best candidate found depends on the encoding and the search budget.
+
+## What I tested in the backend
+
+I use fourth-order Runge–Kutta with a one-minute reporting grid. An early integrator could undercount a short input because the input rate could jump between its evaluation points. I isolated the bug by disabling absorption and feeding 14 grams into a single stomach compartment over 30 seconds. In one alignment the old integrator reported about 4.67 grams. The revised integrator splits each step at input changes and holds the input rate constant within each resulting substep. The regression test recovers 14 grams with the 30-second event starting at 0, 7.5 and 25 seconds within a minute.
+
+The SwiftUI app calls the Swift engine directly. The local browser app and Python interface pass the same serialized problem to a CLI built from that engine. I compared macOS and Linux runs for three saved cases, one per preset, and checked event times and amounts along with every sampled quantile. All three matched, including the 421 output points of the seven-hour case. That check isolates platform reproducibility for those inputs. The physiology and uncertainty assumptions would require separate validation against measurements.
+
+The part I would carry into robotics is the separation between the reference, the forward model, the candidate search and the final checks. A planner for a robot with actuator delay and uncertain payload would need a different dynamics model. It would face the same question about whether a candidate that tracks well under one set of assumptions still satisfies its constraints when those assumptions change.
